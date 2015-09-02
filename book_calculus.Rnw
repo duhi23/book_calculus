@@ -1,8 +1,8 @@
 \documentclass{book}
 
 \usepackage{etex}
-% \usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+% \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 %\usepackage{exscale}
 \usepackage[english,spanish,es-nolayout]{babel}
