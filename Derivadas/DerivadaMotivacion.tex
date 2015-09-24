@@ -1,0 +1,1521 @@
+\chapter{La derivada: su motivación}
+
+Veamos algunos problemas que llevan a un mismo concepto: el de derivada.
+
+\section{La recta tangente a una curva}
+En la segunda sección del capítulo de límites, estudiamos
+el concepto de recta tangente a una curva. Vimos que si ésta es el gráfico de una función
+$\funcjc{g}{D\subset\mathbb{R}}{\mathbb{R}}$ y $P$ es un punto de la curva con coordenadas
+$(a,g(a))$, para conocer la ecuación de la recta tangente a la curva en el punto $P$, que es
+\[
+y = m(x - a) + g(a),
+\]
+bastaba con calcular su pendiente $m$.
+
+Para ello, aproximamos $m$ con la pendiente de una recta que pasa por $P$ y por otro punto $Q$ de
+la recta de coordenadas $(x,g(x))$, que la notamos $m_x$, y que es igual a:
+\[
+m_x = \frac{g(x) - g(a)}{x - a}.
+\]
+
+Para obtener $m$, la idea era ``acercar'' $Q$ a $P$, esperando que, al hacerlo, $m_x$ se acercara a
+$m$. En el ejemplo estudiado, vimos que eso era así y que, de hecho:
+\[
+m = \limjc{m_x}{x}{a} = \limjc{\frac{g(x) - g(a)}{x - a}}{x}{a}.
+\]
+
+En efecto, teníamos que $g$ está definida por $g(x) = 3x^2$ y que $a = 2$. Por lo tanto, $g(a) =
+g(2) = 12$ y:
+\begin{align*}
+m_x &= \frac{3x^2 - 12}{x - 2} \\[4pt]
+m &= \limjc{\frac{3x^2 - 12}{x - 2}}{x}{2} = 12.
+\end{align*}
+
+La recta $l$ de ecuación
+\[
+y = 12 + 12(x - 2) = 12x + 10
+\]
+es, efectivamente, la tangente al gráfico de $g$ que es una parábola $p$. Más aún, la recta $l$ es
+la única recta que pasa por el punto de $P$ de coordenadas $(2,12)$ y tiene un solo punto en común
+con la parábola $p$ de ecuación
+\[
+y = g(x) = 3x^2,
+\]
+que es, justamente, el punto $P$.
+
+Por otra parte, si exceptuamos el punto $P$, toda la parábola está ``de un solo lado'' de la recta
+$l$, y ``ninguna otra recta se interpone en el espacio entre'' la recta $l$ y la parábola $p$, como
+lo exige la definición de Euclides.
+
+Mostraremos más tarde que esta afirmación es verdadera, cuando estudiemos otras definiciones de
+tangencia y mostremos algunas propiedades notables de la recta tangente. Por ejemplo, probaremos
+que de entre todas las rectas que pasan por el punto de tangencia, la recta tangente es la que
+mejor aproxima a la curva.
+
+Ahora bien, del ejemplo citado resaltaremos el hecho de que la pendiente $m$ de la recta tangente
+al gráfico de $g$ en el punto $(a,g(a))$ está dada por
+\[
+m = \limjc{\frac{g(x) - g(a)}{x - a}}{x}{a}.
+\]
+
+Esta propiedad la cumple la pendiente de la recta tangente en un punto dado de una gran variedad de
+curvas que son el gráfico de funciones (como son los polinomios, funciones racionales,
+trigonométricas, logarítmicas, exponenciales, etcétera). Esto nos motiva a cambiar la tradicional
+definición de recta tangente a una curva por la siguiente:
+
+\begin{defical}[Recta tangente]
+Dada una función real $f$ definida en un intervalo abierto $I$ y $a \in I$, diremos que el gráfico
+de $f$ tiene una recta tangente en el punto $(a, f(a))$ si existe
+\[
+m:= \limjc{\frac{f(x) - f(a)}{x - a}}{x}{a}.
+\]
+En este caso, la ecuación de la recta tangente es:
+\[
+y - f(a) = m(x - a).
+\]
+\end{defical}
+
+\begin{exemplo}[Solución]{%
+Hallar, si existe, la ecuación de la recta tangente al gráfico de la hipérbola de ecuación
+$y = 2 - \frac{1}{x}$ en el punto de coordenadas $(1,1)$.
+}%
+Si ponemos $a = 1$ y definimos $f$ por
+\[
+f(x) = 2 - \frac{1}{x},
+\]
+entonces $f(a) = f(1) = 1.$ Además:
+\begin{align*}
+m &= \limjc{\frac{f(x) - f(1)}{x - 1}}{x}{1} =%
+    \limjc{\displaystyle\frac{\left(2 - \frac{1}{x}\right) - \left(2 - 1\right)}{x - 1}}%
+    {x}{1} \\[6pt]
+  &= \limjc{\displaystyle\frac{-\frac{1}{x} + 1}{x - 1}}{x}{1} =
+  \limjc{\frac{x - 1}{x(x - 1)}}{x}{1} \\[4pt]
+  &= \limjc{\frac{1}{x}}{x}{1} = 1.
+\end{align*}
+Como el límite existe, la recta tangente tendrá por ecuación a
+\[
+y -1 = 1(x - 1);
+\]
+es decir, la ecuación de la recta tangente a la hipérbola en el punto de coordenadas $(1,1)$ es $y
+= x$.
+
+Una de las aplicaciones más valiosas del concepto de derivada que vamos a estudiar es el proveer
+una herramienta para realizar un dibujo aproximado del gráfico de una función. Más adelante,
+podremos constatar que el gráfico de $f$ y de la tangente al gráfico de $f$ en el punto de
+coordenadas $(1,1)$ es el siguiente:
+\begin{center}
+\begin{pspicture}(-3,-1)(5,4)
+\psset{unit=0.5cm,plotpoints=250}%
+\def\pshlabel#1{\footnotesize #1}%
+\def\psvlabel#1{\footnotesize #1}%
+
+\psaxes[ticks=none,labels=none]{->}(0,0)(-6,-2)(9.5,7.5)%
+\uput[0](0,7.5){$y$}%
+\uput[-90](9.5,0){$x$}%
+
+\psplot[linewidth=1.5\pslinewidth]{-6}{-0.2}{2 1 x div sub}%
+\psplot[linewidth=1.5\pslinewidth]{0.25}{8}{2 1 x div sub}%
+\rput[l](-5,3.5){$\displaystyle y = 2 - \frac{1}{x}$}
+
+\psplot[linestyle=dashed]{-6}{8}{2}%
+
+\psplot{-1.5}{5}{x}%
+\rput[l](5.1,5){$y = x$}
+
+\uput[0](0,2.4){$2$}%
+
+\psline[linestyle=dashed,linecolor=gray]%
+    (1,0)(1,1)(0,1)%
+\psdot[dotscale=0.8](1,1)%
+\uput[-90](1,0){$1$}%
+\uput[180](0,1){$1$}%
+
+\end{pspicture}
+\end{center}
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Hallar la ecuación de la recta tangente al gráfico de la cúbica de ecuación $y = x^3$ en
+el punto de coordenadas $(-1,-1)$.
+}%
+Si ponemos $a = -1$ y definimos $f(x) = x^3$, entonces $f(-1) = -1$ y
+\begin{align*}
+m   &= \limjc{\frac{f(x) - f(-1)}{x - (-1)}}{x}{-1} =
+        \limjc{\frac{x^3 + 1}{x + 1}}{x}{-1} \\[4pt]
+    &= \limjc{\frac{(x+1)(x^2 - x + 1)}{x + 1}}{x}{-1} =
+        \limjc{x^2 - x + 1}{x}{-1} = 3.
+\end{align*}
+Por lo tanto, la recta buscada tiene como ecuación la siguiente:
+\[
+y - (-1) = 3(x - (-1)) = 3x + 3,
+\]
+de donde, la ecuación buscada es:
+\[
+y = 3x + 2.
+\]
+
+El gráfico de $f$ y de la tangente en $(-1,-1)$ es el siguiente:
+\begin{center}
+\begin{pspicture}(-2,-2)(4.2,5)
+
+\SpecialCoor
+\psset{yunit=0.5cm,plotpoints=250}%
+\def\pshlabel#1{\footnotesize #1}%
+\def\psvlabel#1{\footnotesize #1}%
+
+\psaxes[ticks=none,labels=none]{->}(0,0)(-2,-4)(2.75,9.5)%
+\uput[0](0,9.5){$y$}%
+\uput[-90](2.75,0){$x$}%
+
+\begingroup
+    \psset{linewidth=1.5\pslinewidth}%
+    \psplot{-1.5}{2.1}{x 3 exp}%
+    \rput[l](! -1.4 1.5 3 exp neg){$y= x^3$}%
+
+    \psplot{-1.5}{2.5}{x 3 mul 2 add}%
+    \rput[l](2.5,8.3){$y = 3x + 2$}%
+\endgroup
+
+\begingroup
+    \psset{dotscale=0.8,linestyle=dashed}%
+    \psline[linecolor=gray]%
+        (-1,0)(-1,-1)(0,-1)%
+    \psdot(-1,-1)%
+    \uput[90](-1,0){$-1$}%
+    \uput[0](0,-1){$-1$}%
+
+    \psline[linecolor=gray]%
+        (2,0)(2,8)(0,8)%
+    \psdot(2,8)%
+\endgroup
+\end{pspicture}
+\end{center}
+\end{exemplo}
+
+Observemos en el dibujo que la recta tangente a la curva no tiene con ésta un único punto en común
+sino dos. El un punto, que es el de tangencia, tiene coordenadas $(-1,-1)$. Podemos averiguar las
+coordenadas del otro punto resolviendo el sistema de ecuaciones:
+\[
+\left\{
+\begin{matrix}
+y & = & x^3 \\
+y & = & 3x + 2
+\end{matrix}
+\right.
+\]
+
+Al igualar las ecuaciones, obtenemos que
+\[
+x^3 = 3x + 2,
+\]
+lo que equivale a
+\[
+x^3 - 3x - 2 = 0.
+\]
+
+Esta ecuación puede tener hasta tres raíces reales. Sabemos que una de ellas es $-1$, porque la
+tangente y la curva se ``encuentran'' en el punto de coordenadas $(-1,-1)$. Entonces, el polinomio
+cúbico $x^3 - 3x - 2$ tiene como factor $(x + 1)$.
+
+Por lo tanto, podemos obtener el otro factor si dividimos el cúbico por $(x + 1)$. Al hacerlo,
+obtenemos que:
+\[
+x^3 - 3x - 2 = (x + 1)(x^2 - x - 2) = (x+1)(x + 1)(x - 2).
+\]
+Entonces, el polinomio tiene las tres raíces son reales e iguales a $-1$, de multiplicidad $2$, y
+$2$.
+
+Entonces, ya estamos seguros que la curva y la recta tangente se encuentran exactamente en dos
+puntos: $(-1,1)$ y $(2,f(2)) = (2,8)$.
+
+Pero, ?`no se suele decir que la tangente y la curva solo deben tener un punto en común? Sí, eso
+suele decirse, sin embargo, tal definición no es del todo precisa, pues, en las ``cercanías'' de
+$(-1,-1)$ la tangente y la curva tienen, efectivamente, un comportamiento de tangente en el sentido
+tradicional.
+
+Por esto, la propiedad de tangencia es de carácter ``local''; es decir, no importa el
+``comportamiento'' de la curva y de la recta ``lejos'' del punto de tangencia sino en sus
+``cercanías''.
+
+
+\section{?`Cómo medir el cambio?}
+
+Tengamos en cuenta que la Matemática desarrollada hasta antes del Renacimiento estudiaba más bien
+conceptos ``estáticos'': describir formas geométricas que no cambian, calcular áreas de figuras
+simples, llevar cuentas, etcétera. La geometría de Euclides, la aritmética de Diofanto y el álgebra
+desarrollada por Al-Khowarizmi fueron instrumentos idóneos para responder a esta visión estática.
+
+Pero cuando la humanidad intenta describir el movimiento que se produce en gran cantidad de
+fenómenos estudiados, se hace necesaria la creación de nuevos conceptos matemáticos que permitan
+responder adecuadamente a estos requerimientos.
+
+Dado que el movimiento es percibido como el cambio de la posición de un cuerpo en el tiempo, una de
+las preguntas más importantes que la matemática enfrentó fue ``?`cómo medir el cambio?''.
+
+Veamos en esta sección cómo la respuesta a esta pregunta nos lleva también al concepto de derivada.
+
+\subsection{?`Cuánto cuesta producir autos?}
+
+\begingroup
+\itshape El administrador de una fábrica de autos desea tener información adecuada respecto a los
+costos de producción de la fábrica en función del número de vehículos en un mes dado. Así, desearía
+saber cómo varían estos costos al variar la producción. ?`Qué información requiere y cómo
+presentarla? ?`Cómo medir la variación o cambio de los costos de la producción? ?`Cómo relacionar la
+producción con los costos y la dependencia entre la variación de la producción y la de los costos?
+\endgroup
+
+Para responder a éstas y a otras preguntas relacionadas, se requerirá de algunos conceptos
+matemáticos como son el de ``variable numérica'', ``función real'', ``incremento absoluto'',
+``incremento relativo'', ``razón de cambio'', ``derivada'', etcétera, los mismos que expondremos a
+lo largo de esta sección.
+
+\subsection{Las variables representan magnitudes}
+Cuando estudiamos determinados fenómenos físicos, sociales o económicos ---como el problema
+planteado en la sección anterior---, identificamos ciertas magnitudes que consideramos importantes
+para dicho estudio.
+
+Por ejemplo, al estudiar un circuito eléctrico, la tensión $V$ voltios y la intensidad $I$ amperios
+de la corriente eléctrica, y la resistencia $R$ ohmios de los dispositivos instalados son
+importantes. Cuando se monitorea el trabajo de una represa, será de interés la cota del nivel de
+agua $h$ metros y la energía $E\MWh$ almacenada. Al dirigir una fábrica de autos se deseará conocer
+el costo total $C$ miles de dólares y el correspondiente costo unitario $CU$ miles de dólares al
+producir $x$ vehículos, etcétera.
+
+Establecida la unidad de medida que corresponda y luego de realizar las mediciones o cálculos
+necesarios, se determinará, para cada magnitud, un determinado valor numérico en un momento dado.
+El símbolo que represente a dicho valor numérico, el cual oscila entre un valor mínimo y un valor
+máximo, dados por el fenómeno concreto que se está estudiando, se llama \emph{variable}. En los
+ejemplos dados, tenemos que $V$, $I$, $R$, $h$, $E$, $C$, $CU$ y $x$ son variables.
+
+Por ejemplo, la fábrica de autos producirá $x$ automóviles por año y $x$ no puede ser menor a
+1\,000 porque no sería rentable producir menos, pero tampoco producirá más de 10\,000, dado que la
+capacidad instalada de la fábrica no lo permite. Matemáticamente, expresamos estas dos
+restricciones ``haciendo que'' la variable $x$ pertenezca al intervalo $[1\,000,10\,000]$.
+
+\subsection{La función como modelo de la dependencia entre magnitudes}
+Hemos visto el concepto de función. Ilustremos con tres ejemplos su uso como modelo de la
+dependencia entre magnitudes.
+
+\subsubsection{Costo de producción en una fábrica de autos}
+Como el costo $C$ de producción de los autos, en miles de dólares, depende del número $x$ de
+vehículos producidos, esta dependencia es modelizada con una función
+$\funcjc{f}{\Dm(f)\subset\mathbb{R}}{\mathbb{R}}$, donde:
+\[
+C=f(x).
+\]
+Como solo nos interesan los valores de $x$ entre $1\,000$ y $10\,000$, el dominio de $f$ será
+$\Dm(f)=[1\,000,10\,000]$.
+
+Luego de los estudios correspondientes, los administradores de la empresa determinan que:
+\[
+C=f(x)=2\,000+11x -0.000\,12x^{2}.
+\]
+Por lo tanto, el costo unitario $C_U$, es decir el costo promedio de un auto es:
+\[
+C_U = \frac{f(x)}{x}=\frac{2\,000}{x}+11-0.000\,12x.
+\]
+
+A manera de ejemplo, en la siguiente tabla, se muestran los valores de $C$ y del costo unitario
+$C_U$ que cuesta producir cada auto si se producen $x$ autos, dados en miles de dólares,
+correspondientes al año anterior:
+
+\begingroup
+\begin{center}
+{\renewcommand\arraystretch{1.5}%
+\setlength\extrarowheight{1pt}
+\begin{tabular}{|c |c |c|}
+\hline
+$x$ & $C=f(x)$ & $C_U=\frac{f(x)}{x}$  \\
+\hline
+1\,000  &  12\,880 &  12.880 \\[-2pt]
+\hline
+2\,000 & 23\,520 & 11.760 \\
+\hline
+3\,000 & 33\,920  & 11.307 \\
+\hline
+5\,000 & 54\,000 & 10.800 \\
+\hline
+6\,000 & 63\,680 & 10.613 \\
+\hline
+7\,000 & 73\,120 & 10.446 \\
+\hline
+8\,000 & 82\,320 & 10.290 \\
+\hline
+9\,000 & 91\,280 & 10.142 \\
+\hline
+10\,000 & 100\,000 & 10.000 \\
+\hline
+\end{tabular}}
+\end{center}
+
+\subsubsection{Energía potencial en una represa}
+La \emph{energía potencial} $E$, medida en $\MWh$, que está almacenada en una represa depende de la
+\emph{cota} $h$, medida en $\metros$, se define como la altura sobre el nivel del mar del espejo de
+agua en la represa.
+
+Supongamos que, en una determinada represa, la cota puede estar entre $2\,900$ y $2\,950$ metros,
+existe una función $\funcjc{g}{\Dm(g)}{\mathbb{R}}$, con dominio $\Dm(g)=[2\,900,2\,950]$, tal
+$g(h)$ es la energía almacenada $E$ cuando la cota es $h$. Es decir:
+\[
+E=g(h).
+\]
+
+\subsubsection{El diámetro y el volumen de un globo}
+Un globo, en la parte superior, tiene forma de un hemisferio achatado; en su parte inferior, es un
+hemisferio alargado que culmina con una abertura cilíndrica.
+
+Los fabricantes han determinado que el volumen $V$, medido en $\decimetros^3$, de la cámara de gas
+del globo depende de su diámetro $d$, medido en $\decimetros$. Entonces, existe una función
+$\funcjc{\varphi}{\Dm(\varphi)}{\mathbb{R}}$ tal que:
+\[
+V = \varphi(d)=\frac{1}{2\,000}d^{3}.
+\]
+
+El diseño de los globos de esta fábrica establece que el globo se eleva si el diámetro mide, al
+menos, $6\metros$. Además, el mayor diámetro al que el globo puede ser inflado es de $12\metros$.
+Por ello, el dominio de $\varphi$ es $\Dm(\varphi)=[60,120]$.
+
+Si el helio costara $40$ centavos de dólar por cada $\metros^3$, podríamos establecer el gasto $G$
+en dólares que deberíamos hacer por concepto de gas en función del diámetro del globo. Así, existe
+una función $\funcjc{\psi}{\Dm(\psi)}{\mathbb{R}}$ tal que
+\[
+G=\psi(d) = 0.40\varphi(d)=0.000\,2d^3.
+\]
+
+En la siguiente tabla, se muestran valores del volumen del globo y del gasto en el que hay que
+incurrir para inflarlo para algunos valores del diámetro:
+\begin{center}
+\begingroup
+\setlength\extrarowheight{4pt}
+\begin{tabular}{|c |c |r @{.} l|}
+\hline
+$d$ & $V=\varphi(d)$ & \multicolumn{2}{|c|}{$G=\psi(d)$}  \\
+{\small$\decimetros$} & $\decimetros^3$ & \multicolumn{2}{|c|}{dólares} \\
+\hline
+60  &  108.0 &  43&20 \\
+\hline
+70 & 171.5 & 68&60 \\
+\hline
+80 & 256.0  & 102&40 \\
+\hline
+90 & 364.5 & 145&50 \\
+\hline
+100 & 500.0 & 200&00 \\
+\hline
+110 & 665.5 & 260&20 \\
+\hline
+120 & 864.0 & 345&60 \\
+\hline
+\end{tabular}
+\endgroup
+\end{center}
+
+\subsection{La variaciones absoluta y relativa como medidas del cambio}
+Cuando una variable, digamos $x$, toma diversos valores luego de haber tomado un ``valor inicial''
+$x_0$, unos dirán que varió mucho, otros lo contrario. Esto es algo subjetivo. Por ello, se hace
+necesario establecer medidas objetivas del cambio producido. Para ello, nos serviremos de los
+conceptos de \emph{variación absoluta} y \emph{relativa}.
+
+\subsubsection{La variación absoluta o incremento}
+En el ejemplo del globo, si trabajáramos con un diámetro de $80\dm$, veríamos que el volumen de gas
+necesario sería de $256\metros^3$ y que el costo del gas sería de $102.40$ dólares. Si infláramos
+algo más el globo, digamos hasta un diámetro $d$ decímetros, la \emph{variación} o \emph{cambio}
+del diámetro se define como la diferencia $d-80$ decímetros, a la que llamaremos \emph{variación
+absoluta} o \emph{incremento} del diámetro, la notaremos con $\Delta d$ y será leída ``delta $d$''
+y está dada también en decímetros. Así $\Delta d = d-80$.
+
+El incremento puede ser positivo o negativo. Por supuesto que $\Delta d > 0$ significa que el
+diámetro creció mientras que $\Delta d < 0$ significa lo contrario. En este caso, a $\Delta d$
+también se le llama \emph{decremento}.
+
+Al variar $d$, naturalmente, varían también el volumen del gas $V = \varphi(d)\dm^3$ cúbicos y el
+costo que hay que pagar por este gas $G = \psi(d)$ dólares. La \emph{variación absoluta} del
+volumen será:
+\[
+\Delta V = V - 256 = \varphi(d) - \varphi(80)\dm^3
+\]
+y la \emph{variación absoluta} del costo será:
+\[
+\Delta G = G - 102.40 = \psi(d) - \psi(80)\ \text{dólares}.
+\]
+
+\begin{exemplo}[]{}
+Consideremos la situación de la fábrica de autos una vez más. Si su producción, en un mes dado,
+fuera de, digamos, $5\,000$ autos y, en el mes siguiente, ésta pasara a ser de $x$ autos, entonces
+la variación absoluta de la producción estaría dada por:
+\[
+\Delta x=x-5\,000.
+\]
+En este caso, la variación absoluta de los costos, que pasarían de $54\,000$ miles de dólares a $C$
+miles de dólares sería igual a:
+\[
+\Delta C=C-54\,000.
+\]
+
+Como
+\[
+C = f(x)= 2\,000+11x-0.000\,12x^2,
+\]
+se tendrá que
+\[
+\Delta C=f(x)-54\,000 =-52\,000 + 11x - 0.000\,12x^2.
+\]
+
+Análogamente, la variación absoluta del costo unitario, que pasó de $10.8$ miles de dólares a $C_U$
+miles de dólares, estaría dado por:
+\[
+\Delta C_U=C_U-10.8.
+\]
+Puesto que:
+\[
+C_U = \frac{f(x)}{x}= \frac{2\,000}{x}+11-0.000\,12x,
+\]
+se tendría que:
+\[
+\Delta C_U = \frac{f(x)}{x}-10.8= \frac{2\,000}{x}+0.2 -0.000\,12x.
+\]
+
+Por ejemplo, si $x=6\,000$ autos, entonces:
+\[
+f(6\,000) \approx 63\,680
+\]
+y
+\[
+\frac{f(6\,000)}{6\,000}\approx 10.613.
+\]
+Además, tendremos que:
+\begin{align*}
+\Delta x & = 6\,000-5\,000=1\,000,\\
+\Delta C & \approx 63\,680-54\,000= 9\,680, \\
+\Delta C_U & \approx 10.613-10.8 = -0.187.
+\end{align*}
+Es decir que, si la producción aumentara en $1\,000$ autos, los costos subirían en $9.68$ millones
+de dólares, mientras que ¡el costo unitario bajaría en $187$ dólares por auto!
+\end{exemplo}
+
+\subsubsection{La variación relativa}
+Si el precio del kilogramo de arroz se incrementara de un precio inicial de $p_{0} = 0.40$ dólares
+a un precio de $p = 0.70$ dólares, el incremento del precio se mediría por su variación absoluta:
+\[
+\Delta p = p - p_{0} = 0.70 - 0.40 = 0.30\ \text{dólares}.
+\]
+
+Si el precio de una llanta pasara de $p_{0} = 20.00$ dólares a $p = 20.30$ dólares, la variación
+absoluta sería también de $0.30$ dólares.
+
+Obviamente, la importancia del alza de $0.30$ dólares al precio del kilogramo de arroz no es la
+misma que la del alza al precio de una llanta. En el primer caso, el precio casi se ha duplicado,
+mientras que, en el caso de la llanta, el alza es insignificante.
+
+Para medir este fenómeno, se utiliza el concepto de \emph{variación relativa} que es el cociente de
+la variación absoluta dividida por el valor inicial que tiene la variable. Así, en el ejemplo del
+arroz, la variación relativa es:
+\[
+\frac{\Delta p}{p_{0}} = \frac{0.30}{0.40} = 0.75.
+\]
+
+La variación relativa suele también expresarse como un porcentaje al que se lo denomina
+\emph{variación porcentual}.
+
+Teniendo en cuenta la identidad $\%=\frac{1}{100}$ (o 100\% = 1), podemos decir que la variación
+porcentual del precio del kilogramo de arroz es:
+\[
+\frac{\Delta p}{p_{0}}\times 100 \% = 0.75\times 100\% = 75\%
+\]
+y que la variación porcentual del precio de la llanta es:
+\[
+\frac{\Delta p}{p_{0}}\times 100\% = 0.015\times 100\% = 1.5\%.
+\]
+
+\begin{exemplo}[]{}
+En el caso de la fábrica de autos, considerando las mismas variaciones absolutas de autos,
+tendremos que la variación relativa de la producción es:
+\[
+\frac{\Delta x}{5\,000}= \frac{x-5\,000}{5\,000},
+\]
+la variación relativa del costo:
+\[
+\frac{\Delta C}{54\,000}= \frac{C-54\,000}{54\,000}
+\]
+y la del costo unitario:
+\[
+\frac{\Delta C_U}{10.8}= \frac{C_U-10.8}{10.8} =
+    \frac{\displaystyle\frac{f(x)}{x}-10.8}{10.8}.
+\]
+
+Si $x=6\,000$ autos, se tendrá que la variación porcentual de la producción sería:
+\[
+\frac{\Delta x}{5\,000} \times 100\% = \frac{1\,000}{5\,000}\times 100\% = 20\%,
+\]
+la variación porcentual del costo sería:
+\[
+\frac{\Delta C}{54\,000}\times 100\%= \frac{9\,680}{54\,000}\times 100\% \approx 18\%
+\]
+y la del costo unitario sería:
+\[
+\frac{\Delta C_U}{10.8} \times 100\% = \frac{-0.187}{10.8}\times 100\% \approx -1.7\%.
+\]
+En otras palabras, al subir la producción en un $20\%$, los costos aumentan en un $18\%$, mientras
+que el costo unitario baja en $1.7\%$.
+\end{exemplo}
+
+\section{Razón de cambio, elasticidad y magnitudes marginales}
+Vimos que la dependencia entre las dos variables numéricas que describen un fenómeno, digamos una
+variable $y$ que depende de otra variable $x$, puede ser descrita mediante una función
+$\funcjc{f}{I}{\mathbb{R}}$, donde $I$ es un intervalo en el cual toma sus valores la variable
+independiente $x$.
+
+Por ejemplo, $y$ miles de dólares representa el costo de producir $x$ autos en una fábrica durante
+un mes, el intervalo $I$ es, digamos, $[1\,000, 10\,000]$ y la función $f$ está definida por:
+\[
+f(x) = 2\,000 + 10x.
+\]
+
+Ahora bien, si, en un mes dado, la producción fue de $x_0 = 4\,800$ autos, los costos de producción
+ese mes fueron de $y_0$ miles de dólares. Entonces:
+\[
+y_0 = f(x_0) = 2\,000 + 10x_0.
+\]
+Por lo tanto:
+\[
+y_0 = 2\,000 + 48\,000 = 50\,000.
+\]
+
+Supongamos que, en el siguiente mes, la producción se elevó a $x$ autos. Este cambio se puede
+medir, según vimos, por la variación absoluta $\Delta x$, llamada también \emph{incremento} de $x$,
+y por la variación relativa $\frac{\Delta x}{x_0}$ de la variable $x$. En este caso:
+\begin{align}
+\label{eq:dm001}
+\Delta x &= x - x_0 = x - 4\,800. \\
+\label{eq:dm002}
+\frac{\Delta x}{x_0} &= \frac{x - x_0}{x_0} = \frac{x - 4\,800}{4\,800}.
+\end{align}
+
+Obviamente, si $\Delta x > 0$, implica que la variable $x$ creció; en el caso contrario, decreció.
+En la práctica, a un incremento negativo se le llama \emph{decremento}.
+
+Por otra parte, como la dependencia del costo respecto del nivel de producción está descrito por la
+función $f$, mediante la igualdad $y = f(x)$, la variable costo sufrirá también un cambio, descrito
+por la variación absoluta o incremento $\Delta y$ y por la variación relativa de $y$, que es
+$\frac{\Delta y}{y_0}$. Podemos calcular ambas variaciones:
+\begin{align}
+\Delta y &= y - y_0 = f(x) - f(x_0) = (2\,000 + 10x) - 50\,000 \nonumber \\
+\label{eq:dm003}
+\Delta y &= -48\,000 + 10x \\
+\label{eq:dm004}
+\frac{\Delta y}{y_0} &= \frac{-48\,000 + 10x}{50\,000}.
+\end{align}
+
+Ahora bien, como $y$ depende de $x$, y esta dependencia está descrita por $y = f(x)$, para un $x_0$
+fijo dado, es de esperar que la dependencia del incremento $\Delta y$ respecto del incremento
+$\Delta x$ pueda describirse fácilmente, al igual que la dependencia de la variación relativa o
+porcentual $\frac{\Delta y}{y_0}$ respecto de $\frac{\Delta x}{x_0}$, la variación relativa o
+porcentual de $x$. Veamos que sí es así.
+
+¡Resulta que $\Delta y$ es directamente proporcional a $\Delta x$, así como $\frac{\Delta y}{y_0}$
+es directamente proporcional a $\frac{\Delta x}{x_0}$! Es decir, existen constantes $\kappa$ y
+$\eta$ tales que
+\begin{align}
+\Delta y &= \kappa\Delta x \label{eq:dm005}\\
+\frac{\Delta y}{y_0} &= \eta\frac{\Delta x}{x_0}. \label{eq:dm006}
+\end{align}
+
+A la constante $\kappa$ se le llama \emph{razón de cambio} y a la constante $\eta$,
+\emph{elasticidad} de $y$ respecto de $x$. Calculemos estas dos constantes. De (\ref{eq:dm001}),
+(\ref{eq:dm003}) y (\ref{eq:dm005}) tenemos que:
+\begin{equation}
+\label{eq:dm007}
+\kappa = \frac{\Delta y}{\Delta x} = \frac{-48\,000 + 10x}{x - 4\,800} = 10.
+\end{equation}
+
+De (\ref{eq:dm006}) y (\ref{eq:dm007}) obtenemos:
+\begin{equation}
+\label{eq:dm008}
+\eta = \frac{\displaystyle\frac{\Delta y}{y_0}}{\displaystyle\frac{\Delta x}{x_0}}
+    = \frac{x_0}{y_0}\frac{\Delta y}{\Delta x} = \frac{4\,800}{50\,000}\cdot 10 = 0.96.
+\end{equation}
+
+Es fácil verificar que esta sencilla dependencia de $\Delta y$ respecto de $\Delta x$ y de
+$\frac{\Delta y}{y_0}$ respecto de $\frac{\Delta x}{x_0}$ se da siempre que $f$ sea un polinomio de
+grado menor que o igual a $1$:
+
+\begin{teocal}
+Si $\funcjc{f}{I\subset\mathbb{R}}{\mathbb{R}}$ definida por $y = f(x) = mx + b$, y para todo
+$x_0\in I$ y todo $x\in I$, si:
+\[
+y_0 = f(x_0), \quad \Delta x = x - x_0, \quad \Delta y = y - y_0 = f(x) - f(x_0),
+\]
+se tiene que:
+\begin{equation}
+\label{eq:dm009}
+\Delta y = \kappa\Delta x, \quad \frac{\Delta y}{y_0} = \eta\frac{\Delta x}{x_0},
+\end{equation}
+donde
+\begin{equation}
+\label{eq:dm010}
+\kappa = m \yjc \eta = \frac{x_0}{y_0}m.
+\end{equation}
+\end{teocal}
+
+Recordemos que el gráfico de $f$ es una recta con pendiente $m$. Por lo tanto, la razón de cambio
+$\kappa$ es igual a $m$. Naturalmente, ese caso es excepcional. En general, tenemos las siguientes
+definiciones inspiradas en (\ref{eq:dm007}) y (\ref{eq:dm008}).
+
+\begin{defical}[Razón de cambio]
+Sean $\funcjc{f}{I\subset\mathbb{R}}{\mathbb{R}}$ y $\lajc{x}{y = f(x)}$. Para $x_0 \in I$ y $x\in
+I$ tales que $x\neq x_0$, si
+\[
+y_0 = f(x_0), \quad \Delta x = x - x_0, \quad \Delta y = y - y_0,
+\]
+la \emph{razón de cambio de $y$ respecto de $x$ en el intervalo de extremos $x_0$ y $x$} es
+\begin{equation}
+\label{eq:dm011}
+f'(x_0;x) = \frac{\Delta y}{\Delta x} = \frac{f(x) - f(x_0)}{x - x_0}.
+\end{equation}
+\end{defical}
+
+Obviamente, $\Delta y$ no es, en general, directamente proporcional a $\Delta x$, puesto que, si bien
+\begin{equation}
+\label{eq:dm012}
+\Delta y = f'(x_0;x)\Delta x,
+\end{equation}
+se tiene que $f'(x_0;x)$ no es constante la mayoría de las veces, sino que depende de $x_0$ y de $x$. Sin
+embargo, para muchas funciones, el valor de $f'(x_0;x)$ es muy cercano a una constante para valores
+pequeños de $\Delta x$. Ilustremos esto con un ejemplo.
+
+\paragraph{Ejemplo.}
+En el caso del globo, el costo $G$ en dólares del gas necesario para inflar el globo de diámetro
+$d$ decímetros está dado por:
+\[
+G = \psi(d) = \frac{1}{2\,000}d^{3},\ d\in [60,120].
+\]
+Si tomamos $d_{0}=80$ y diferentes valores de $d$ cercanos a 80 (ver la tabla a continuación),
+tendremos que los valores que toma la razón de cambio
+\[
+\psi'(d_{0};d) = \frac{\Delta G}{\Delta d} = \frac{\psi(d)-\psi(d_{0})}{d-d_{0}}
+\]
+son muy similares entre sí y se acercan cada vez más a $3.84$. En otras palabras, podemos ver que
+¡ese número es el límite de la razón de cambio $\psi'(d_{0};d)$ cuando $d$ tiende a $d_0$!
+
+\begin{center}
+{\renewcommand\arraystretch{1.5}%
+\setlength\extrarowheight{1pt}
+\begin{tabular}{|c|c|c|c|}
+\hline
+$d$ & $\psi(d)$ & $\psi(d)-\psi(d_{0})$ & $\psi'(d_{0},d)$ \\
+\hline
+78  &  94.91 &  $-$7.49 & 3.74  \\[-2pt]
+\hline
+79 & 98.61 & $-$3.79 & 3.79 \\
+\hline
+79.5 &  100.49    & $-$1.91     &  3.82   \\
+\hline
+79.9 & 102.02     &  $-$0.38    &  3.84      \\
+\hline
+&  &  &  $\downarrow $\\
+80 & 102.40 & 0 & 3.84  \\
+&  &  &  $\uparrow $\\
+\hline
+80.1 &  102.78     &  0.38    &    3.84       \\
+\hline
+80.5 &  104.33    &   1.93     &   3.86      \\
+\hline
+81 & 106.29 & 3.89 & 3.89 \\
+\hline
+82 & 110.27 & 7.87 & 3.94 \\
+\hline
+\end{tabular}}
+\end{center}
+
+Entonces, si definimos $\psi'(d_0)$ por:
+\[
+\psi'(d_{0})=\lim_{d\rightarrow d_{0}}\psi'(d_{0};d) =
+    \lim_{d\rightarrow d_{0}}\frac{\psi(d)-\psi(d_{0})}{d-d_{0}} =
+    \lim_{\Delta d \rightarrow 0}\frac{\Delta G}{\Delta d} = 3.84,
+\]
+podremos escribir
+\[
+\Delta G \approx 3.84\Delta d \approx \psi'(d_{0}) \Delta d,
+\]
+si $\Delta d$ es pequeño. Es decir, $\Delta G$ es ``casi'' directamente proporcional a $\Delta d$,
+si  $\Delta d$ es pequeño. Al valor $\psi'(d_{0})$ se le llama \emph{razón de cambio instantánea de
+$\psi$ en $d_{0}$}.
+
+En general:
+
+\begin{defical}[Razón de cambio instantánea]
+Si una variable $y$ depende de una variable $x$ mediante una función $f\colon I\subset\mathbb{R}
+\rightarrow \mathbb{R}$ y, para un $x_{0}$ dado existe:
+\[
+f'(x_{0}) = \lim_{x \rightarrow x_{0}}f'(x_{0},x) =
+    \lim_{\Delta x \rightarrow 0}\frac{\Delta y}{\Delta x} =
+    \lim_{x \rightarrow x_{0}}\frac{f(x)-f(x_{0})}{x-x_{0}},
+\]
+diremos que $f'(x_{0})$ es la \emph{razón de cambio instantánea de $y$ con respecto a $x$}.
+\end{defical}
+
+Para $\Delta x$ pequeños, tendremos que:
+\[
+\Delta y \approx f'(x_{0}) \Delta x.
+\]
+En otras palabras, para variaciones pequeñas de $x$ respecto de $x_0$, las variaciones de $y$
+respecto de $y_0$ son ``casi'' directamente proporcionales a las variaciones de $x$, donde
+$f'(x_{0})$ es la constante de proporcionalidad.
+
+\begin{exemplo}[]{}
+En la fábrica de autos, cuyo costo $C$ miles de dólares está dado por
+\[
+C = f(x) = 200 + 11x - 0.000\,12 x^2,
+\]
+obtuvimos que el costo unitario es igual a:
+\[
+C_U = f_1(x) = \frac{f(x)}{x}= \frac{2\,000}{x}+11-0.000\,12x.
+\]
+Si la producción pasó de $5\,000$ a $x$ autos, la razón de cambio de los costos $C$ en el intervalo
+de extremos $5\,000$ y $x$ está dada por:
+\[
+f'(5\,000,x)=\frac{f(x)-f(5\,000)}{x-5\,000}=\frac{-52\,000+11x-0.000\,12x^2}{x-5\,000}.
+\]
+
+Además, la razón de cambio del costo unitario $C_U$ en el mismo intervalo será:
+\[
+\frac{f_1(x)-f_1(5\,000)}{x-5\,000}=\frac{\frac{f(x)}{x}-\frac{f(5\,000)}{5\,000}}{x-5\,000}%
+=\frac{\frac{2\,000}{x}+0.2-0.000\,12x}{x-5\,000}.
+\]
+
+Al tomar, en estos dos casos, el límite cuando $x$ se aproxima a $5\,000$ o, lo que es lo mismo, el
+límite cuando $\Delta x$ se aproxima a $0$, obtendremos las respectivas razones de cambio
+instantáneas para un nivel de producción igual a $x=5\,000$ autos:
+\begin{gather*}
+C'=f'(5\,000)=\lim_{x\to 5\,000}\frac{-52\,000+11x-0.000\,12x^2}{x-5\,000}=9.8,\\
+C_U'=f_1'(5\,000)=\lim_{x\to 5\,000}\frac{\frac{2\,000}{x}+0.2-0.000\,12x}{x-5\,000}=-0.000\,2.
+\end{gather*}
+
+Por la definición de razón de cambio instantánea, si $\Delta x$ es pequeño, a partir de un nivel de
+producción igual a $x=5\,000$ autos tendremos que:
+\begin{gather*}
+\Delta C\approx f'(5\,000)\Delta x  =9.8\Delta x,\\
+\Delta C_U\approx f_1'(5\,000)\Delta x   = -0.000\,2\Delta x.
+\end{gather*}
+
+Si $\Delta x = 1\,000$, entonces:
+\[
+f'(5\,000)\Delta x  =9.8(1\,000)=9\,800
+\]
+y $\Delta C = 9\,600$. Es decir, a pesar de que $\Delta x$ no es tan pequeño, es cercano a $\Delta
+C$.
+
+También
+\[
+f_1'(5\,000)\Delta x  =-0.000\,2(1\,000)=-0.2
+\]
+es cercano a $\Delta C_U$ que, en este caso, es
+\[
+\Delta C_U  =-0.187.
+\]
+\end{exemplo}
+
+\subsection{Magnitudes marginales en Economía}
+En el ejemplo de la empresa de autos que produce $5\,000$ autos por mes, los administradores
+quisieran saber cuánto le costaría a la fábrica producir $1$ auto más al mes; es decir, quisieran
+averiguar el costo de producción del auto número $5\,001$. A este costo se lo conoce con el nombre
+de \emph{costo marginal}.
+
+Para averiguar el costo marginal al nivel de producción de $5\,000$ autos mensuales solo hay que
+calcular el incremento del costo en el intervalo $[5\,000, 5\,001]$. En este caso, $\Delta x=1$ y:
+\[
+\Delta C  = f(5\,001)-f(5\,000) \approx f'(5000) = 9.8,
+\]
+que aproxima al \emph{costo marginal} para una producción de $x=5\,000$ autos, ya que $\Delta x$ es
+pequeño. Es decir, producir un auto más cuesta $9\,800$ dólares aproximadamente. El costo marginal es aproximado por la razón de cambio instantánea del costo, por lo cual a esta magnitud se la llama, por simplicidad, costo marginal.
+
+En cambio, el \emph{costo unitario marginal} para este mismo nivel de producción sería:
+\[
+\Delta C_U  = f_1(5\,001)-f_1(5\,000)\approx f_1'(5\,000) = -0.000\,2.
+\]
+Es decir, el costo unitario de producir el auto número $5\,001$ es $-0.000\,2$
+aproximadamente y, por ser negativo, hay una ganancia de 20 centavos de dólar cuando se produce el
+auto número $5\,001$.
+
+Para ésta y otras magnitudes como costo unitario, ingreso, utilidad, demanda, etcétera, a la razón de cambio instantánea
+correspondiente se la llama, respectivamente, costo unitario marginal, ingreso marginal, utilidad marginal, demanda
+marginal, etcétera.
+
+\subsection{Elasticidad}
+En esta sección, se definió la \emph{elasticidad}. Veamos esta cuestión más de cerca.
+
+Si una variable $y$ depende de otra variable $x$ a través de una función $f\colon\mathbb{R}
+\rightarrow\mathbb{R}$, y si variamos el valor de $x$ a partir de un valor inicial $x_{0}$, nos
+interesa en qué porcentaje varía $y$ a partir del valor inicial $y_{0} = f(x_{0})$, si $x$ varía en
+un porcentaje dado.
+
+Conocida la variación porcentual de $x$:
+\[
+\frac{\Delta x}{x_{0}}100\%
+\]
+y la variación porcentual de $y$:
+\[
+\frac{\Delta y}{y_{0}}100\%,
+\]
+queremos conocer cómo depende $\frac{\Delta y}{y_{0}}$ de $\frac{\Delta x}{x_{0}}$, donde
+\[
+\Delta x = x - x_{0}; \quad \Delta y = y - y_0 = f(x) - f(x_{0}),
+\]
+con $x\neq x_{0}$.
+
+En el ejemplo en el que los costos $y$ en miles de dólares vienen dados a través de la función $f$
+definida por
+\[
+y = f(x) = 2000 + 10x,
+\]
+donde $x\in[1\,000, 10\,000]$, vimos que si, en un momento dado, se estuvieran fabricando $x_{0} =
+4\,800$ autos a un costo de $y_{0} = f(4\,800) = 50\,000$ miles de dólares, nos interesaría saber
+en qué porcentaje se incrementarían los costos si eleváramos la producción en un $10\%$.
+
+Recordemos que, cuando $f$ es un polinomio de grado menor o igual a $1$ de la forma $f(x) = mx +
+b$, ¡la variación relativa de $y$ es directamente proporcional a la variación relativa de $x$! Es
+decir, existe una constante $\eta$ tal que
+\[
+\frac{\Delta y}{y_{0}} = \eta \frac{\Delta x}{x_{0}}.
+\]
+A esta constante la llamamos, precisamente, \emph{elasticidad de $y$ respecto de $x$}.
+
+Como
+\[
+  \eta = \frac{\frac{\Delta y}{y_{0}}}{\frac{\Delta x}{x_{0}}} =
+    \frac{x_{0}}{f(x_{0})}\frac{\Delta y}{\Delta x},
+\]
+tendremos:
+\begin{align*}
+\eta &= \frac{\frac{\Delta y}{y_{0}}}{\frac{\Delta x}{x_{0}}} =
+  \frac{\frac{f(x) - f(x_{0})}{f(x_{0})}}{\frac{x - x_{0}}{x_{0}}} \\[4pt]
+  &= \frac{x_{0}}{f(x_{0})}\cdot\frac{(mx + b)-(mx_{0}+b)}{x - x_{0}} \\[4pt]
+  &= \frac{mx_{0}}{f(x_{0})}\cdot\frac{x - x_{0}}{x - x_{0}}.
+\end{align*}
+Es decir:
+\[
+\eta = \frac{mx_{0}}{f(x_{0})}.
+\]
+
+Se dice que $y$ es elástica si $|\eta|>1$, inelástica si $|\eta|<1$ y que la elasticidad es
+unitaria si $|\eta| = 1$.
+
+En nuestro ejemplo: $y = f(x) = 2000+10x$, $m = 10$, $x_{0}= 4800$, $y_{0}= f(x_{0}) = 5000$, por
+lo que:
+\[
+\eta = \frac{10\times 4800}{5000} = 0.96.
+\]
+Entonces
+\[
+ \frac{\Delta y}{y_{0}} = 0.96\frac{\Delta x}{x_{0}},
+\]
+por lo que, si la producción se incrementara en un 10\%, es decir si $\frac{\Delta x}{x_{0}} =
+10\%$, los costos se incrementarán en $\frac{\Delta y}{y_{0}} = 0.96\times 10\%$; es decir, en un
+$9.6\%$.\vspace{\baselineskip}
+
+En el caso general, si calculamos $\eta$ de modo que
+\[
+ \frac{\Delta y}{y_{0}} = \eta \frac{\Delta x}{x_{0}},
+\]
+obtendremos que
+\[
+ \eta = \eta(x_{0},x) = \frac{x_{0}}{f(x_{0})}  \frac{\Delta y}{\Delta x} =
+ \frac{x_{0}}{f(x_{0})} \frac{f(x) - f(x_{0})}{x - x_{0}} =
+ \frac{x_{0}}{f(x_{0})} \frac{f(x_{0} + \Delta x) - f(x_{0})}{\Delta x},
+\]
+por lo que $\eta$ depende de $x_{0}$ y de $x \neq x_{0}$. Sin embargo, si existe la razón de cambio
+instantánea
+\[
+ f'(x_{0}) = \lim_{x\rightarrow x_{0}}\frac{f(x) - f(x_{0})}{x - x_{0}} ,
+\]
+se puede observar que para valores  de $x$ cercanos a $x_{0}$; es decir, cuando $\Delta x$ es
+pequeño, los valores que toma $\eta(x_{0},x) $ son muy similares entre sí y se acercan cada vez más
+a
+\[
+ \eta(x_{0}) = \lim_{x\rightarrow x_{0}}\eta(x_{0},x)   =
+ \lim_{x\rightarrow x_{0}} \frac{x_{0}}{f(x_{0)}}  \frac{f(x) - f(x_{0})}{x - x_{0}},
+\]
+\[
+ \eta(x_{0}) = \frac{x_{0}}{f(x_{0})} f'(x_{0}).
+\]
+A $\eta(x_{0}) $ se le llama \emph{elasticidad puntual} de $y$ en $x_{0}$, y si $\Delta x$ es
+pequeño, tendremos que
+\[
+ \frac{\Delta y}{y_{0}} \approx \eta(x_{0})  \frac{\Delta x}{x_{0}}.
+\]
+
+\begin{exemplo}[]{}
+Luego de un estudio de mercado, se determinó que la demanda $D$ de una marca de lavadoras es de
+$f(p)$ unidades si el precio es de $p$ dólares. Como su producción no es rentable si $p < 200$ y la
+marca del competidor cuesta $500$ dólares, tendremos que $D(f) = [200,500]$. El estudio reveló
+también que
+\[
+ f(p) = 2\,000 - 0.4p + \frac{22\,500}{p}
+\]
+mide la demanda de lavadoras cuando el precio de cada una es de $p$ dólares.
+
+El precio actual es de $300$ dólares. Se desea conocer aproximadamente en qué porcentaje aumentaría
+la demanda si se hiciera un descuento del $5\%$.
+
+En este caso, tendríamos que $p_{0} = 300$, por lo que:
+\[
+ D_{0} = f(p_{0}) = 1\,955.
+\]
+
+Como lo veremos en el siguiente capítulo, se tiene que
+\[
+ f'(p) = -0.4 - \frac{22\,500}{p^{2}},
+\]
+por lo que:
+\[
+f'(p_{0}) = - 0.65.
+\]
+
+Se desea conocer el valor aproximado de $\frac{\Delta D}{D_{0}}$. Como:
+\[
+ \eta (p_{0}) = \frac{p_{0}}{D_{0}} f'(p_{0}) = \frac{300}{1\,955}(-0.65) =
+ \frac{39}{391}\approx -0.1,
+\]
+tenemos que:
+\[
+\frac{\Delta D}{D_{0}}\approx \eta (p_{0})\frac{\Delta p}{p_{0}} =
+\left(-\frac{39}{391}\right)(-5\%)\approx 0.5\%
+\]
+
+Es decir, una rebaja del precio en un $5\%$ significaría un incremento en la demanda de apenas el
+$0.5\%$.
+\end{exemplo}
+
+\begin{exemplo}[]{}
+En el caso de la primera fábrica de autos cuyo nivel de producción mensual pasaría de $5\,000$
+autos a $x$ autos, como los costos son $C$ miles de dólares y
+\[
+C = f(x)= 2\,000+11x-0.000\,12x^2,
+\]
+la \emph{elasticidad media} de los costos en el intervalo de extremos 5000 y $x$ sería:
+\[
+\eta (5\,000,x)= \frac{5\,000}{f(5\,000)}\frac{\Delta C}{\Delta x}=
+\frac{5\,000}{54\,500}\frac{-52\,000+11x-0.000\,12x^2}{x-5\,000}.
+\]
+
+La \emph{elasticidad puntual} de los costos para $x_0 =5000$ será :
+\[
+\eta (5\,000)= \frac{5\,000}{f(5\,000)}f'(5\,000)= \frac{5\,000}{54\,500}9.8\approx 0.899\,1.
+\]
+Esto quiere decir que si el nivel de producción variara, digamos en $a\%$, los costos variarían en
+$0.899\,1 a\%$ aproximadamente.
+
+Así, si la producción subiera en un $5\%$, los costos variarían en $0.899\,1\times 5\%\approx
+4.5\%$. Los costos son, pues, ``poco elásticos'' respecto al nivel de producción.
+
+Un cálculo análogo lo podemos realizar para el costo unitario $C_U$, teniendo en cuenta que:
+\begin{gather*}
+C_U = f_1(x)= \frac{2\,000}{x}+11-0.000\,12x,\\
+f_1(5\,000)=10.8, \\
+C_U'=f_1'(x)=-\frac{2\,000}{x^2}-0.000\,12,\\
+f_1'(5\,000)=-0.000\,2,
+\end{gather*}
+la elasticidad media del costo unitario en el intervalo de extremos $5\,000$ y $x$ sería:
+\[
+\eta_1 (5\,000,x)= \frac{5\,000}{f_1(5\,000)}\frac{\Delta C_U}{\Delta x}=
+\frac{5\,000}{10.8}\frac{\frac{2\,000}{x}+0.2-0.000\,12x}{x-5\,000},
+\]
+y la elasticidad puntual del costo unitario para un nivel de producción $x_0=5\,000$ autos sería:
+\[
+\eta_1 (5\,000)= \frac{5\,000}{f_1(5\,000)}f_1'(5\,000) =\frac{5\,000}{10.8}(-0.000\,2)\approx -0.1.
+\]
+Esto quiere decir que, si el nivel de producción aumentara, digamos en un $5\%$, el costo unitario
+variaría en $(-0.1)5\%$ aproximadamente, es decir, bajaría en $0.5\%$.
+\end{exemplo}
+
+\section{La descripción del movimiento}
+
+Uno de los grandes descubrimientos de la humanidad es el concepto de tiempo. Obedeció a la
+existencia de ciclos naturales como el día y la noche, las lunas llenas, las estaciones del año, el
+movimiento regular de los astros. Esos ciclos naturales dieron lugar a la determinación de unidades
+de medir el tiempo: los días y sus fracciones (horas, minutos y segundos), los meses, los años y,
+por consiguiente, a la creación de relojes y calendarios.
+
+En la física, para estudiar un fenómeno descrito por uno o más parámetros que varían con el tiempo,
+se hace necesario medir a éste. Para ello se adopta una unidad de medida del tiempo $\UT$, por
+ejemplo $\UT$ puede ser un segundo, una hora, un año, etcétera, y se escoge un instante de
+referencia a partir del cual se inicia la medición del tiempo. Así, si han transcurrido $t \UT$,
+diremos que estamos en el instante $t$. La cantidad $t$ es pues un número, por lo cual el tiempo
+puede ser representado gráficamente en la recta real, cuyo origen representa el instante en que se
+empezó a medir el tiempo y un punto $T$ de abscisa $t$, representará al que llamamos instante $t$.
+Hemos establecido así \emph{un sistema de medición del tiempo}. Podemos ahora introducir la
+variable $t$ para describir el tiempo en el estudio de los fenómenos en los que esté involucrado.
+
+Por ejemplo, si queremos estudiar el movimiento de una partícula a lo largo de una recta, una vez
+que hemos adoptado una unidad de longitud $(\UL)$, podemos escoger un punto de referencia $O$ en la
+recta y un sentido a partir de $O$, digamos a la derecha de $O$, que se lo considerará positivo,
+por lo que podemos asumir que el movimiento se realiza a lo largo de una recta real. Escogida una
+unidad de tiempo $(\UT)$, y si consideramos que $t$ es el número de unidades de tiempo transcurrido
+desde el tiempo inicial $\tau_{0}$, el movimiento de la partícula quedará descrito siempre que
+podamos establecer la posición $x = f(t)$ de la partícula en cada instante $t\geq \tau_{0}$. La
+posición $x = f(t)$ es también denominada \emph{coordenada de la partícula en el instante $t$}.
+
+Si la partícula que estaba en $x_{0} = f(\tau_0)$ en el instante $\tau_0$ pasó a ocupar la posición
+$x = f(t)$ en el instante $t$, diremos que su desplazamiento es
+\[
+\Delta x = \Delta x(\tau_0, t) = f(t) - f(\tau_0).
+\]
+Esto sucederá en el lapso
+\[
+\Delta t = \Delta t(\tau_0, t) = t - \tau_0>0.
+\]
+
+Notemos que si $\Delta x>0$, la partícula se ha desplazado a la derecha y si $\Delta x<0$, a la
+izquierda de donde estaba en el instante $\tau_0$; esto es, a la derecha de $x_{0}= f(\tau_0)$ o a
+la izquierda de $x_{0} = f(\tau_0)$, respectivamente.
+
+\subsection{El concepto de velocidad}
+
+Cuando una partícula se mueve a lo largo de la recta, un observador puede opinar que ésta se mueve
+rápidamente, otro que se mueve lentamente. El concepto de rapidez tiene pues cierta carga de
+subjetividad, pero se la puede medir objetivamente gracias a la cantidad llamada \emph{velocidad}.
+Veamos el concepto de velocidad en dos casos.
+
+\subsubsection{El movimiento uniforme}
+
+Supongamos que medimos la longitud en metros y el tiempo en segundos. Si $x=f(t)$, con $\tau_0\leq
+t$, es la posición de una partícula, entre un instante $t_0$ y otro instante $t$, $\tau_0\leq t_0<
+t$, habrá transcurrido un \emph{lapso} de $\Delta t$ segundos, donde $\Delta t= t-t_0$.
+
+En ese lapso, se habrá producido un desplazamiento de la partícula desde la posición $x_0=f(t_0)$
+hasta la posición $x=f(t)$. El desplazamiento será de $\Delta x$ metros, donde $\Delta x=
+x-x_0=f(t)-f(t_0)$.
+
+\begin{defical}[Movimiento uniforme]
+Diremos que el movimiento es \emph{uniforme} si $\Delta x$ es directamente proporcional a $\Delta
+t$, es decir si existe una constante de proporcionalidad $v$ tal que
+\begin{equation*}
+	\Delta x= v\Delta t.
+\end{equation*}
+\end{defical}
+
+Esto equivale a decir que el cociente
+\begin{equation*}
+	\frac{\Delta x}{\Delta t}= \frac{\Delta x(t_0,t)}{\Delta t(t_0,t)} = v
+\end{equation*}
+es constante.
+
+Evidentemente, en este caso, el valor absoluto de $v$, es decir $|v|$, nos dará una idea clara de
+cuán rápido se mueve la partícula, mientras que el signo de $v$ nos indica si la partícula se mueve
+de ``izquierda a derecha'', en el caso de que $v>0$ y, en sentido contrario, si $v<0$.
+
+El número $v$ nos sirve entonces para medir la \emph{velocidad} de la partícula. Diremos que $v
+\UV$ es la velocidad de la partícula. Como
+\begin{equation*}
+	v=\frac{\Delta x}{\Delta t},
+\end{equation*}
+se puede escribir simbólicamente, en este caso, lo siguiente:
+\begin{equation*}
+	\text{velocidad de la partícula}=\frac{\text{desplazamiento de la partícula}}{\text{lapso transcurrido}}
+\end{equation*}
+o también
+\begin{equation*}
+	v \UV= \frac{\Delta x\text{ m}}{\Delta t\text{ s}}=\frac{\Delta x}{\Delta t}\frac{\text{m}}{\text{s}}
+\end{equation*}
+y como $v=\frac{\Delta x}{\Delta t}$, es cómodo escribir $\frac{\text{m}}{\text{s}}$ en vez de
+$\UV$, la unidad de la velocidad. Si se escoge otra unidad $\UL$ del desplazamiento $\Delta x$ y
+otra unidad $\UT$ del lapso $\Delta t$, se tendrá otra unidad de la velocidad $\UV$.
+
+En general, si la longitud se mide en $\UL$ y el tiempo en $\UT$, pondremos $\frac{\UL}{\UT}$ en
+vez de $\UV$.
+
+Es fácil notar que, si $x=f(t)$ es un polinomio de grado menor o igual a 1, el movimiento es
+uniforme.
+
+En efecto, en este caso:
+\[
+x=f(t)=at+b,
+\]
+donde $a$ y $b$ son constantes. Por lo tanto:
+\begin{equation*}
+\frac{\Delta x}{\Delta t}= \frac{\Delta x(t_0,t)}{\Delta t(t_0,t)}=\frac{x-x_0}{t-t_0}=\frac{f(t)-f(t_0)}{t-t_0}%
+=\frac{(at+b)-(at_0+b)}{t-t_0}=a.
+\end{equation*}
+Es decir, $v=a$ es la velocidad y no depende de $t_0$ ni de $t$.
+
+Notemos que, sin importar el valor de $t_0$, para valores iguales de $\Delta t$, se obtiene valores
+iguales para el desplazamiento, ya que  $\Delta x= a\Delta t$. Esto justifica el nombre de
+\emph{movimiento uniforme}.
+
+Por otro lado, si $\Delta t =1$, tendremos que  $\Delta x= v$, es decir que $v$ m es el
+desplazamiento de la partícula en 1 segundo. En general, $v \UL$ es el desplazamiento en el lapso
+$1 \UT$.
+
+\begin{exemplo}[]{}
+\begingroup
+\itshape La empresa de transporte pesado TRANSLIT despachó desde Guayaquil el camión N$^\text{o
+}17$ a las 8h00 con una pequeña carga destinada a un cliente en Balzar, y otra muy pesada a un
+cliente en Santo Domingo. El chofer del camión es cambiado en Quevedo. El recorrido hacia Santo
+Domingo es realizado por otro chofer.
+
+El cliente que vive en Balzar llamó para indicar que recibió el despacho a las 10h00, aunque se le
+había prometido que se le entregaría el envío a las 9h30. Se le explicó que el camión estaba
+completamente cargado por lo que debió viajar lentamente. La empresa deberá telefonear al chofer
+que espera en Quevedo para indicarle la hora aproximada de llegada del camión para el cambio de
+conductor. ?`A qué hora llegará el camión a Quevedo? ?`A qué hora se espera que el camión llegue a
+Santo Domingo?
+\endgroup
+
+\vspace{0.6\baselineskip}%
+Para resolver el problema, observemos la información con que contamos
+sobre las distancias entre las ciudades:
+\begin{itemize}
+\item \emph{Guayaquil-Balzar}: 96 km,
+\item \emph{Balzar-Quevedo}: 72 km,
+\item \emph{Quevedo-Santo Domingo}: 120 km,
+\item \emph{Guayaquil-Quevedo}: 168 km,
+\item \emph{Guayaquil-Santo Domingo}: 288 km.
+\end{itemize}
+
+Ahora, definamos las cantidades involucradas en el problema:\vspace{\baselineskip}\\
+{\setlength\tabcolsep{3pt}
+\begin{tabular}{r p{0.85\textwidth}}
+  $t:$ & \textsl{instante en horas en que se da cada suceso; es el tiempo transcurrido desde las 0 horas
+    del día del viaje.}\\
+  $\tau_0:$ & \textsl{instante que coincide con las $0$ horas del día del viaje.}\\
+  $t_0:$ & \textsl{instante inicial en el que el camión inició su recorrido desde
+    Guayaquil.}\\
+  $x:$ & \textsl{posición del camión en la carretera Guayaquil-Balzar-Quevedo-Santo Domingo;
+    es la distancia recorrida en kilómetros desde Guayaquil al punto en la carretera en el momento $t$.}\\
+  $x_0:$ & \textsl{posición inicial del camión  en Guayaquil al tiempo $t_0$.}\\
+  $x_1:$ & \textsl{posición  del camión al pasar por Balzar.}\\
+  $t_2:$ & \textsl{hora de llegada a Quevedo.}\\
+  $t_3:$ & \textsl{hora de llegada a Santo Domingo.}
+\end{tabular}}
+\vspace{\baselineskip}
+
+Bajo el supuesto de que el movimiento del camión será uniforme aproximadamente, la posición del
+camión en cualquier momento $t$ puede ser descrito por la función $f$ definida por:
+\begin{equation*}
+	x=f(t)= at + b.
+\end{equation*}
+Para poder calcular la posición del camión, debemos, entonces, determinar $a$ y $b$.
+
+En primer lugar, $t_0 = 8$, pues el camión inicia el recorrido a las ocho de la mañana. Entonces:
+$x_0= f(8)$. Como en ese momento, el camión aún no se ha movido, $f(8) = 0$, por lo que $x_0 = 0$.
+
+En segundo lugar, a las diez de la mañana, el camión llegó al Balzar, después de recorrer $96$
+kilómetros. Por lo tanto:
+\[
+x_1 = f(10) = 96.
+\]
+Entonces:
+\begin{equation*}
+\left\{
+\begin{matrix}
+0 & = & 8a & + & b\\
+96 & = & 10a& + & b
+\end{matrix}
+\right.
+\end{equation*}
+Al restar la primera ecuación de la segunda y, luego de dividir el resultado por $2$, se obtendrá
+que $a=48$ y, por consiguiente, que $b=-384$, pues $b = -8a$.
+
+Entonces, tenemos que:
+\begin{equation*}
+x = f(t)= 48t-384.
+\end{equation*}
+
+Ahora hallemos $t_2$. Éste es el momento en que el camión llega a Quevedo. Como esta ciudad está a
+$168$ kilómetros de Guayaquil, $t_2$ debe verificar la siguiente igualdad:
+\begin{equation*}
+x_2 = 168 = f(t_2)= 48t_2 - 384,
+\end{equation*}
+lo que nos da que:
+\begin{equation*}
+t_2 =\frac{168+384}{48}=\frac{552}{48}=11.5.
+\end{equation*}
+En otras palabras, el camión llegará a Quevedo a las 11h30.
+
+Finalmente, para determinar la hora de llegada a Santo Domingo, debemos calcular $t_3$, que
+satisface la igualdad
+\begin{equation*}
+x_3 =288= f(t_3)= 48t_3-384,
+\end{equation*}
+pues la distancia entre Guayaquil y Santo Domingo es de $288$ kilómetros. Por lo tanto:
+\begin{equation*}
+t_3 =\frac{228+384}{48}=\frac{672}{48}=14.
+\end{equation*}
+Es decir, se espera que el camión llegue a Santo Domingo a las 14h00.
+
+Así, pues, la empresa TRANSLIT deberá telefonear al chofer que espera en Quevedo  para indicarle
+que el camión N$^\text{o }17$ llegará aproximadamente a las 11h30 para el cambio de conductor. Si
+la empresa TRANSLIT es eficiente también telefoneará a sus oficinas en Santo Domingo para que
+avisen al cliente que su carga estará llegando alrededor de las 14h00.
+\end{exemplo}
+
+\subsection{Caso general: movimiento no-uniforme}
+
+Si el cociente
+\[
+ v_{m}(t_{0},t) = \frac{\Delta x}{\Delta t} = \frac{\Delta x(t_{0},t)}{\Delta t(t_{0},t)}
+\]
+no es constante, diremos que el movimiento es \emph{no-uniforme} y a $v_{m}(t_{0},t) $ le
+llamaremos \emph{velocidad media de la partícula en el intervalo de tiempo $[t_{0},t]$}.
+
+Obviamente,
+\[
+\Delta x = v_{m}(t_{0},t)\Delta t,
+\]
+por lo que mientras mayor sea $|v_{m}(t_{0},t)|$ más rápido será el movimiento de la partícula y viceversa, lo que justifica su nombre.
+
+Si el lapso considerado $\Delta t$ toma valores cada vez más pequeños para ciertas funciones de
+posición $f\colon\mathbb{R}\rightarrow\mathbb{R},t\mapsto x=f(t)$, puede suceder que los
+correspondientes valores de la velocidad media $v_{m}(t_{0})$ sean muy similares y se acerquen al
+límite de $v_{m}(t_{0},t)$ cuando $t$ tiende a $t_{0}$ (o cuando $\Delta t $ tiende a 0) que lo
+notaremos $v_{0} = g(t_{0})$. Es decir
+\[
+v_{0} = g(t_{0}) = \lim_{t \rightarrow t_{0}}v_{m}(t_{0},t) = \lim_{\Delta t \rightarrow 0}\frac{\Delta x}{\Delta t}.
+\]
+A $v_{0} = g(t_{0})$, que viene dada en $(\UL/ \UT)$, le llamaremos \emph{velocidad instantánea} de la partícula en el instante $t_{0}$.
+
+Dado que para valores pequeños de $\Delta t$,
+\[
+v_{0} = g(t_{0})\approx v(t_{0},t) = v(t_{0},t_{0} + t),
+\]
+tendremos que:
+\[
+\Delta x \approx  v_{0} \Delta t,
+\]
+lo que justifica que a $v_{0} = g(t_{0})$ se le llame \emph{velocidad instantánea en el instante
+$t_{0}$}.
+
+En efecto, para un $\Delta t$ dado, mientras mayor sea $v_{0}$, más grande será el desplazamiento
+que se produzca en el lapso $\Delta t$, lo que indica que la partícula se mueve más rápidamente.
+Por otra parte, $x_{0}(\UL)$ es el desplazamiento que tendría si no se acelerara o frenara a la
+partícula o, lo que es lo mismo, si sobre la partícula no actuara fuerza alguna.
+
+\begin{exemplo}[]{}
+\begingroup
+\itshape Si se deja caer un objeto desde lo alto de un rascacielos de $122.5\metros$ de altura, sea
+$x = f(t)$ metros la altura del objeto medida desde el suelo después de $t$ segundos. Entonces, las
+leyes de Newton nos dicen que:
+\begin{equation*}
+x=f(t) = 122.5-4.9t^2.
+\end{equation*}
+?`Con qué velocidad choca el objeto con el suelo y en cuánto tiempo lo hace? ?`Cuál es la velocidad
+media con la que ha hecho el recorrido?
+\endgroup
+
+\vspace{0.5\baselineskip}%
+Sea $t_1$ segundos el tiempo que tarda el objeto en llegar al suelo.
+Podemos determinar $t_1$ de la igualdad
+\begin{equation*}
+	x_1=f(t_1) =0,
+\end{equation*}
+puesto que $0$ es la altura del objeto al llegar al suelo. Entonces:
+\begin{equation*}
+	x_1=0=f(t_1) = 122.5-4.9t_1^2,
+\end{equation*}
+lo que nos da que $t_1^2=25$ o $t_1=5$. La otra solución de la ecuación cuadrática es $-5$. Aunque
+es solución de la ecuación, no es solución del problema, pues no hay como asignar un significado a
+$t_1 = -5$.
+
+En resumen, el objeto llegará al suelo en $5$ segundos.
+
+Como $v_1= x_1'= f'(t_1)$ es la velocidad del objeto en el instante $t_1$, podemos escribir lo
+siguiente:
+\begin{align*}
+v_1=  f'(t_1)&=\lim_{t\to t_1}\frac{f(t)-f(t_1)}{t-t_1}\\
+&=\lim_{t\to t_1}\frac{(122.5-4.9t^2)-(122.5-4.9t_1^2)}{t-t_1}\\
+&=\lim_{t\to t_1}\frac{-4.9(t^2-t_1^2)}{t-t_1}\\
+&=\lim_{t\to t_1}\frac{-4.9(t+t_1)(t-t_1)}{t-t_1}\\
+&=\lim_{t\to t_1}(-4.9)(t+t_1)\\
+&=-9.8t_1.
+\end{align*}
+Es decir:
+\begin{equation*}
+	v_1=  f'(t_1)=-9.8t_1.
+\end{equation*}
+Para $t_1=5$, tendremos que:
+\begin{equation*}
+	v_1=  f'(5)=-9.8(5)=-49.
+\end{equation*}
+Es decir, el objeto llegará al suelo con una velocidad de $-49$ metros por segundo.
+
+El signo negativo de la velocidad indica que el movimiento es hacia abajo, puesto que la altura se
+mide desde el suelo hacia arriba.
+
+Finalmente, calculemos la velocidad media en el intervalo $[0,t_1]$:
+\begin{equation*}
+	v_m(0, t_1)= \frac{x_1-x_0}{t_1-0}= \frac{f(t_1)-f(t_0)}{t_1}= \frac{(122.5-4.9t_1^2)-122.5}{t_1}=-4.9t_1.
+\end{equation*}
+
+Para $t_1=5$, tendremos $v_m(0, 5)=-4.9(5)=24.5$.
+
+Es decir, la velocidad media del objeto en el lapso $[0,5]$ será de $24.5$ metros por segundo.
+\end{exemplo}
+
+\subsubsection{Notas importantes}
+
+\begin{enumerate}[leftmargin=*]
+\item Solo por facilitar la exposición hemos supuesto que $t_{0}<t$. Nada impide que $t<t_{0}$.
+    Solo que en este caso $\Delta t = t - t_{0} < 0$. Es por eso que, en la definición de
+    velocidad instantánea, pusimos:
+\[
+v(t_{0}) = \lim_{\Delta t \rightarrow 0}\frac{\Delta x(t_{0},t)}{\Delta t(t_{0},t)} =
+      \lim_{t \rightarrow t_{0}}\frac{ x(t) - x(t_{0})}{t - t_{0}}
+\]
+y no hace falta poner $\lim_{\Delta t \rightarrow 0+}$ o $\lim_{ t \rightarrow t_{0}+}$.
+
+\item $\Delta t$ representa el lapso (de tiempo, por supuesto) o el intervalo $[t_{0},t]$ si $t
+    > t_{0}$, o $[t,t_{0}]$ si $t < t_{0}$, en cuyo caso $\Delta t < 0$.
+
+\item ``Acelerar'' equivale a ir cada vez más rápidamente.
+
+\item ``Frenar'' equivale a ir cada vez más lentamente.
+
+\item El signo de $\Delta x$ da el sentido del desplazamiento: si $\Delta x > 0$ quiere decir
+    que $x(t)$ está a la derecha de $x(t_{0})$ y viceversa. Por consiguiente, como $v(t_{0}) >
+    0$, se tiene que
+    \[
+    \frac{\Delta x(t_{0},t)}{\Delta t(t_{0},t) }> 0
+    \]
+    para $|\Delta t|$ pequeño. Esto significa que la partícula se mueve de izquierda a derecha.
+    Por el contrario, si $v(t_{0}) < 0$, el movimiento será de derecha a izquierda.
+\end{enumerate}
+
+\section{Conclusión}
+En los cuatro problemas que hemos tratado en este capítulo, hemos llegado a establecer una función
+$\funcjc{f}{I\subset\mathbb{R}}{\mathbb{R}}$, donde $I$ es un intervalo abierto, para la cual, si
+$a\in I$, existe el límite
+\[
+\limjc{\frac{f(x) - f(a)}{x - a}}{x}{a}.
+\]
+A este límite le hemos representado con $f'(a)$ y se le denomina la \emph{derivada} de $f$ en $a$.
+En el siguiente capítulo, será objeto de estudio pues, como lo hemos visto, es una herramienta
+poderosa que resuelve una clase amplia de problemas. Un capítulo más adelante, veremos algunas de
+sus principales aplicaciones.
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Hallar, si existe, la ecuación de la recta tangente al gráfico de la función $f$ en el
+    punto $P(a,f(a))$:
+    \begin{enumerate}[leftmargin=*]
+    \item $f(x) = 2x^2 + 3x - 5$, $a = 2$.
+    \item $f(x) = x^3 - x$, $a = -2$.
+    \item $\displaystyle f(x) = \frac{3x - 2}{x}$, $a = 1$.
+    \item $\displaystyle f(x) = \frac{1}{x^2}$, $a = 1$.
+    \item $\displaystyle f(x) = \sqrt{2 + x}$, $a = 0$.
+    \item $f(x) = 2(x + 1)$, $a = -2$.
+    \item $\displaystyle f(x )= \sqrt[3]{x^2}$, $a = 0$.
+    \item $\displaystyle f(x) = 2\sen 3x$, $\displaystyle a = \frac{\pi}{6}$.
+    \end{enumerate}
+
+\item ?`Para qué valores de $a$, el gráfico de $f$ tiene una recta tangente en $P(a,f(a))$. Para
+    estos valores, ?`cuál es la pendiente $m_a$?
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = x^3 + 2x + 1$.
+    \item $\displaystyle f(x) = \frac{1}{x}$.
+    \item $\displaystyle f(x) = \sqrt{x}$.
+    \item $\displaystyle f(x) = x\sqrt[3]{x}$.
+    \item $\displaystyle f(x) = \frac{1}{1 + x^2}$.
+    \item $\displaystyle f(x) = \sen 2x$.
+    \item $\displaystyle f(x) = \frac{x + 1}{x - 1}$.
+    \item $\displaystyle f(x) = \frac{x^3}{x^2 + 3}$.\\
+          \textsc{Sugerencia}: primero realice la división; así $f(x)$ se expresará como la
+          suma de un polinomio y una expresión racional más sencilla.
+    \item $\displaystyle f(x) = \frac{3x^2 - 5}{2x^2 + 1}$.
+    \item $\displaystyle f(x) = \cos 2x$.
+    \item $\displaystyle f(x) = x\sqrt{x}$.
+    \end{enumerate}
+
+\item Para la función $f$ y $x_0\in\mathbb{R}$ dados, y para $\Delta x \in \{0.001,\ 0.01,\
+    0.1,\ 1\}$, calcule $\Delta y$ si $y = f(x)$. Para los mismos valores $\Delta x$ y $x_0$,
+    calcule los incrementos relativos $\displaystyle \frac{\Delta x}{x_0}$ y
+    $\displaystyle\frac{\Delta y}{y_0}$, donde $y_0 = f(x_0)$.
+
+    Resuma los resultados obtenidos en una tabla en la cual los incrementos relativos se
+    expresen porcentualmente.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = 3x + 5$, $x_0 = -3$.
+    \item $\displaystyle f(x) = 2x^2 - 3x + 4$, $x_0 = 1$.
+    \item $\displaystyle f(x) = x^3 - 3$, $x_0 = 2$.
+    \item $\displaystyle f(x) = \frac{1}{x}$, $x_0 = 1$.
+    \item $\displaystyle f(x) = \sen \pi x$, $\displaystyle x_0 = \frac{1}{3}$.
+    \item $\displaystyle f(x) = \cos \pi x$, $\displaystyle x_0 = \frac{1}{6}$.
+    \end{enumerate}
+
+\item Para la función $f$ dada, observe que la razón de cambio promedio en un intervalo de
+    extremos $x_0$ y $x_0 + \Delta x$, $f'(x_0, x_0 + \Delta x)$, aproxima a la razón de cambio
+    instantánea en $x_0$, $f'(x_0)$, tomando $10$ valores de $\Delta x$ cercanos a $x_0$.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = 5x - 3$, $x_0 = 2$.
+    \item $\displaystyle f(x) = x^2 - x + 1$, $x_0 = 1$.
+    \item $\displaystyle f(x) = x^3 + x + 3$, $x_0 = -1$.
+    \item $\displaystyle f(x) = \frac{1}{x}$, $x_0 = 1$.
+    \end{enumerate}
+
+\item Si los costos de una fábrica de refrigeradoras que produce $x$ cientos de esos
+    electrodomésticos por mes es de $C$ miles de dólares, calcule el costo marginal y el costo
+    unitario marginal si en un mes dado se produjeron tres mil aparatos. Se conoce que $x \in
+    [10,100]$.
+    \begin{enumerate}[leftmargin=*]
+    \item $f(x) = 10 + 20x$.
+    \item $f(x) = 10 + 20x - 0.000\, 1x^2$.
+    \end{enumerate}
+
+\item Si la fábrica del ejercicio precedente vende su producción total a un concesionario a un
+    precio $p$ miles de dólares por cada cien refrigeradoras, y si $p(x) = 30 - 0.002x$,
+    calcule las funciones de ingreso $I$ y de utilidades $U$, así como las de los ingresos
+    marginal $I'$ y de utilidades marginales $U'$. Para un nivel de producción $x_0 = 30$,
+    interprete los valores que obtenga para $I'(x_0)$ y $U'(x_0)$. Compare estos valores con
+    $I(x_0 + 1) - I(x_0)$ y con $U(x_0 + 1) - U(x_0)$, respectivamente.
+
+\item Si para una empresa con un nivel de producción de $x$ unidades por semana, los costos $C$
+    y los ingresos $I$ en miles de dólares están dados por
+    \[
+      C = 2\,000 x + 6\,000 \yjc I = 10x(1\,000 - x),
+    \]
+    determine la función de utilidades, así como los costos e ingresos marginales cuando el
+    nivel de producción es de $x_0 = 50$. Compare la utilidad marginal con el incremento de las
+    utilidades al subir la producción en una unidad.
+
+\item Realice los cálculos pedidos en el ejercicio precedente si $x_0 = 100$ y si $x \in
+    [20,110]$:
+    \begin{enumerate}[leftmargin=*]
+    \item $C(x) = 2x^2 + 650$, $I(x) = 1\,000x - 3x^2$.
+    \item $C(x) = x^2 + 30x + 100$, $I(x) = 450x - x^2$.
+    \item $C(x) = 2x^3 - 50x^2 + 30x + 12\,000$, $I(x) = x(20\,000 - x)$.
+    \end{enumerate}
+
+\item Si a un precio de $p$ dólares la demanda de un bien es de $x$ unidades y si $x = D(p)$,
+    halle la elasticidad de la demanda para el precio $p_0$ dado. ?`Cómo varía la demanda si el
+    precio baja $5\%$? ?`Y si sube $5\%$?
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle D(p) = 1\,200 - 5p$, $10 \leq p \leq 200$, $p_0 = 100$.
+    \item $\displaystyle D(p) = (30 -p)^2$, $1 \leq p < 30$, $p_0 = 20$.
+    \item $\displaystyle D(p) = 1\,000\sqrt{40 - p}$, $1 \leq p < 40$, $p_0 = 10$.
+    \item $\displaystyle D(p) = 2\,000 + \frac{1\,000}{\sqrt{3p + 4}}$, $0 < p < 100$, $p_0
+        = 20$.
+    \end{enumerate}
+
+\item Se lanza un proyectil hacia arriba y la altura $h$ metros es alcanzada luego de $t$
+    segundos es de $f(t)$ metros aproximadamente, donde
+    \[
+      f(t) = 10t - 4.9t^2.
+    \]
+    Determine cuánto tiempo necesita para llegar al punto más alto y cuánto para regresar al
+    punto de partida. Note que el instante en que el proyectil deja de subir es cuando alcanza
+    el punto más alto para luego descender.
+
+\item Si el conductor no frena, se ha establecido que en las carreras por las fiestas de Quito,
+    el más veloz de los carritos de madera que bajan por la calle Las Casas recorre $x$ metros
+    luego de $t$ segundos, donde
+    \[
+      x = f(t) = 2t + t^2
+    \]
+    hasta que la velocidad es de $10$ metros por segundo. Luego el movimiento es uniforme. Si
+    el recorrido que debe hacer es de $154$ metros, escriba $x$ y la velocidad $v$ metros por
+    segundo en función de $t$. ?`En cuánto tiempo llega a la meta?
+\end{enumerate}
+\endgroup
+\end{multicols}
+\cleartooddpage[\thispagestyle{empty}]

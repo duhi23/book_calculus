@@ -1,0 +1,2040 @@
+\chapter{La derivada: definición y propiedades}
+
+\section{Definición}
+\begin{defical}[Derivada de una función]\label{et:ddDefinicionDerivada}%
+Sea $\funcjc{f}{\Dm(f)}{\mathbb{R}}$ y $a\in\Dm(f)$. Si
+existe el límite
+\begin{equation}
+\label{eq:ddDefinicionDerivada}
+\limjc{\frac{f(x) - f(a)}{x-a}}{x}{a}
+\end{equation}
+se dice que $f$ es derivable en $a$. Este límite se representa por $f'(a)$ o por
+$\frac{df}{dx}(a)$, y es denominado \emph{derivada} de $f$ en $a$. La función
+\[
+\funcionjc{f'}{\Dm(f')}{\mathbb{R}}{x}{f'(x),}
+\]
+donde $\Dm(f')$ es el subconjunto de $\Dm(f)$ donde $f'$ existe, es denominada la \emph{derivada}
+de $f$.
+\end{defical}
+
+De esta definición se desprende que si $f$ es derivable en $a$, entonces es continua en $a$. En
+efecto, como $a$ está en el dominio de $f$, solo hay que probar que:
+\[
+\limjc{f(x)}{x}{a}.
+\]
+
+Para ello, procedamos de la siguiente manera:
+\begin{align*}
+f(x) &= [f(x) - f(a)] + f(a) \\[4pt]
+  &= \frac{f(x) - f(a)}{x - a}\cdot (x - a) + f(a),
+\end{align*}
+siempre que $x\neq a$. Entonces, como $f$ es derivable en $a$, existe el límite de la fracción
+\[
+\frac{f(x) - f(a)}{x - a},
+\]
+y es igual a $f'(a)$. Entonces:
+\[
+\limjc{f(x)}{x}{a} = f'(a)\cdot (a - a) + f(a) = f(a),
+\]
+por las propiedades algebraicas de los límites. En resumen, acabamos de demostrar el siguiente
+teorema.
+
+\begin{teocal}[Continuidad de las funciones derivables]\label{et:ddDerivadaContinua}%
+Si $f$ es derivable en $a$, entonces $f$ es continua en $a$.
+\end{teocal}
+
+El recíproco de este teorema no es verdadero. Por ejemplo, la función $f$ definida en $\mathbb{R}$
+por $f(x) = |x|$ es continua en $0$, pero no es derivable en $0$. En efecto, el lector puede
+demostrar fácilmente que $f$ es continua en $0$. Veamos por qué no es derivable en $0$.
+
+Si lo fuera, existiría el límite
+\[
+\limjc{\frac{|x| - |0|}{x - 0}}{x}{0}.
+\]
+Entonces, existirían los dos límites laterales:
+\[
+\limjc{\frac{|x|}{x}}{x}{0^+}\yjc \limjc{\frac{|x|}{x}}{x}{0^-},
+\]
+y serían iguales uno a otro. Sin embargo:
+\begin{align*}
+\limjc{\frac{|x|}{x}}{x}{0^+} &= \limjc{\frac{x}{x}}{x}{0^+} \\[4pt]
+  &= \limjc{1}{x}{0^+} = 1,
+\end{align*}
+pues $x > 0$, y
+\begin{align*}
+\limjc{\frac{|x|}{x}}{x}{0^-} &= \limjc{\frac{-x}{x}}{x}{0^-} \\[4pt]
+  &= \limjc{-1}{x}{0^-} = -1,
+\end{align*}
+pues $x < 0$.
+
+Por lo tanto, los límites laterales son diferentes entre sí, lo que significa que la función valor
+absoluto no es derivable en $0$.
+
+\begin{teocal}[Derivada de funciones localmente iguales]
+Sean:
+\begin{itemize}
+\item[] $a$ un número real;
+\item[] $I$ un intervalo abierto que contiene el número $a$;
+\item[] $f$ y $g$ dos funciones definidas en $I$.
+\end{itemize}
+Si $f(a)=g(a)$ y si $f=g$ cerca de $a$, entonces $f$ es derivable en $a$ si y solo si $g$ es derivable en $a$.
+\end{teocal}
+
+De este teorema se desprende el siguiente resultado que es de gran utilidad.
+
+\begin{teocal}[Derivabilidad de funciones iguales en un intervalo abierto]
+Sean $I$ un intervalo abierto; y, $f$ y $g$ dos funciones iguales en $I$.
+
+Entonces $f$ es derivable en $I$ si y solo si $g$ es derivable en $I$.
+\end{teocal}
+
+\begin{exemplo}[Solución]{%
+La función constante es derivable en $\mathbb{R}$ y su derivada es la función constante $0$.
+}%
+Sean $c\in\mathbb{R}$ y $\funcjc{f}{\mathbb{R}}{\mathbb{R}}$ definida por:
+\[
+f(x) = c
+\]
+para todo $x\in\mathbb{R}$. Demostremos que el límite~(\ref{eq:ddDefinicionDerivada}) existe para
+cada $a\in\mathbb{R}$.
+
+Para ello, procedamos así. Sean $a\in\mathbb{R}$ y $x\neq a$. Como
+\begin{align*}
+\frac{f(x) - f(a)}{x - a} &= \frac{c - c}{x - a} \\[4pt]
+  &= \frac{0}{x - a} = 0,
+\end{align*}
+el límite~(\ref{eq:ddDefinicionDerivada}) existe para todo $a\in\mathbb{R}$ y es igual a $0$. Esto
+significa que
+\[
+f'(a) = 0
+\]
+para todo $a\in \mathbb{R}$. Es decir, $f'$ es la función constante nula.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+La función identidad es derivable en $\mathbb{R}$ y su derivada es la función constante
+$1$.
+}%
+Sea
+\[
+\funcionjc{I}{\mathbb{R}}{\mathbb{R}}{x}{x.}
+\]
+Demostremos que el límite~(\ref{eq:ddDefinicionDerivada}) existe para cada $a\in\mathbb{R}$.
+
+Para ello, procedamos de la siguiente manera. Sean $a\in\mathbb{R}$ y $x\neq a$. Como
+\begin{align*}
+\razoncambio{I}{x}{a} &= \razoncambio{}{x}{a} = 1,
+\end{align*}
+el límite~(\ref{eq:ddDefinicionDerivada}) existe para todo $a\in\mathbb{R}$ y es igual a $1$. De
+manera que
+\[
+I'(a) = 1
+\]
+para todo $a\in\mathbb{R}$. De modo que la derivada de $I$ es la función constante $1$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Calcular la derivada de la función $\tan$ en $0$
+}%
+Debemos calcular el límite de la fracción:
+\[
+\razoncambio{\tan}{x}{0}
+\]
+cuando $x$ se aproxima a $0$.
+
+Como $\tan 0 = 0$, entonces:
+\begin{align*}
+\razoncambio{\tan}{x}{0} &= \frac{\tan x}{x} \\[4pt]
+  &= \frac{\sen x}{x}\cdot\frac{1}{\cos x}.
+\end{align*}
+Pero
+\[
+\limjc{\frac{\sen x}{x}}{x}{0} = 1 \yjc \limjc{\frac{1}{\cos x}}{x}{0} = \frac{1}{\cos 0} = 1.
+\]
+Entonces:
+\[
+\tan'(0) = \limjc{\razoncambio{\tan}{x}{0}}{x}{0} = 1.
+\]
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Sean $\funcjc{f}{\Dm(f)}{\mathbb{R}}$ y $a\in\Dm(f)$. Entonces $f$ es derivable en $a$ si y
+solo si existe el límite
+\[
+\limjc{\frac{f(a + h) - f(a)}{h}}{h}{0}.
+\]
+En el caso en que $f$ sea derivable en $a$, se verifica que:
+\[
+f'(a) = \limjc{\frac{f(a + h) - f(a)}{h}}{h}{0}.
+\]
+\eijc{-1}
+}%
+Supongamos que $f$ es derivable en $a$. Sean $x = g(h)=a + h$ y
+\[
+F(x) = \frac{f(x) - f(a)}{x - a}.
+\]
+Entonces:
+\[
+\limjc{g(h)}{h}{0} = \limjc{a + h}{h}{0} = a
+\]
+y
+\[
+\limjc{F(x)}{x}{a} = f'(a).
+\]
+Como $g(h) \neq a$ si $h\neq 0$, por el teorema del cambio de variable de límites, tenemos que
+\[
+\limjc{\frac{f(a + h) - f(a)}{h}}{h}{0} = \limjc{F(x)}{x}{a} = f'(a).
+\]
+
+Recíprocamente, supongamos que el límite
+\begin{equation}
+\label{eq:ddDefinicionAlternativa}
+\limjc{\frac{f(a + h) - f(a)}{h}}{h}{0}
+\end{equation}
+existe. Sea $h = \varphi(x) = x - a$. Entonces:
+\[
+\limjc{\varphi(x)}{x}{a} = 0
+\]
+y $\varphi(x) \neq 0$ si $x \neq a$. Entonces, por el teorema de cambio de variable, tenemos que
+\[
+\limjc{\frac{f(x) - f(a)}{x - a}}{x}{a} = \limjc{\frac{f(a+h) - f(a)}{h}}{h}{0} = f'(a).
+\]
+\end{exemplo}
+
+Para demostrar que una función $f$ es derivable en $a$ y calcular $f'(a)$, es común demostrar que
+existe el límite~(\ref{eq:ddDefinicionAlternativa}) y calcular su valor.
+
+\begin{exemplo}[Solución]{%
+Sea $\funcjc{f}{\mathbb{R}}{\mathbb{R}}$ definida por
+\[
+f(x) = x^3 - x + 1.
+\]
+Obtener $f'$.
+}%
+Sea $x\in\mathbb{R}$. Veamos para qué valores de $x$ existe el
+límite~(\ref{eq:ddDefinicionAlternativa}). Para ello, procedamos así. Sea $h\neq 0$:
+\begin{align*}
+\frac{f(x + h) - f(x)}{h} &= \frac{[(x+h)^3 - (x+h) + 1] - (x^3 - x + 1)}{h} \\[4pt]
+  &= \frac{[(x^3 + 3x^2h + 3xh^2 + h^3) - (x+h)] - (x^3 - x)}{h} \\[4pt]
+  &= \frac{3x^2 + 3xh^2 + h^2 - h}{h} \\
+  &= 3x^2 + 3xh + h^2 - 1.
+\end{align*}
+Por lo tanto, para todo $x\in\mathbb{R}$, existe el límite~(\ref{eq:ddDefinicionAlternativa})
+cuando $h$ se aproxima a $0$, y es igual a
+\[
+f'(x) = 3x^2 - 1.
+\]
+Por lo tanto, el dominio de la función $f'$ es $\mathbb{R}$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Obtener la derivada de la función $\sen$.
+}%
+El dominio de la función $\sen$ es $\mathbb{R}$. Veamos para qué valores $x$ de este dominio existe
+$\sen'(x)$. Para ello, procedamos de la siguiente manera:
+\begin{align*}
+\frac{\sen(x + h) - \sen x}{h} &= \frac{(\sen x\cos h + \sen h\cos x) - \sen x}{h} \\[4pt]
+  &= \frac{\cos h - 1}{h}\cdot\sen x + \frac{\sen h}{h}\cdot\cos x,
+\end{align*}
+con $x\in\mathbb{R}$ y $h\neq 0$. Pero
+\[
+\limjc{\frac{\sen h}{h}}{h}{0} = 1 \yjc \limjc{\frac{\cos h - 1}{h}}{h}{0} = 0.
+\]
+Entonces:
+\begin{align*}
+\sen'(x) &= \limjc{\frac{\sen(x + h) - \sen x}{h}}{h}{0} \\[4pt]
+  &= \limjc{\left(\frac{\cos h -1}{h}\cdot\sen x + \frac{\sen h}{h}\cdot\cos x\right)}{h}{0} \\[4pt]
+  &= 0\cdot\sen x + 1\cdot\cos x = \cos x
+\end{align*}
+para todo $x\in\mathbb{R}$. Por lo tanto:
+\[
+\sen'(x) = \cos x \yjc \sen' = \cos.
+\]
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Obtener la derivada de la función $\cos$
+}%
+El dominio de la función $\cos$ es $\mathbb{R}$. Veamos para qué valores $x \in\mathbb{R}$ existe
+$\cos'(x)$. Para ello, procedamos de la siguiente manera:
+\begin{align*}
+\frac{\cos(x + h) - \cos x}{h} &= \frac{(\cos x\cos h - \sen h\sen x) - \cos x}{h} \\[4pt]
+  &= \frac{\cos h - 1}{h}\cdot\cos x - \frac{\sen h}{h}\cdot\sen x,
+\end{align*}
+con $x\in\mathbb{R}$ y $h\neq 0$.
+
+Por lo tanto:
+\begin{align*}
+\cos'(x) &= \limjc{\frac{\cos(x + h) - \cos x}{h}}{h}{0} \\[4pt]
+  &= \limjc{\left(\frac{\cos h -1}{h}\cdot\cos x - \frac{\sen h}{h}\cdot\sen x\right)}{h}{0} \\[4pt]
+  &= 0\cdot\cos x - 1\cdot\cos x = -\sen x
+\end{align*}
+para todo $x\in\mathbb{R}$. Por lo tanto:
+\[
+\cos'(x) = -\sen x \yjc \cos' = -\sen.
+\]
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Sea $\funcjc{f}{[0,+\infty[}{\Rbb}$ definida por $f(x) = \sqrt{x}$. Obtener la derivada de $f$.
+}%
+Sea $x \in [0,+\infty[$. Veamos para qué valores de $x$ existe $f'(x)$. Para ello, procedamos así:
+\begin{align*}
+\frac{f(x + h) - f(x)}{h} &= \frac{\sqrt{x + h} - \sqrt{x}}{h} \\
+  &= \frac{\left(\sqrt{x + h} - \sqrt{x}\right)\left(\sqrt{x + h} + \sqrt{x}\right)}%
+      {h\left(\sqrt{x + h} + \sqrt{x}\right)} \\
+  &= \frac{(x + h) - x}{h\left(\sqrt{x + h} + \sqrt{x}\right)} \\
+  &= \frac{h}{h\left(\sqrt{x + h} + \sqrt{x}\right)} \\
+  &= \frac{1}{\left(\sqrt{x + h} + \sqrt{x}\right)}
+\end{align*}
+con $h \neq 0$ y $x \geq 0$.
+
+Dado que $f$ no está definida para valores menores que $0$, si $x = 0$, para cualquier valor de $h$
+menor que $0$, sucede que $x + h$ es menor que $0$. Entonces, el límite de
+\[
+\frac{f(x + h) - f(x)}{h}
+\]
+no existe si $x = 0$.
+
+En cambio, para $x > 0$, se tiene que:
+\begin{align*}
+f'(x) &= \limjc{\frac{1}{\left(\sqrt{x + h} + \sqrt{x}\right)}}{h}{0} \\
+    &= \frac{1}{\sqrt{x + 0} + \sqrt{x}} = \frac{1}{2\sqrt{x}}.
+\end{align*}
+
+En resumen, para todo $x > 0$, se verifica que:
+\[
+(\sqrt{x})' = \frac{1}{2\sqrt{x}} \yjc (\sqrt{\ }') = \frac{1}{2\sqrt{\ }}.
+\]
+Para $x = 0$, la derivada de la función raíz cuadrada no existe.
+\end{exemplo}
+
+\section{Derivadas Unilaterales}
+
+\begin{defical}
+Dada  $f:\mathbb{R}\to \mathbb{R}$, notaremos, si existen:
+\begin{align*}
+f_+'(x_0) &= \lim_{x\to x_0^+}\frac{f(x)-f(x_0)}{x-x_0} \\
+          &= \lim_{h\to 0^+}\frac{f(x_0+h)-f(x_0)}{h}\\
+f_-'(x_0) &= \lim_{x\to x_0^-}\frac{f(x)-f(x_0)}{x-x_0} \\
+          &= \lim_{h\to 0^-}\frac{f(x_0+h)-f(x_0)}{h}.
+\end{align*}
+Las derivadas $f_+'(x_0) $ y $f_-'(x_0) $ se denominan \emph{derivada de $f$ en $x_0$ por la
+derecha} y \emph{derivada de $f$ en $x_0$ por la izquierda}, respectivamente. Representan las
+pendientes de las rectas tangentes a la gráfica de $f$ en el punto de coordenadas $(x_0,
+f(x_0))$, considerando solamente la gráfica de $f$ a la derecha y a la izquierda,
+respectivamente, del punto indicado.
+\end{defical}
+
+\begin{teocal}[Derivada unilateral de funciones localmente iguales]
+Sean: $a$ un número real; y, $f$ y $g$ dos funciones localmente iguales por la derecha (respectivamente por la izquierda) y tales que $f(a)=g(a)$.
+
+Entonces
+\begin{enumerate}
+\item Existe $f^{'}_{+}(a)$ (respectivamente $f^{'}_{-}(a)$) si y solo si existe $g^{'}_{+}(a)$ (respectivamente $g^{'}_{-}(a)$).
+\item Si estas derivadas unilaterales existen, son iguales.
+\end{enumerate}
+\end{teocal}
+
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Halle la derivada de la función $\funcjc{f}{D\subseteq \Rbb}{\Rbb}$ dada en el punto $x$
+    indicado, usando la definición de derivada:
+        \begin{enumerate}[leftmargin=*]
+        \item $f(x)= 2x^2+x+1$ en $x=2$.
+        \item $f(x) = \frac{2}{x+1}$ en $x=0$.
+        \item $f(x)= \frac{x-1}{x}$ en $x=1$.
+        \item $f(x) = \sec x$ en $x = 0$.
+        \item $f(x) = \csc x$ en $\displaystyle x = \frac{\pi}{2}$.
+        \item $f(x) = \lfloor x \rfloor$ en $\displaystyle x = \frac{1}{2}$.
+        \item $f(x) = \lfloor x \rfloor$ si $x \not\in\Zbb$.
+        \item $f(x) = \lfloor x \rfloor$ si $x = 0$.
+        \item $f(x) = \lfloor x \rfloor$ si $x \in\Zbb$.
+        \end{enumerate}
+\item En los siguientes ejemplos halle, si existen, $f_+'(x_0)$ y $f_-'(x_0)$.
+        \begin{enumerate}
+        \item $f(x) =
+        \begin{cases}
+        x^2+x-1 & \text{si $x\leq 1$}\\
+        -2x^2+5x-2 & \text{si $x> 1$},
+        \end{cases}$\\[5pt]
+        $x_0 = 1$.
+        \item $f(x) =
+        \begin{cases}
+       (x+1)^\frac{1}{3} & \text{si $x\leq -1$}\\
+        x & \text{si $x> -1$},
+        \end{cases}$\\[5pt]
+        $x_0 = -1$.
+        \item $f(x) = \sqrt{|x-2|}$, $x_0 = -1$.
+        \item $f(x) =
+        \begin{cases}
+        \sqrt{x-1} & \text{si $x\geq 1$}\\
+        x^2-3x+2 & \text{si $x< 1$},
+        \end{cases}$\\[5pt]
+        $x_0 = 1$.
+        \end{enumerate}
+\item Demuestre que para $\funcjc{f}{\mathbb{R}}{\mathbb{R}}$ y $x_0\in \mathbb{R}$, existe
+    $f'(x_0)$ si y solo si:
+        \begin{enumerate}
+        \item Existen $f_-'(x_0)$ y $f_+'(x_0)$; y
+        \item $f_-'(x_0) = f_+'(x_0)$.
+        \end{enumerate}
+        Además, en el caso de que exista $f'(x_0)$, siempre se verificará que
+        \[
+            f'(x_0) = f_-'(x_0) = f_+'(x_0).
+        \]
+\item Pruebe que $f$ no es derivable en el punto indicado.
+        \begin{enumerate}
+        \item $f(x) =
+        \begin{cases}
+       \frac{1}{\sqrt{x}} & \text{si $x\geq 1$}\\
+        x +1 & \text{si $x<1$},
+        \end{cases}
+        \quad x = 1$.
+        \item $f(x) = \frac{1}{x^2-3x+2}$, $x=1$.
+        \item $f(x) = \sqrt[4]{2x-9}$, $x = 4.5$.
+         \item $f(x) =
+        \begin{cases}
+       2x^2+1 & \text{si $x<0$}\\
+        \sqrt{x +1 }& \text{si $x\geq 0$},
+        \end{cases}
+        \quad x = 0$.
+        \end{enumerate}
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Propiedades de la derivada}
+Calcular la derivada de una función utilizando únicamente la definición puede resultar muy
+engorroso, como el lector puede comprobar en los ejercicios de la sección anterior. Para facilitar
+los cálculos, a partir de las propiedades algebraicas de los límites (límite de la suma, del
+producto, etcétera), se obtienen propiedades algebraicas de la derivada. Éstas permitirán calcular
+la derivada de muchas funciones si se conoce la derivada de funciones ``más simples''.
+
+Por ejemplo, podemos calcular la derivada de $\funcjc{f}{\mathbb{R}}{R}$ definida por
+\[
+f(x) = x + 2
+\]
+sabiendo que la derivada de $x$ es $1$, de $2$ es $0$ y que la derivada de la suma de dos funciones
+es la suma de las derivadas de cada función. Por lo tanto:
+\begin{align*}
+f'(x) &= (x + 2)' \\
+  &= (x)' + (2)' = 1 + 0 = 1.
+\end{align*}
+Es decir, la derivada de $f$ es la función constante $1$.
+
+El siguiente teorema enuncia las propiedades de la derivada que se obtienen de la simple aplicación
+del concepto de derivada y de las propiedades algebraicas de los límites (ver el teorema
+\ref{teol:Algebra} en la página \pageref{teol:Algebra}).
+
+\begin{teocal}[Propiedades algebraicas I]\label{et:ddAlgebraDerivadasI}%
+Sean $f$ y $g$ dos funciones reales derivables en $a \in
+\mathbb{R}$. Entonces:
+\begin{enumerate}
+\item \textit{Suma}: $f + g$ es derivable en $a$ y
+    \[
+      (f + g)'(a) = f'(a) + g'(a).
+    \]
+
+\item \textit{Producto}: $fg$ es derivable en $a$ y
+    \[
+      (fg)'(a) = f'(a)g(a) + f(a)g'(a).
+    \]
+
+\item \textit{Inverso multiplicativo}: Si $g(a) \neq 0$, $\frac{1}{g}$ es derivable en $a$ y
+    \[
+      \left(\frac{1}{g}\right)'(a) = -\frac{g'(a)}{g^2(a)}.
+    \]
+\end{enumerate}
+\end{teocal}
+
+Y de este teorema, el siguiente se obtiene inmediatamente.
+
+\begin{teocal}[Propiedades algebraicas II]\label{et:ddAlgebraDerivadasII}%
+Sean $f$ y $g$ dos funciones reales derivables en $a \in \mathbb{R}$ y
+$\lambda\in\mathbb{R}$. Entonces:
+\begin{enumerate}
+\item \textit{Escalar por función}: $\lambda f$ es derivable en $a$ y
+  \[
+    (\lambda f)'(a) = \lambda f'(a).
+  \]
+
+\item \textit{Resta}: $(f - g)$ es derivable en $a$ y
+    \[
+      (f - g)'(a) = f'(a) - g'(a).
+    \]
+
+\item \textit{Cociente}: si $g(a) \neq 0$, $\frac{f}{g}$ es derivable en $a$ y
+  \[
+    \left(\frac{f}{g}\right)'(a) = \frac{f'(a)g(a) - f(a)g'(a)}{g^2(a)}.
+  \]
+\end{enumerate}
+\end{teocal}
+
+Dada una función $f$, debe estar claro que $f$ es diferente de $f(x)$. El segundo símbolo indica el
+valor que toma la función $f$ en $x$. Sin embargo, es común abusar del lenguaje y referirse a la
+función $f$ a través de $f(x)$. Si no se especifica a qué conjunto pertenece $x$, se entiende
+tácitamente que el dominio de $f$ es el conjunto más grande de $\mathbb{R}$ en el cual $f(x)$ está
+definida.
+
+Es así que, si se pide ``calcular la derivada de la función $x^2$'', lo que se pide realizar es el
+cálculo de la derivada de la función f definida por $f(x) = x^2$ para todo $x\in\mathbb{R}$.
+
+En general, en vez de decir ``derivar la función $f$'', se puede decir ``derive $f(x)$'', o
+``derive $f(t)$'', etcétera. También se podrá decir ``calcule $f'(x)$ o $f'(t)$''.
+
+La ventaja de este abuso del lenguaje es que nos ahorra el introducir un nombre para la función. A
+lo largo de este libro, utilizaremos indistintamente ambas formas de referirnos a las funciones,
+salvo que pueda haber lugar para confundir la función $f$ con el valor que ésta puede tomar en
+algún $x$ en particular.
+
+\begin{exemplo}[Solución]{%
+Calcular $(x^2)'$ y $(x^3)'$.
+}%
+Como $x^2 = x \cdot x$, podemos aplicar la propiedad algebraica de la derivada para la derivada del
+producto de dos funciones (teorema~\ref{et:ddAlgebraDerivadasI}).
+
+En este caso, $f(x) = x$ y $g(x) = x$; estas dos funciones son la identidad cuya derivada existe
+para todo $x\in\mathbb{R}$ y es igual a $1$. Entonces:
+\[
+x^2 = f(x)g(x).
+\]
+Por lo tanto, $x^2$ es derivable en todo $x\in\mathbb{R}$ y su derivada se obtiene de la siguiente
+manera:
+\begin{align*}
+(x^2)' &= (fg)'(x) \\
+  &= f'(x)g(x)+ f(x)g'(x)\\
+  &= 1\cdot x + x\cdot 1 = x + x,
+\end{align*}
+  pues $f'(x) = g'(x) = (x)' = 1$. Por lo tanto:
+\[
+  (x^2)' = 2x
+\]
+para todo $x\in\mathbb{R}$.
+
+Para calcular la derivada de $x^3$, apliquemos nuevamente la regla de la derivada de un producto,
+pero esta vez a $x^2$ y a $x$:
+\begin{align*}
+(x^3)' &= (x^2 \cdot x)'\\
+  &= (x^2)' \cdot x + x^2 \cdot (x)' \\
+  &= (2x)(x) + (x^2)(1) = 2x^2 + x^2.
+\end{align*}
+Por lo tanto:
+\[
+(x^3)' = 3x^2.
+\]
+\end{exemplo}
+
+Ahora obtengamos una fórmula general para la derivada de $x^n$ con $n$ un número natural. Para
+ello, recordemos el siguiente ``producto notable'':
+\[
+x^n - a^n = (x - a)(x^{n-1} + x^{n-2}a + x^{n-3}a^2 + \cdots + x^2a^{n-3} + xa^{n-2} + a^{n-1}).
+\]
+
+\begin{exemplo}[Solución]{\label{ej:ddDerivadaPotencia}%
+Obtener $(x^n)'$ para todo $n\in\mathbb{N}$.
+}%
+Sean $n\in\mathbb{N}$ y $\funcjc{f}{\mathbb{R}}{\mathbb{R}}$ definida por $f(x) = x^n$ para todo $x
+\in\mathbb{R}$. Obtengamos la derivada de $f$ para cualquier $a\in\mathbb{R}$. Sea $x\neq a$:
+\begin{align*}
+\frac{f(x) - f(a)}{x - a} &= \frac{x^n - a^n}{x - a} \\[4pt]
+  &= \frac{(x - a)(x^{n-1} + x^{n-2}a + x^{n-3}a^2 + \cdots +
+    x^2a^{n-3} + xa^{n-2} + a^{n-1})}{x - a}\\[4pt]
+  &= x^{n-1} + x^{n-2}a + x^{n-3}a^2 + \cdots + x^2a^{n-3} + xa^{n-2} + a^{n-1}.
+\end{align*}
+Por lo tanto:
+\begin{align*}
+f'(a) &= \limjc{\frac{f(x) - f(a)}{x - a}}{x}{a} \\
+  &= \limjc{\left(x^{n-1} + x^{n-2}a + x^{n-3}a^2 + \cdots + x^2a^{n-3} + xa^{n-2} + a^{n-1}\right)}{x}{a} \\
+  &= a^{n-1} + a^{n-2}a + a^{n-3}a^2 + \cdots + a^2a^{n-3} + aa^{n-2} + a^{n-1} \\
+  &= a^{n-1} + a^{n-1} + a^{n-1} + \cdots + a^{n-1} + a^{n-1} + a^{n-1} \\
+  &= na^{n-1},
+\end{align*}
+pues la suma tiene $n$ términos. Por lo tanto:
+\[
+(x^n)' = nx^{n-1},
+\]
+para todo $x\in\mathbb{R}$ y todo $n\in\mathbb{N}$.
+
+Por ejemplo, $(x^6)' = 6x^5$.
+\end{exemplo}
+
+\begin{exemplo}{%
+Calcular la derivada de $x^5 + 2x^4 - 3x^3 - 4x^2 + 5x - 1$.
+}%
+Esta función es la suma y resta de funciones de la forma $ax^n$. Cada una de esas funciones tiene
+derivada para cada número real $x$. La propiedad de la derivada para la suma de dos funciones
+(teorema~\ref{et:ddAlgebraDerivadasI}), el del producto de un escalar por una función
+(teorema~\ref{et:ddAlgebraDerivadasII}) y el de la resta de dos funciones
+(teorema~\ref{et:ddAlgebraDerivadasII}) nos permiten proceder de la siguiente manera:
+\begin{align*}
+(x^5 + 2x^4 - 3x^3 - 4x^2 + 5x - 1)' &= (x^5)' + (2x^4)' - (3x^3)' - (4x^2)' + (5x)' - (1)'\\
+  &= 5x^4 + 2(x^4)' - 3(x^3)' - 4(x^2)' + 5(x)' - 0 \\
+  &= 5x^4 + 2(4x^3) - 3(3x^2) - 4(2x) + 5(1) \\
+  &= 5x^4 + 8x^3 - 9x^2 - 8x + 5.
+\end{align*}
+Por lo tanto:
+\[
+(x^5 + 2x^4 - 3x^3 - 4x^2 + 5x - 1)' = 5x^4 + 8x^3 - 9x^2 - 8x + 5
+\]
+para todo $x\in\mathbb{R}$.
+\end{exemplo}%Fin de \ejemplo
+
+\begin{exemplo}[Solución]{%
+Sea $\displaystyle f(x) = \frac{1 - x + x^2}{1 + x - x^2}$. Calcular $f'(x)$.
+}%
+La función $f$ es el cociente de las funciones $g$ y $h$ definidas por
+\[
+g(x) = 1 - x + x^2 \yjc h(x) = 1 + x - x^2.
+\]
+El dominio de $f$ es $\Dm(f) = \mathbb{R} - \left\{\frac{1-\sqrt{5}}{2},\frac{1 +
+\sqrt{5}}{2}\right\}$, pues las raíces de la ecuación
+\[
+1 + x - x^2 = 0
+\]
+son $\frac{1-\sqrt{5}}{2}$ y $\frac{1 + \sqrt{5}}{2}$.
+
+Para todo $x\in\Dm(f)$, se tiene que:
+\[
+f(x) = \frac{g(x)}{h(x)},
+\]
+pues $h(x) \neq 0$ para dichos $x$.
+
+Por la propiedad de la derivada de un cociente (teorema~\ref{et:ddAlgebraDerivadasII}) tenemos que:
+\begin{align*}
+f'(x) &= \left(\frac{g(x)}{h(x)}\right)' \\[4pt]
+   &= \frac{g'(x)h(x) - g(x)h'(x)}{h^2(x)} \\[4pt]
+   &= \frac{(1 - x + x^2)'(1 + x - x^2) - (1 - x + x^2)(1 + x - x^2)'}{(1 + x - x^2)^2} \\[4pt]
+   &= \frac{(0 - 1 + 2x)(1 + x - x^2) - (1 - x + x^2)(0 + 1 - 2x)}{(1 + x - x^2)^2}\\[4pt]
+   &= \frac{-(1 - 2x)(1 + x - x^2) - (1 - 2x)(1 - x + x^2)}{(1 + x - x^2)^2} \\[4pt]
+   &= \frac{-(1 - 2x)(1 + x - x^2 + 1 - x + x^2)}{(1 + x - x^2)^2}.\\[4pt]
+\end{align*}
+Por lo tanto:
+\[
+f'(x) = \frac{2(2x - 1)}{(1 - x + x^2)^2}
+\]
+para todo $x\in\Dm(f)$.
+
+\begingroup
+\renewcommand{\qedsymbol}{}
+\begin{proof}[Solución 2]
+En este caso, es posible calcular la derivada de $f$ de una manera más simple.
+
+En efecto, la ley de asignación de la función $f$, que es el cociente de dos polinomios de segundo
+grado, puede ser expresada de la siguiente manera:
+\[
+f(x) = \frac{1 - x + x^2}{1 + x - x^2} = -1 + \frac{2}{1 + x - x^2}.
+\]
+Esta representación se obtiene al dividir el numerador por el denominador y obtener el cociente y
+el residuo.
+
+Entonces:
+\begin{align*}
+f'(x) &= \left(-1 + \frac{2}{1 + x - x^2}\right)' \\[4pt]
+   &= 0 + 2\frac{-(1 + x - x^2)'}{(1 +x - x^2)^2} \\[4pt]
+   &= 2\frac{-0 - 1 + 2x}{(1 +x - x^2)^2} = \frac{2(2x - 1)}{(1 +x - x^2)^2}.\qedhere
+\end{align*}
+\end{proof}
+\endgroup
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Sea $f$ una función real definida por
+\[
+f(x) = \frac{1}{x}\sen x
+\]
+para $x \neq 0$. Obtener $f'$
+}%
+El dominio de $f$ es $\Dm(f) = \mathbb{R} - \{0\}$. Para $x \in\Dm(f)$, $f(x)$ es el producto de la
+función $\frac{1}{x}$ y $\sen x$. Entonces, por la propiedad de la derivada de un producto de
+funciones (teorema~\ref{et:ddAlgebraDerivadasI}) tenemos que
+\[
+f'(x) = \left(\frac{1}{x}\right)'(\sen x) + \frac{1}{x}(\sen x)'.
+\]
+Pero
+\[
+\left(\frac{1}{x}\right)' = -\frac{(x)'}{x^2} = -\frac{1}{x^2}
+\]
+por la propiedad de la derivada del inverso multiplicativo (teorema~\ref{et:ddAlgebraDerivadasII}),
+ya que $x\neq 0$. También tenemos que:
+\[
+(\sen x)' = \cos x.
+\]
+Por lo tanto:
+\begin{align*}
+f'(x) &= -\frac{1}{x^2}\sen x + \frac{1}{x}\cos x \\[4pt]
+   &= \frac{x\cos x - \sen x}{x^2}
+\end{align*}
+para todo $x \neq 0$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Sea $f$ una función polinomial de grado $n = 1$. Es decir,
+\[
+f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n = \sum_{k=0}^n a_x^k,
+\]
+para todo $x\in\mathbb{R}$. Calcular $f'$.
+}%
+Utilizando inducción matemática sobre el número de términos, se obtiene que la derivada de la suma
+de un número arbitrario de funciones es igual a suma de las derivadas de cada una de esas
+funciones. Como $f$ puede ser visto como la suma de las $n + 1$ funciones $f_k$ definidas por:
+\[
+f_k(x) = a_kx^k,
+\]
+para todo $k\in\{0,1,\ldots,n\}$; entonces:
+\[
+f'(x) = \left(\sum^n_{k=0} a_kx^k\right)' = \sum_{k=0}^n f_k'(x).
+\]
+Pero, para $k\in\{1,2,\ldots,n\}$, tenemos que:
+\[
+f'_k(x) = ka_kx^{k-1},
+\]
+ya que la derivada de un escalar por una función es igual al producto del escalar por la derivada
+de la función (ver teorema~\ref{et:ddAlgebraDerivadasII}) y por el ejemplo
+\ref{ej:ddDerivadaPotencia}.
+
+Para $k = 0$, en cambio, tenemos que:
+\[
+f'_0(x) = (a_0)' = 0,
+\]
+pues la derivada de una función constante es la función cero.
+
+Por lo tanto:
+\[
+f'(x) = \sum_{k=1}^n ka_kx^{k-1}
+\]
+para todo $x\in\mathbb{R}$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Obtener la derivada de $\tan$.
+}%
+Para todo $x\in\Dm(\tan)$, se tiene que:
+\[
+\tan x = \frac{\sen x}{\cos x}.
+\]
+Por lo tanto, para obtener la derivada de tan, podemos aplicar la derivada del cociente de dos
+funciones (teorema~\ref{et:ddAlgebraDerivadasII}). Obtendremos lo siguiente:
+\begin{align*}
+\tan' x &= \left(\frac{\sen x}{\cos x}\right)' \\[4pt]
+   &= \frac{\sen' x\cos x - \sen x\cos' x}{\cos^2 x} \\[4pt]
+   &= \frac{\cos x \cos x - (\sen x)(-\sen x)}{cos^2 x} \\[4pt]
+   &= \frac{\cos^2 x + \sen^2 x}{\cos^2 x} = \frac{1}{\cos^2 x}.
+\end{align*}
+Por lo tanto:
+\[
+\tan'(x) = \sec x^{2} = 1 + \tan^2 x,
+\]
+para todo $x \neq \frac{\pi}{2} + k\pi$ con $k\in\mathbb{Z}$, pues $\Dm(\tan) = \mathbb{R} -
+\{\frac{\pi}{2} + k\pi : k\in\mathbb{Z}\}$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Obtener la derivada de $\cot$.
+}%
+Recordemos que
+\[
+\cot x = \frac{1}{\tan x}
+\]
+para todo $x\neq k\pi$ con $k\in\mathbb{Z}$. Entonces, mediante la aplicación de la regla para
+derivar el inverso multiplicativo de una función (teorema~\ref{et:ddAlgebraDerivadasII}), tenemos
+que:
+\begin{align*}
+\cot'(x) &= \left(\frac{1}{\tan x}\right)' \\[4pt]
+   &= -\frac{\tan' x}{\tan^2 x} \\[4pt]
+   &= -\frac{1 + \tan^2 x}{\tan^2 x} = -\left(\frac{1}{\tan^2 x} + 1\right).
+\end{align*}
+Por lo tanto:
+\[
+\cot' x = -(1 + \cot^2 x) = -\csc^2 x
+\]
+para todo $x\neq k\pi$ con $k\in\mathbb{Z}$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Obtener la derivada de $\sec$.
+}%
+Puesto que
+\[
+\sec x = \frac{1}{\cos x}
+\]
+para todo $x \neq \frac{\pi}{2} + k\pi$ con $k\in\mathbb{Z}$, tenemos que:
+\begin{align*}
+\sec' x &= -\frac{\cos' x}{\cos^2 x} \\[4pt]
+   &= -\frac{-\sen x}{\cos^2 x} \\[4pt]
+   &= \frac{\sen x}{\cos x}\cdot\frac{1}{\cos x}
+\end{align*}
+para todo $x \neq \frac{\pi}{2} + k\pi$. Por lo tanto:
+\[
+\sec' x  = \tan x \sec x
+\]
+para todo $x \neq \frac{\pi}{2} + k\pi$ con $k\in\mathbb{Z}$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Obtener la derivada de $\csc$.
+}%
+Para todo $x\neq k\pi$ con $k\in \mathbb{Z}$, se verifica que:
+\[
+\csc x = \frac{1}{\sen x}.
+\]
+Por lo tanto:
+\begin{align*}
+\csc' x &= -\frac{\sen' x}{\sen^2 x} \\[4pt]
+   &= -\frac{\cos x}{\sen^2 x} \\[4pt]
+   &= -\frac{\cos x}{\sen x}\cdot\frac{1}{\sen x}
+\end{align*}
+para todo $x \neq k\pi$. Entonces:
+\[
+\csc' x  = -\cot x \csc x
+\]
+para todo $x \neq k\pi$ con $k\in\mathbb{Z}$.
+\end{exemplo}
+
+\section{Ejercicios}
+\begingroup\small
+Halle $f'(x)$ usando las propiedades algebraicas de la derivada (teoremas
+\ref{et:ddAlgebraDerivadasI} y \ref{et:ddAlgebraDerivadasII}).
+\begin{multicols}{2}
+\begin{enumerate}[leftmargin=*]
+\item $\displaystyle f(x) = 5x^2 + 7$.
+\item $\displaystyle f(x) = x^3 + 3x^2 - 5x + 2$.
+\item $f(x) = 3x^2-x+1$.
+\item $\displaystyle f(x) = 7x^{15} + 8x^{-7}$.
+\item $f(x) = \frac{x+1}{x-1}$.
+\item $f(x) = \frac{2}{x^2+1}$.
+\item $f(x) = x^n-x^{n-1}+1, \ n\geq 2$.
+\item $f(x) = \sqrt{x}-\sqrt[3]{x}+1$.
+\item $\displaystyle f(x) = \frac{2}{x^2} + \frac{3}{x^3} + \frac{5}{x^5}$.
+\item $\displaystyle f(x) = \sqrt{x} + \sqrt[3]{x} + \sqrt[5]{x}$.
+\item $\displaystyle f(x) = \frac{2}{3}x^{\frac{3}{2}} - x^{-3} + \frac{5}{x^4}$.
+\item $\displaystyle f(x) = x^{\sqrt{3}} - x^{-\sqrt{3}}$.
+\item $\displaystyle f(x) = 7x\cos x$.
+\item $\displaystyle f(x) = (x^2 + 1)\tan x$.
+\item $\displaystyle f(x) = x^2\cot x + 5$.
+\item $\displaystyle f(x) = \frac{\sqrt{x}}{\tan x}$.
+\item $\displaystyle f(x) = \frac{\sen x + \cos x}{\sen x - \cos x}$.
+\end{enumerate}
+\end{multicols}
+\endgroup
+
+\section{La regla de la cadena o la derivada de la compuesta}
+Con la ayuda de las propiedades algebraicas de la derivada se obtienen las derivadas de un
+considerable número de funciones. Sin embargo, no todas las funciones se pueden expresar como suma,
+resta, producto, división de otras funciones. Muchas funciones se expresan como la composición de
+dos o más funciones. La siguiente propiedad de las derivadas nos dice cómo obtener la derivada de
+la composición de dos funciones si éstas son derivables. Esta propiedad es conocida como la regla
+de la cadena. El porqué de este nombre se verá más adelante.
+
+\begin{teocal}[Regla de la cadena o derivada de la función compuesta]
+Sean $f$ y $g$ dos funciones reales tales que existe $f\circ g$, y $a\in\Dm(f\circ g)$. Supongamos
+que:
+\begin{enumerate}
+\item $g$ es derivable en $a$; y
+\item $f$ es derivable en $g(a)$.
+\end{enumerate}
+Entonces la compuesta $f\circ g$ es derivable en $a$. Además:
+\[
+(f\circ g)'(a) = f'(g(a))\cdot g'(a).
+\]
+\end{teocal}
+
+\begin{exemplo}[Solución]{%
+Calcular la derivada de $\sen^2 x$.
+}%
+Sea $h$ una función real definida por
+\[
+h(x) = \sen^2 x
+\]
+para todo $x\in\mathbb{R}$. Aunque fuera posible expresar $h(x)$ como suma, producto, etcétera de
+otras funciones cuyas derivadas conozcamos, no es fácil ver cuáles serían esas funciones. Sin
+embargo, mediante la regla de la cadena podemos obtener la derivada de $h$, pues es la composición
+de las funciones $f$ y $g$ definidas de la siguiente manera:
+\[
+f(u) = u^2
+\]
+para todo $u\in\mathbb{R}$ y
+\[
+g(x) = \sen x
+\]
+para todo $x\in\mathbb{R}$.
+
+En efecto, si $x\in\mathbb{R}$, tenemos que:
+\begin{align*}
+(f\circ g)(x) &= f(g(x)) \\
+   &= f(\sen x) = (\sen x)^2 \\
+   &= \sen^2 x = h(x).
+\end{align*}
+Por lo tanto, $h = f\circ g$ y su dominio es $\mathbb{R}$.
+
+Ahora bien, $f$ y $g$ son derivables en todo $x\in\mathbb{R}$. Por lo tanto, $h$ es derivable en
+$\mathbb{R}$, y su derivada se calcula de la siguiente manera:
+\begin{align*}
+h'(x) &= (f\circ g)'(x) \\
+   &= f'(g(x))\cdot g'(x).
+\end{align*}
+Pero
+\[
+f'(u) = 2u \yjc g'(x) = \cos x.
+\]
+Por lo tanto
+\[
+f'(g(x)) = 2g(x) = 2 \sen x.
+\]
+Entonces:
+\[
+h'(x) = 2 \sen x \cos x = \sen 2x
+\]
+para todo $x\in\mathbb{R}$. Por lo tanto:
+\[
+(\sen^2 x)' = \sen 2x
+\]
+para todo $x\in\mathbb{R}$.
+
+En otras palabras, la derivada del cuadrado del $\sen$ es dos veces el $\sen$ (como si fuera la
+función $x^2$) multiplicada por la derivada del $\sen$, que es el $\cos$.
+\end{exemplo}
+
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup\small
+\begin{enumerate}[leftmargin=*]
+\item Antes de ejercitarse en la aplicación de la regla de la cadena, conviene llenar los
+    casilleros vacíos de la tabla~\ref{tab:dcCompuestas} en la
+    página~\pageref{tab:dcCompuestas}.
+\item Calcule $f'(x)$.
+  \begin{enumerate}[leftmargin=*]
+    \item $f(x) = (x^2+x+1)^{\frac{1}{2}}$.
+    \item $f(x) = \cos\sqrt{x+1}$.
+    \item $\displaystyle f(x) = \frac{\sen x}{21 + \sen x}$.
+    \item $\displaystyle f(x) = \sqrt[3]{\cos x + x^2}$.
+    \item $\displaystyle f(x) = \sqrt{x} + \sqrt[3]{x^2}$.
+    \item $\displaystyle f(x) = \frac{\sqrt{x}}{1 + \sqrt[3]{x^2}}$.
+    \item $\displaystyle f(x) = x^2\sqrt[3]{x^4} + x^5\sqrt[6]{x^7}$.
+    \item $\displaystyle f(x) = (ax^2 + bx + c)^k$ con $a, b, c, k$ en $\Rbb$.
+    \item $\displaystyle f(x) = Ae^{kx}(a\sen x + b\cos x)$ con $A, k, a, b$ en $\Rbb$.
+    \item $\displaystyle f(x) = \sqrt{2 + \sqrt{3 + \sqrt{x}}}$.
+    \item $\displaystyle f(x) = \sqrt[n]{\frac{ax + b}{ax - b}}$ con $n\in\Nbb$ y $a, b$ en
+        $\Rbb$.
+    \item $\displaystyle f(x) = \ln\left(\ln\frac{x^2}{5}\right)$.
+    \item $\displaystyle f(x) = \frac{x^2 + \tan x}{\sqrt{1 + x^2}}$.
+    \item $\displaystyle f(x) = \ln\left|x + e^x\right|$.
+    \item $\displaystyle f(x) = \sen(\cos^3 x)\cos(\sen^3 x)$.
+    \item $\displaystyle f(x) = \frac{\tan x^2}{\tan^2 x}$.
+    \item $\displaystyle f(x) = \frac{\sen^2 x}{\sen x^2}$.
+    \item $\displaystyle f(x) = \ln\sqrt{\frac{1 + \cos x}{1 - \cos x}}$.
+  \end{enumerate}
+
+\item Resuelva la ecuación $y'(x) = 0$ si
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle y = x^3 - 4x^2 + 5x - 2$.
+    \item $\displaystyle y = \frac{x^2 + x - 6}{x^2 - 10x + 25}$.
+    \item $\displaystyle y = \frac{1}{1 + \sen^2 x}$.
+    \item $\displaystyle y = x(x + 1)^2(x - 1)^3$.
+    \item $\displaystyle y = \frac{e^{|x - 1|}}{x + 1}$.
+    \item $\displaystyle y = \max\{|x|^3, 7x - 6x^2\}$.
+    \end{enumerate}
+
+\item Si $g$ y $h$ son funciones derivables, calcule $f'(x)$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = g\left(h(x)\right) + h\left(g(x)\right)$
+    \item $\displaystyle f(x) = \sqrt[n]{[g(x)]^2 + [h(x)^2]}$ si $[g(x)]^2 + [h(x)^2] > 0$
+    \item $\displaystyle f(x) = \ln\left|\frac{g(x)}{h(x)}\right|$ si $g(x)h(x)\neq 0$.
+    \item $\displaystyle f(x) = g(\sen^2 x) + h(\cos^2 x)$.
+    \end{enumerate}
+
+\item Halle los valores de $\alpha$ y $\beta$ en $\Rbb$ de modo que la función $f$ dada a
+    continuación sea continua y derivable en $\Rbb$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      \alpha x + \beta & \text{si $x \leq 1$,} \\
+      x^2 & \text{si $x > 1$.}
+    \end{cases}$
+    \item $\displaystyle f(x) =
+    \begin{cases}
+        \alpha + \beta x^2 & \text{si |x| < 1,} \\
+        \frac{1}{|x|} & \text{si $|x| \geq 1$.}
+    \end{cases}$
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      \alpha x^3 + \beta x & \text{si $|x| \leq 2$,} \\
+      \frac{1}{\pi}\sen\frac{1}{x} & \text{si $|x| > 2$.}
+    \end{cases}$
+    \item $\displaystyle f(x) =
+    \begin{cases}
+        2x - 2 & \text{si $x \leq 1$,} \\
+        \alpha(x-1)(x-\beta) & \text{si $x>1$.}
+    \end{cases}$
+    \end{enumerate}
+
+\item Halle los valores de $\alpha$ y $\beta$ en $\Rbb$ para que $f$ sea derivable en $\Rbb$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      (x + \alpha)e^{-\beta x} & \text{si $x < 0$,} \\
+      \alpha x^2 + \beta x + 1 & \text{si $x \geq 0$.}
+    \end{cases}$
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      \alpha x + \beta & \text{si $x < 0$,} \\
+      \alpha\cos x + \beta\sen x & \text{si $x\geq 0$.}
+    \end{cases}$
+    \end{enumerate}
+
+\item ¿Para qué valores de $x\in\Rbb$, $f$ es derivable en $x$?
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = |x^3(x + 1)^2(x + 2)|$.
+    \item $\displaystyle f(x) = |\sen x|$.
+    \item $\displaystyle f(x) = x|x|$.
+    \item $\displaystyle f(x) = |\pi - x|\sen x$.
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      x^2\left|\cos\frac{\pi}{x}\right| & \text{si $x\neq 0$,} \\
+      0 & \text{si $x = 0$.}
+    \end{cases}$
+    \end{enumerate}
+
+\item Halle $f'(x)$ para los $x$ en las que existe:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      x^2 & \text{si $x\in\Qbb$,} \\
+      0 & \text{si $x\not\in\Qbb$.}
+    \end{cases}$
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      x^2 & \text{si $x\in\Qbb$,} \\
+      2|x| - 1 & \text{si $x\not\in\Qbb$.}
+    \end{cases}$
+    \item $\displaystyle f(x) =
+    \begin{cases}
+      x & \text{si $x\in\Qbb$,} \\
+      0 & \text{si $x\not\in\Qbb$.}
+    \end{cases}$
+    \item $\displaystyle f(x) = \arccos(\cos x)$.
+    \end{enumerate}
+
+\item Dé ejemplos de funciones $f$ y $g$ y $x_0\in\Rbb$ tales que exista $(f\circ g)'(x_0)$
+    pero:
+    \begin{enumerate}[leftmargin=*]
+    \item Existe $f'(g(x_0))$ y no $g'(x_0)$.
+    \item No existe $f'(g(x_0))$ y sí $g'(x_0)$.
+    \item No existe $f'(g(x_0))$ ni $g'(x_0)$.
+    \end{enumerate}
+
+\item Diga si es correcta o no la afirmación siguiente y argumente su respuesta. Sea $I = \
+    ]a,b[$
+    \begin{enumerate}[leftmargin=*]
+    \item Si $f$ y $g$ son derivables en $I$, entonces $f(x) < g(x)$ para todo $x\in I$
+        implica que $f'(x) \leq g'(x)$ para todo $x\in I$.
+    \item Si $f' < g'$ en $I$, entonces $f < g$ en $I$.
+    \item Si $f$ y $g$ son continuas por la derecha en $a$ y si $f(a) = g(a)$ y $f'(x) < g'(x)$ para todo $x\in I$, entonces $f(x) < g(x)$
+        para todo $x\in I$.
+    \item Si $f$ es derivable en $\Rbb$ y $f$ es par, entonces $f'$ es impar.
+    \item Si $f$ es derivable en $\Rbb$ y $f$ es impar, entonces $f'$ es par.
+    \item Si $f'$ es par, entonces $f$ es impar.
+    \item Si $f'$ es impar, entonces $f$ es par.
+    \item Si $f$ es derivable en $I$ y $\displaystyle\limjc{f'(x)}{x}{a^+} = +\infty$,
+        entonces $\displaystyle\limjc{f(x)}{x}{a^+} = +\infty$.
+    \item Si $f$ es derivable en $I$ y $\displaystyle\limjc{f(x)}{x}{a^+} = +\infty$,
+        entonces $\displaystyle\limjc{f'(x)}{x}{a^+} = +\infty$.
+    \end{enumerate}
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\begin{table}[ht]
+\[
+{\setlength\extrarowheight{5pt}
+\begin{array}{|>{\displaystyle}c|>{\displaystyle}c|>{\displaystyle}c|>{\displaystyle}c|} \hline
+f(x) & g(x) & f(g(x)) & g(f(x)) \\ \hline
+e^x & \cos x & e^{\cos x} & \cos (e^x) \\
+x^2 + 2x + 3 & \sqrt[3]{x} & & \\
+\sqrt{x} + x + \frac{1}{\sqrt[3]{x}} & 2x + 3 & & \\
+2x + \cos x & h(x) + 5 & & \\
+& & \sqrt{x^2 + 1} + e^{\sqrt{x^2 + 1}} & \\
+& & (\sec 3x + \cos x)^5 & \\
+& & & \cos\sqrt{x^2 + 3} \\
+& & & \tan\sqrt[3]{(x^4 + 2)^5} \\
+& & (x^2 + 1)^{x^2 + 10} & \\
+& & \sen(\cos x) & \\
+& & \tan\left(\cos\frac{x^2 + 1}{3}\right) & \\
+& & & (\sec(x + x^4))^{-5} \\
+\hline
+\end{array}
+}
+\]
+\caption{Tabla de compuestas para los ejercicios de regla de la cadena}
+\label{tab:dcCompuestas}%
+\end{table}
+
+\section{Razones de cambio relacionadas}
+Supongamos que dos o más magnitudes, digamos $y,z,w$, etcétera, que están relacionadas de alguna
+manera entre sí, dependan de una misma variable $x$ (o $t$, o $u$, o $v$, etcétera). Ello hace que
+las razones de cambio
+\[
+\frac{dy}{dx}, \ \frac{dz}{dx},\ \frac{dw}{dx}, \ldots
+\]
+también estén relacionadas entre sí. Esta última relación puede ser encontrada gracias a la regla
+de la cadena, estudiada en la sección anterior. También se puede obtener esa relación con ayuda de
+la derivación implícita, que estudiaremos en la siguiente sección.
+
+\begin{exemplo}[Solución]{%
+Para inflar un globo esférico inyectamos aire a razón de $500\, \text{litros}/\text{minutos}$. ¿Con qué
+razón varía la longitud del radio cuando éste mide $1\metros$?
+}%
+Si $V$ litros es el volumen del globo cuando su radio mide $r$ decímetros\footnote{Hemos escogido
+como unidad de longitud el decímetro para que la unidad de volumen sea el litro, que es un
+decímetro cúbico.}, entonces:
+\begin{equation}
+\label{eq:dd001}
+	V=\frac{4}{3}\pi r^{3}.
+\end{equation}
+
+Puesto que el aire ingresa al globo a una razón de $500$ litros por minuto, entonces
+\[
+\frac{dV}{dt}=500.
+\]
+
+En este caso, las magnitudes $V$ y $r$, que están relacionadas entre sí por medio de la
+igualdad~(\ref{eq:dd001}), dependen, ambas, de una tercera magnitud: el tiempo $t$. Y lo que
+queremos calcular, la razón de cambio instantánea del radio cuando su longitud es $10$ decímetros,
+es, precisamente, la razón de cambio es $\frac{dr}{dt}$ cuando $r=10$, que está relacionada con la
+razón de cambio de $V$ respecto de $t$.
+
+Para ello, derivamos respecto de $t$ ambos lados de la igualdad \ref{eq:dd001}. Obtenemos así la
+relación entre las razones de cambio $\frac{dr}{dt}$ y $\frac{dV}{dt}$:
+\begin{equation*}
+	\frac{dV}{dt}=4\pi r^{2}\frac{dr}{dt}.
+\end{equation*}
+Entonces:
+\begin{equation*}
+	\frac{dr}{dt}=\frac{1}{4\pi r^{2}}\frac{dV}{dt}.
+\end{equation*}
+
+Por lo tanto, como $r=10$ y  $\frac{dV}{dt}=500$, obtenemos que:
+\begin{equation*}
+	\frac{dr}{dt}=\frac{500}{4\pi\  10^{2}}=\frac{5}{4\pi}\approx 0.398.
+\end{equation*}
+Es decir que la longitud del radio $r$ varía a una velocidad de aproximadamente $3.98$ centímetros
+por minuto.
+\end{exemplo}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup\small
+\begin{enumerate}[leftmargin=*]
+\item\label{ex:dcRCCono} El agua escapa del reservorio cónico, mostrado en la figura
+    \ref{fig:cono}, a una razón de $20$ litros por minuto: ¿Con qué velocidad disminuye el
+    nivel de agua cuando su altura $h$ desde el fondo es de $5$ metros? ¿Cuál es la razón de
+    cambio de radio $r$ del espejo del agua en ese instante?
+
+\item\label{ex:dcRCIslote} Un faro ubicado en un islote situado a $3$ kilómetros de la playa
+    emite un haz de luz que gira dando una vuelta entera cada minuto (figura \ref{fig:islote}).
+    ¿Con qué velocidad se ``mueve'' el punto $P$ de la playa iluminado por el haz de luz $FP$
+    emitido por el faro cuando $P$ está situado a $2$ kilómetros del punto $Q$, que es el punto
+    de la playa más cercano al faro?
+
+\item Un avión que está a $500$ kilómetros al norte de Quito viene hacia la capital a $400$
+    kilómetros por hora, mientras que otro, que está a $600$ kilómetros al este, lo hace a una
+    velocidad de $300$ kilómetros por hora. ¿A qué velocidad se acercan el uno al otro?
+
+\item Un rectángulo mide $10$ metros de altura por $20$ metros de base. Si la base aumenta a
+    razón constante de un metro por minuto y la altura disminuye a una razón constante de dos
+    metros por minuto, ¿con qué velocidad varía el área del rectángulo? El área, ¿aumenta o
+    disminuye?
+
+\item Si de un recipiente, que tiene la forma de una pirámide truncada invertida de base
+    cuadrada, de $10$ metros de altura, de $10$ metros el lado del cuadrado más grande y de $5$
+    metros el lado del cuadrado más pequeño, y que está lleno de agua a media altura, se extrae
+    el líquido a una razón constante de un metro cúbico por minuto:
+    \begin{enumerate}[leftmargin=*]
+    \item ¿Con qué rapidez baja el nivel del agua?
+    \item Si, por otro lado, el nivel del agua sube un metro por hora al bombear agua en el
+        reservorio cuando está lleno hasta la mitad, ¿cuál es el caudal de agua que se
+        introduce?
+    \end{enumerate}
+
+\item Un radar que está a $12$ kilómetros de una base militar detecta que un avión sobrevuela
+    la base a $9\,000$ metros de altura y que se dirige hacia el radar, manteniendo su altitud
+    y velocidad. Si la rapidez con que decrece la distancia entre el avión y el radar es de
+    $500$ kilómetros por hora, ¿a qué velocidad vuela el avión?
+
+\item ¿Con qué rapidez varía el área de la corona que queda entre dos circunferencias
+    concéntricas de radios $10$ metros y $20$ metros respectivamente, si el diámetro de la más
+    pequeña aumenta un metro por hora y el diámetro de la más grande disminuye dos metros por
+    hora? ¿Y si los diámetros aumentan un metro por hora? Si el diámetro menor crece dos
+    metros, ¿cómo debe variar el otro para que el área de la corona no cambie?
+
+\item Una partícula se mueve en una trayectoria elíptica cuya forma está dada por la ecuación
+    \[
+      \left(\frac{x}{3}\right)^2 + \left(\frac{y}{2}\right)^2 = 1.
+    \]
+    Supongamos que las longitudes están expresadas en metros.
+
+    Si se sabe que en un punto de la abscisa $1$, ésta se incrementa a una razón de dos metros
+    por segundo, ¿qué sucede con la ordenada del punto con la abscisa dada? Considere los casos
+    que se derivan según los cuadrantes en los que se halla la ordenada.
+
+\item Un buque se acerca a un faro de $50$ metros de altura. Se sabe que el ángulo entre la
+    horizontal y la recta que une el buque con la punta del faro varía a una razón constante de
+    $\alpha^\circ$ por minuto, cuando el buque está a dos kilómetros del faro. ¿Cuál es la
+    velocidad del buque? ¿Cuál sería un valor razonable para $\alpha$?
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\begin{figure}[h]
+\begin{center}
+\subfloat[Ejercicio \ref{ex:dcRCCono}]{%
+    \begin{pspicture}(0,0)(6,6)
+    \psset{PointSymbol=none,PointName=none}%
+    \footnotesize%
+
+    \pstGeonode[]%
+      (3,1){V}(3,5){C}(1.5,5){A}(4.5,5){B}(3,3){D}(0,3){F}%
+
+    \pstLineAB[]%
+      {V}{A}%
+    \pstLineAB[]%
+      {V}{B}%
+
+    \psellipse[]%
+      (C)(! \psGetNodeCenter{A} \psGetNodeCenter{C} C.x A.x sub 0.25)
+
+    \pstInterLL%
+      {D}{F}{V}{A}{I}%
+
+    \psellipse[]%
+      (D)(! \psGetNodeCenter{I} \psGetNodeCenter{D} D.x I.x sub 0.15)%
+
+    \pstLineAB[]%
+      {D}{I}%
+    \pstMiddleAB[]%
+      {D}{I}{M}%
+    \uput[90](M){$r$}%
+
+    \psline{|<->|}%
+      (! \psGetNodeCenter{A} A.x A.y 0.5 add)(! \psGetNodeCenter{B} B.x B.y 0.5 add)%
+    \uput[90](3,5.5){$8\metros$}%
+
+    \psline{|<->|}%
+      (! \psGetNodeCenter{V} V.x 1.25 sub V.y)(! \psGetNodeCenter{V} V.x 1.25 sub
+      \psGetNodeCenter{I} I.y)%
+    \uput[180](1.75,2){$h$}%
+
+    \psline{|<->|}%
+      (! \psGetNodeCenter{V} V.x 2 add V.y)(! \psGetNodeCenter{V} V.x 2 add \psGetNodeCenter{B}
+      B.y)%
+    \uput[0](5,3){$8\metros$}
+    \end{pspicture}
+    \label{fig:cono}}%
+\qquad
+\subfloat[Ejercicio \ref{ex:dcRCIslote}]{%
+    \begin{pspicture}(0,0)(6,6)
+      \psset{PointSymbol=none}%
+      \footnotesize%
+
+      \pstGeonode[PosAngle={180,180,0}]%
+        (1,5){P}(1,1){Q}(5,1){F}%
+      \pstGeonode[PointName=none]%
+        (1,0){I}(1,6){S}%
+
+      \pstLineAB[]%
+        {I}{S}%
+      \psdot[]%
+        (F)%
+
+      \pstLineAB[linestyle=dashed,arrows=->]%
+        {F}{P}%
+      \pstLineAB[arrows=|<->|]%
+        {Q}{F}%
+      \uput[-90](3,1){$3\kilometros$}%
+
+      \uput[180]{90}(0.75,3){Playa}
+    \end{pspicture}
+    \label{fig:islote}}%
+    \end{center}
+\caption{Gráficos de los ejercicios sobre razón de cambio}
+\end{figure}
+\section{Derivación implícita}
+
+La representación en el plano cartesiano de las parejas ordenadas $(x,y)$ que satisfacen una
+ecuación dada, llamada gráfico de esa ecuación, puede consistir en un punto, en una curva,
+etcétera.
+
+Cuando ese gráfico es una curva, ésta no es necesariamente el gráfico de una función (sabemos que
+para que lo sea, su intersección con cualquier vertical tiene que consistir, a lo más, en un
+punto).
+
+Por ejemplo, el gráfico de $x^{2}+y^{2}=25$ es la circunferencia de radio 5 cuyo centro es el
+origen del sistema de coordenadas. La recta vertical $x=3$ la corta en dos puntos, $(3,-4)$ y
+$(3,4)$, por lo que esta curva no puede ser el gráfico de una función.
+
+Sin embargo, si tomamos solo un pedazo de esa curva, puede suceder que ese trozo sí cumple con el
+criterio de los cortes verticales por lo que puede ser el gráfico de una función. En nuestro
+ejemplo, si tomamos el trozo de circunferencia que está sobre el eje horizontal, ese pedazo puede
+considerarse como el gráfico de la función $f\colon\mathbb{R}  \rightarrow \mathbb{R}$ definida por
+\begin{equation*}
+	y=f(x)=\sqrt{25-x^{2}}.
+\end{equation*}
+Lo mismo hubiese sucedido si tomábamos la semicircunferencia que está bajo el eje horizontal, que
+puede considerarse como el gráfico de una función $g\colon\mathbb{R}  \rightarrow \mathbb{R}$
+definida por:
+\begin{equation*}
+	y=g(x)=-\sqrt{25-x^{2}}.
+\end{equation*}
+
+En este caso, se dice que las funciones $f$ y $g$ están \emph{definidas implícitamente} por la
+ecuación:
+\begin{equation*}
+	x^{2}+y^{2}=25,
+\end{equation*}
+o simplemente que son \emph{funciones implícitas}.
+
+Podemos ver que
+\[
+\Dm(f) = \Dm(g) = [-5,5],
+\]
+y que para todo $x\in [-5,5]$, se verifican las siguientes igualdades:
+\begin{equation*}
+	x^{2}+[f(x)]^{2}=25
+\yjc
+	x^{2}+[g(x)]^{2}=25.
+\end{equation*}
+
+Por otro lado, se pueden tomar otros pedazos o uniones de pedazos de circunferencia que pueden
+considerarse gráficos de funciones definidas implícitamente por la misma ecuación $x^{2}+y^{2}=25$.
+En este ejemplo logramos hallar fórmulas para \emph{definir explícitamente} a las funciones $f$ y
+$g$.
+
+Si una función $h\colon\mathbb{R}  \rightarrow \mathbb{R}$ puede definirse mediante una fórmula de
+la forma $y=h(x)$, se dice que $h$ es una \emph{función explícita}.
+
+En general no siempre es posible explicitar una función implícita. Por ejemplo, para la ecuación
+\begin{equation}
+\label{eq:MasDer001}
+	xy+x^{5}+5x^{2}y^{4}-9y^{5}+2=0,
+\end{equation}
+vemos que no es posible despejar la $y$ para ponerla en términos de $x$, es decir que no podemos
+explicitar las funciones implícitas cuyos gráficos sean subconjuntos del gráfico de esta ecuación.
+
+Sin embargo, gracias a la regla de la cadena, es posible, en estos casos, hallar la derivada de las
+funciones implícitas, cuando, en las ecuaciones, cada uno de los miembros es una combinación (que
+consiste de sumas, restas, multiplicaciones, divisiones o composiciones finitas), de las funciones
+elementales conocidas (polinomios, exponenciales, trigonométricas, o las inversas de las
+mencionadas).
+
+En estos casos, se puede derivar ambos miembros respecto a la variable consideradas independiente
+($x$ en el ejemplo), y luego se despeja fácilmente la derivada de la variable dependiente ($y$ en
+el ejemplo), que aparece al utilizar la regla de la cadena en las expresiones que contienen la
+variable dependiente.
+
+Al derivar ambos miembros de la ecuación~(\ref{eq:MasDer001}), tenemos que:
+\begin{equation*}
+	 y+xy'+5x^{4}+10xy^{4}+20x^{2}y^{3}y'-45y^{4}y'=0,
+\end{equation*}
+de donde
+\begin{equation*}
+	 y'=\frac{y+5x^{4}+10xy^{4}}{-x-20x^{2}y^{3}+45y^{4}}.
+\end{equation*}
+
+\begin{exemplo}[Solución]{%
+Hallar la ecuación de la tangente a la circunferencia $x^{2}+y^{2}=25$ en el punto
+$(3,4)$.
+}%
+La ecuación de la recta será
+\begin{equation*}
+	y=4+m(x-3),
+\end{equation*}
+donde $m$ es la pendiente.
+
+Ahora bien, $m$ es la derivada de la función explícita cuyo gráfico es un pedazo de la
+circunferencia que contenga al punto $(3,4)$.
+
+Para hallar $y'$, derivemos explícitamente $x^{2}+y^{2}=25$. Obtendremos que se verifica la
+igualdad siguiente:
+\[
+2x+2yy'=0,
+\]
+de donde se obtiene la derivada de $y$:
+\begin{equation*}
+	y'=-\frac{x}{y}.
+\end{equation*}
+
+Para $(x,y)=(3,4)$ tendremos $m=y'=-\frac{3}{4}$. Entonces, la ecuación de la recta será:
+\[
+y=4-\frac{3}{4}(x-3),
+\]
+que es equivalente a:
+\begin{equation*}
+	3x+4y-25=0.
+\end{equation*}
+\end{exemplo}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Si una función $\funcjc{f}{x}{y = f(x)}$ es derivable y está definida implícitamente
+    por la ecuación dada a continuación, calcule $y' = f'(x)$.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle y^5 + y^3 + y - x = 0$.
+    \item $\displaystyle y - x = \epsilon\sen y$ con $|\epsilon| < 1$.
+    \item $\displaystyle y^2 = 2px$, con $y > 0$.
+    \item $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ con $y > 0$.
+    \item $\displaystyle \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ con $y < 0$.
+    \item $\displaystyle (2a - x)y^2 = x^3$, con $a > 0$ y $y < 0$.
+    \item $\displaystyle \sqrt{x} + \sqrt{y} = 2$.
+    \item $\displaystyle x^{\frac{2}{3}} + y^{\frac{2}{3}} = a^{\frac{2}{3}}$, con $a > 0$,
+        $y > 0$.
+    \item $\displaystyle 5x^2 + 9y^2 - 30x + 18y + 9 = 0$ con $y < -1$.
+    \item $\displaystyle x^2 - 4xy + 4y^2 + 4x - 3y - 7 = 0$ con $x < 2y - 1$.
+    \end{enumerate}
+
+\item Si una función $\funcjc{f}{x}{y = f(x)}$ es derivable y está definida implícitamente
+    por la ecuación dada a continuación, calcule $f'(a)$.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle x^2 + y^2 - 6x + 10y - 2 = 0$, $y > - 5$ y $a = 0$.
+    \item $\displaystyle 6xy + 8y^2 - 12x - 26y + 11 = 0$, $y > 0$ y $a = \frac{11}{12}$.
+    \item $\displaystyle e^y + xy = e$, $y > 0$ y $a = 0$.
+    \item $\displaystyle xy + \ln y = 1$, $y < e^2$ y $a = 0$.
+    \end{enumerate}
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Derivada de la función inversa}
+Si $\funcjc{f}{D\subseteq\Rbb}{\Rbb}$ es es inyectiva, existe la función inversa
+$\funcjc{f^{-1}}{\Img(f)}{D}$ tal que
+\begin{equation*}
+	x=f^{-1}(y) \quad \Leftrightarrow \quad y=f(x).
+\end{equation*}
+Se verifican, entonces, las siguientes igualdades:
+\begin{equation*}
+	f^{-1}(f(x))=x
+\end{equation*}
+para todo $x\in D(f)$; y
+\begin{equation}
+\label{eq:dd002}
+f(f^{-1}(y))=y
+\end{equation}
+para todo $y\in \Dm(f^{-1})$.
+
+Si se conoce la derivada de $f$, podemos hallar la derivada de $f^{-1}$. Esto lo podemos hacer con
+ayuda de la regla de la cadena.
+
+En efecto, la igualdad~(\ref{eq:dd002}) puede ser considerada como una ecuación que define
+implícitamente $x$ como función de $y$, donde
+\[
+x = f^{-1}(y).
+\]
+
+Podemos, entonces, calcular la derivada de $x$, es decir, la derivada de la inversa de $f$, si
+derivamos respecto de $y$ ambos miembros de la igualdad~(\ref{eq:dd002}). Al hacerlo, obtendremos
+que:
+\[
+f'(f^{-1}(y))(f^{-1})'(y) = 1,
+\]
+de donde:
+\begin{equation}
+\label{et:ddDerivadaInversa}
+	(f^{-1})'(y)= \frac{1}{f'(f^{-1}(y))},
+\end{equation}
+siempre que $y\in \Dm(f^{-1})$ y que el denominador sea diferente de cero.
+
+\begin{exemplo}[Solución]{%
+Hallar la derivada de $\ln$, la función inversa de $f$ definida por $f(x) = e^x$.
+}%
+En primer lugar:
+\[
+f'(x) = e^x = f(x).
+\]
+Por lo tanto:
+\[
+f'(f^{-1}(y)) = f(f^{-1}(y)) = y.
+\]
+
+Entonces, al utilizar la fórmula~(\ref{et:ddDerivadaInversa}), obtenemos que:
+\begin{align*}
+(f^{-1})'(y) &= \frac{1}{f'(f^{-1}(y))} \\[4pt]
+   &= \frac{1}{f(f^{-1}(y))} \\[4pt]
+   &= \frac{1}{y}.
+\end{align*}
+
+Como $\ln y = f^{-1}(y)$, entonces:
+\[
+(\ln y)' = \frac{1}{y}.
+\]
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Hallar la derivada de la función $\arcsen$.
+}%
+En primer lugar, la función $\arcsen$ es la función inversa de la función $\sen$ restringida al
+intervalo $[-\frac{\pi}{2},\frac{\pi}{2}]$. Sea, entonces, $f$ definida por:
+\[
+f(x) = \sen x
+\]
+para todo $x\in [-\frac{\pi}{2},\frac{\pi}{2}]$.
+
+Entonces $f'(x) = \cos x$ y:
+\begin{equation}
+\label{eq:dd003}
+f'(f^{-1}(y)) = \cos(\arcsen y)
+\end{equation}
+para todo $y \in [-1,1] = \Dm(\arcsen)$.
+
+Ahora bien, sabemos que
+\[
+\sen^2 x + \cos^2 x = 1,
+\]
+de donde
+\[
+\cos^2 x = 1 - \sen^2 x,
+\]
+y, dado que $\cos x > 0$ para todo $x\in [-\frac{\pi}{2},\frac{\pi}{2}]$, tenemos que:
+\[
+\cos x = \sqrt{1 - \sen^2 x}.
+\]
+
+Con ayuda de esta última expresión, podemos reescribir la igualdad~(\ref{eq:dd003}) de la siguiente
+manera:
+\begin{align*}
+f'(f^{-1}(y)) &= \cos(\arcsen y) \\
+   &= \sqrt{1 - \sen^2(\arcsen y)} \\
+   &= \sqrt{1 - \left(\sen(\arcsen y)\right)^2} \\
+   &= \sqrt{1 - y^2}.
+\end{align*}
+
+Entonces, la fórmula~(\ref{et:ddDerivadaInversa}) nos da:
+\begin{align*}
+(f^{-1})'(y) &= \frac{1}{f'(f^{-1}(y))} \\[4pt]
+   &= \frac{1}{\sqrt{1 - y^2}}.
+\end{align*}
+Por lo tanto:
+\[
+(\arcsen y)' = \frac{1}{\sqrt{1 - y^2}}
+\]
+para todo $y\in [-1,1]$.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Las derivadas de $\arccos$, $\arctan$ y $\sqrt{ \ }$.
+}%
+El procedimiento es similar al del ejemplo anterior. Pero hay que considerar lo siguiente.
+
+En el caso del $\arccos$, su dominio es $[-1,1]$ y su imagen $[0,\pi]$. Esta función es la inversa
+de la función $\cos$, restringida al intervalo $[0,\pi]$, cuya derivada es $-\sen$.
+
+Como la función $\sen$ es positiva en el intervalo $[0,\pi]$, entonces:
+\[
+\sen x = \sqrt{1 - \cos^2 x}.
+\]
+
+Al aplicar la fórmula~(\ref{et:ddDerivadaInversa}), obtendremos que:
+\[
+(\arccos y)' = -\frac{1}{\sqrt{1 - y^2}}
+\]
+para todo $y\in [-1,1]$.
+
+En el caso de $\arctan$, su dominio es $\mathbb{R}$ y su imagen $[-\frac{\pi}{2},\frac{\pi}{2}]$, y
+es la función inversa de $\tan$, restringida a este último intervalo.
+
+La derivada de $\tan$ es $\sec^2$. Con ayuda de la identidad
+\[
+\sec^2 x = 1 + \tan^2 x,
+\]
+verdadera para todo $x\in\mathbb{R}$, al aplicar la fórmula~(\ref{et:ddDerivadaInversa}),
+obtendremos que
+\[
+(\arctan y)' = \frac{1}{1 + y^2}
+\]
+para todo $y\in\mathbb{R}$.
+
+Finalmente, para obtener la derivada de $\sqrt{ \ }$, solo hay que recordar que es la función
+inversa de la función $x^2$ restringida al intervalo $[0,+\infty]$. Al aplicar la
+fórmula~(\ref{et:ddDerivadaInversa}), obtendremos que:
+\[
+(\sqrt{y})' = \frac{1}{2\sqrt{y}}
+\]
+para todo $y > 0$.
+\end{exemplo}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup\small
+\begin{enumerate}[leftmargin=*]
+\item Calcule la derivada $(f^{-1})'(y_0)$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = x + \frac{1}{3}x^3$, $y_0
+        \in\{0,\pm\frac{4}{3},\pm\frac{14}{3}\}$.
+    \item $\displaystyle f(x) = 2x - \frac{1}{2}\cos x$, $y_0 = -\frac{1}{2}$.
+    \item $\displaystyle f(x) = 0.1x + e^{0.01x}$, $y_0 = 1$.
+    \item $\displaystyle f(x) = 2x^2 - x^4$, $x > 1$ y $y_0 = 0$.
+    \item $\displaystyle f(x) = 2x^2 - x^4$, $0 < x < 1$ y $y_0 = \frac{3}{4}$.
+    \item $\displaystyle f(x) = \ln x$, $x > 0$, $y_0=1$.
+    \item $\displaystyle f(x) = \exp x$, $y_0=1$.
+    \end{enumerate}
+
+\item Si conoce que $(\ln x)' = \frac{1}{x}$ y que $\exp = \ln^{-1}$, calcule $\exp'$.
+
+\item Si conoce que $\exp' = \exp$ y que $\ln = \exp^{-1}$, calcule $\ln'$.
+
+\item Calcule fórmulas para las derivadas de las funciones inversas de $\sinh$, $\cosh$ y
+    $\tanh$.
+\item Calcule $(f^{-1})'$ y $\Dm((f^{-1})')$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = \frac{x^2}{1 + x^2}$, $x < 0$.
+    \item $\displaystyle f(x) = \coth x$, $x > 0$.
+    \end{enumerate}
+
+\item Si $f(x) = x + \sen x$ para todo $x\in\Rbb$, calcule los valores de $a$ y de $b$ para los
+    cuales se verifican las igualdades $(f^{-1})'(a) = +\infty$ y $(f^{-1})'(b) = -\infty$.
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Derivadas de orden superior}
+
+Recordemos que, dada una función $\funcjc{f}{\Dm(f)}{\mathbb{R}}$, se define la función
+$\funcjc{f'}{\Dm(f')}{\mathbb{R}}$, la función derivada de $f$, cuyo dominio es:
+\begin{equation*}
+	\Dm(f')=\{x\in \Dm(f) : \ \text{existe} \ f'(x)\}.
+\end{equation*}
+
+Al ser $f'$ una función, es posible que también sea derivable en algunos elementos de su dominio.
+Esta situación conduce a la siguiente definición.
+
+\begin{defical}[Derivadas de segundo orden]
+Sea $a\in D(f')$ para el cual existe la derivada de $f'$; es decir, existe $(f')'(a)$. Este número
+es denominado \emph{segunda derivada de $f$ en $a$} y es representado por:
+\[
+f^{\prime\prime}(a) \quad\text{o}\quad \frac{d^{2}}{d x^{2}}f(a).
+\]
+Es decir:
+\begin{equation*}
+	f''(a)=\frac{d^{2}}{d x^{2}}f(a)=\frac{d}{d x}\left(\frac{d}{d x}f\right)(a)=(f')'(a).
+\end{equation*}
+\end{defical}
+
+\begin{exemplo}[Solución]{%
+Calcular la segunda derivada de $\sen x$, $\cos x$ y $e^x$.
+}%
+Sea $f$ definida por $f(x) = \sen x$. Entonces $f$ es derivable en $\mathbb{R}$ y:
+\[
+f'(x) = \cos x.
+\]
+Por lo tanto, $f'$ también es derivable en $\mathbb{R}$ y su derivada es igual a la derivada de la
+función $\cos$:
+\[
+(f')'(x) = (\cos x)' = -\sen x.
+\]
+Por lo tanto:
+\[
+(\sen x)'' = -\sen x.
+\]
+
+De manera similar se establece que $\cos x$ y $e^x$ tienen segunda derivada y:
+\[
+(\cos x)'' = (-\sen x)' = -\cos x;
+\]
+y
+\[
+(e^x)'' = (e^x)' = e^x.
+\]
+\end{exemplo}
+
+Ahora bien, podría suceder que la función $f''$ también fuera derivable en algunos elementos de su
+dominio. Entonces, existiría la función $f'''$, que se definiría por:
+\[
+f''' = (f'')'.
+\]
+Esta función es denominada la \emph{derivada de tercer orden}.
+
+En general, podemos hablar de la derivada de orden $n$, que se define inductivamente así:
+
+\begin{defical}[Derivada de orden $n$]
+Sea $\funjc{f}{\Dm(f)}{\mathbb{R}}$. Para cada $n\in\mathbb{N}$, se define:
+\begin{enumerate}
+\item $f^{(0)} = f$.
+\item $f^{(n+1)} = (f^{(n)})'$, para $n \geq 0$.
+\end{enumerate}
+Si existe $f^{(n)}(a)$, este número es denominado la $n$-ésima derivada de $f$ en $a$ y suele ser
+representado de la siguiente manera:
+\[
+f^{(n)}(a) = \frac{d^n}{dx^n}f(a).
+\]
+\end{defical}
+
+De esta definición, es inmediato que:
+\begin{equation*}
+	f^{(n)}(a)=\frac{d^{n}}{d x^{n}}f(a)=
+   \frac{d}{d x}\left(\frac{d^{n-1}}{d x^{n-1}}f\right)(a) =
+   \left(f^{(n-1)}\right)'(a).
+\end{equation*}
+
+Tiene sentido definir como la derivada de orden $0$ a la misma función, pues se puede interpretar
+esto diciendo que no derivar la función es dejarla intacta.
+
+\begin{exemplo}[Solución]{%
+Establecer fórmulas generales para las derivadas de orden $n$ para $\sen x$, $\cos x$ y
+$e^x$.
+}%
+En el ejemplo anterior, calculamos la segunda derivada de estas tres funciones. Calculemos ahora
+las derivadas de tercero y cuarto orden.
+
+Para el caso de la función $\sen x$:
+\begin{align*}
+(\sen x)^{(3)} &= ((\sen x)^{(2)})' = (-\sen x)' = -\cos x. \\
+(\sen x)^{(4)} &= ((\sen x)^{(3)})' = (-\cos x)' = \sen x.
+\end{align*}
+
+Como podemos ver, la derivada de orden $4$ de $\sen x$ es igual a la función $\sen x$. Esto
+significa que la derivada de orden $5$ es igual a la primera derivada; la derivada de orden $6$,
+igual a la segunda derivada; la derivada de orden $7$, igual a la tercera; y la de orden $8$, a la
+de orden $4$. Es decir, las derivadas se repetirán cada cuatro órdenes. Podemos resumir esto de la
+siguiente manera:
+\[
+\begin{array}{ll}
+(\sen x)^{(4n)} &= \sen x. \\[4pt]
+(\sen x)^{(4n+1)} &= \cos x. \\[4pt]
+(\sen x)^{(4n + 2)} &= -\sen x. \\[4pt]
+(\sen x)^{(4n + 3)} &= -\cos x
+\end{array}
+\]
+para todo $n \geq 0$.
+
+De manera similar, se establece para $\cos x$ lo siguiente:
+\[
+\begin{array}{ll}
+(\cos x)^{(4n)} &= -\sen x. \\[4pt]
+(\cos x)^{(4n+1)} &= -\cos x. \\[4pt]
+(\cos x)^{(4n + 2)} &= \sen x. \\[4pt]
+(\cos x)^{(4n + 3)} &= \cos x
+\end{array}
+\]
+para todo $n \geq 0$.
+
+Finalmente, la derivada de $e^x$ siempre es igual a $e^x$, por lo que se verifica la siguiente
+fórmula:
+\[
+(e^x)^{(n)} = e^x
+\]
+para todo $n\geq 0$.
+\end{exemplo}
+
+\section{Ejercicios}
+\begingroup\small
+Calcule $f^{(n)}$ con $n\in\Nbb$:
+\begin{multicols}{2}
+\begin{enumerate}[leftmargin=*]
+\item $f(x) = \displaystyle\frac{x+1}{x-1}$ si $n = 2$.
+\item $f(x) = x^5-7x^2+1$ si $n = 2$.
+\item $f(x) = ax^2+bx+c$.
+\item $f(x) = ax^3+bx^2+cx+d$.
+\item $f(x) = \sen(ax)$.
+\item $f(x) = \cos(ax)$.
+\item $\displaystyle f(x) = \ln x$.
+\item $\displaystyle f(x) = \sum_{k=0}^{m}a_kx^k$ con $m\in \mathbb{N} - \{0\}$.
+\item $\displaystyle f(x) = \frac{1}{x}$.
+\item $\displaystyle f(x) = \frac{1}{(x + a)}$.
+\item $\displaystyle f(x) = \frac{x + a}{x - a}$.
+\end{enumerate}
+\end{multicols}
+\endgroup
+
+\section{Diferenciales}
+La derivada de una función $f$ en un punto dado $x_0$ es el valor de la pendiente de la recta
+tangente al gráfico de $f$ en el punto de coordenadas $(x_{0},f(x_{0}))$, cuya ecuación es:
+\begin{equation*}
+	 y=f(x_{0})+f'(x_{0})\, (x-x_{0}).
+\end{equation*}
+
+Esta recta suele ser utilizada para aproximar el gráfico de $f$ para  valores cercanos a $x_{0}$,
+pues, como se puede apreciar el gráfico que está a continuación, los valores de la recta y de la
+función son próximos:
+\begin{center}
+\def\F{x dup mul}%
+\psset{unit=8cm}
+\begin{pspicture}(-0.1,-0.1)(0.8,0.65)
+   \SpecialCoor
+
+   \psaxes{->}(0,0)(-0.1,-0.1)(0.75,0.6)%
+   \uput[-90](0.75,0){$x$}%
+   \uput[0](0,0.6){$y$}%
+
+   \psplot[linewidth=3\pslinewidth]{0}{0.7}{\F}%
+   \psplotTangent[linecolor=gray,linewidth=1.75\pslinewidth]%
+      {0.4}{0.3}{\F}%
+   \psline[linestyle=dashed]%
+      (! 0 /x 0.4 def \F)(! 0.4 /x 0.4 def \F)(0.4,0)%
+
+   \uput[180](! 0 /x 0.4 def \F){$f(x_0)$}%
+   \uput[-90](0.4,0){$x_0$}%
+   \uput[0](! 0.7 /x 0.7 def \F){$y = f(x)$}%
+
+\end{pspicture}
+\end{center}
+
+Ahora bien, si $x$ varía desde $x_{0}$ hasta $x_0 + \Delta x$, el valor correspondiente de $y$
+cambia de $y_{0}=f(x_{0})$ a $y = f(x_{0}+\Delta x)$. Este cambio o variación, representado por
+$\Delta y$ se calcula así:
+\begin{equation*}
+	 \Delta y = y - y_{0}=f(x_{0}+\Delta x)-f(x_{0}).
+\end{equation*}
+
+Entonces, vamos a utilizar el valor que toma $(x_{0}+\Delta x)$ en la recta tangente, en lugar del
+que toma en $f$; es decir, en lugar de utilizar el valor $y = f(x_{0}+\Delta x)$, utilizamos el
+dado por la ecuación de la recta tangente:
+\begin{equation*}
+	 y = f(x_{0}) +f'(x_{0})((x_{0}+\Delta x)-x_{0})= f(x_{0})+f'(x_{0})\Delta x.
+\end{equation*}
+
+Esto implica que al cambio $\Delta y$ lo estamos aproximando con el cambio que se produce en la
+recta al variar $x$, de $x_{0}$ a $x_{0}+\Delta x$, que se nota $d y$ y que se calcula así:
+\begin{equation*}
+	d y=[f(a)+f'(a)\, \Delta x]-f(a)=f'(a)\, \Delta x.
+\end{equation*}
+Se suele escribir $\Delta x = d x$; a $d x$ se le llama diferencial de $x$. A $d y$ se le llama
+\emph{diferencial de $f$ en $a$}. Se tiene entonces
+\begin{equation*}
+	d y=f'(a)\, d x.
+\end{equation*}
+Esta igualdad puede interpretarse como la ecuación de la recta tangente en un sistema de
+coordenadas $(d x, d y)$ cuyo origen está en $(x_{0},f(x_{0}))$ y que es paralelo al sistema de
+coordenadas $(x,y)$.
+
+\begin{exemplo}[Solución]{%
+Si $f$ está definida por $f(x) = 3x^2 + 2$, calcular el diferencial de $f$ en $1$.
+}%
+Sea $y = f(x) = 3x^{2} + 2$. Como $f'(x) = 6x$, para $x_{0}=1$, se tiene que:
+\begin{equation*}
+	dy=f'(1)\,dx=6dx.
+\end{equation*}
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Si $g$ está definida por $g(t) = t + e^t$, calcular el diferencial de $g$ en $2$.
+}%
+Sea $z=g(t)=t+e^{t}$. Como $g'(t) = 1+e^{t}$, para $t_{0}=2$ se tiene que:
+\begin{equation*}
+	dz=g'(2)\,dt=(1+e^{2})dt.
+\end{equation*}
+\end{exemplo}
+
+Entre las aplicaciones de los diferenciales está la posibilidad de realizar ciertos cálculos
+aproximados.
+
+\begin{exemplo}[Solución]{%
+Calcular un valor aproximado para $\sqrt{50}$.
+}%
+Ponemos $f(x)=\sqrt{x}, x_0=49,\Delta x= dx=1$ y aproximamos $\Delta y$ con $dy$:
+\begin{equation*}
+	 dy=f'(x_0)\,dx=\frac{1}{2\sqrt{49}}\cdot 1=\frac{1}{14}.
+\end{equation*}
+Entonces
+\begin{equation*}
+	\sqrt{50}=f(50)=f(49)+\Delta y\approx f(49)+dy=\sqrt{49}+\frac{1}{14}=7+\frac{1}{14}=\frac{99}{14}.
+\end{equation*}
+Si se tiene en cuenta que $\sqrt{50}\approx 7.071068 \ldots$ y que $\frac{99}{14}\approx 7.071429
+\dots$, vemos que la aproximación es aceptable.
+\end{exemplo}
+
+\section{Ejercicios}
+\begingroup
+\small
+\begin{multicols}{2}
+\begin{enumerate}[leftmargin=*]
+\item Halle $\mathrm{d}y$ en función de $x$ y de $\mathrm{d}x$:
+  \begin{enumerate}
+  \item $y = x^2 - 3x$.
+  \item $y = \displaystyle\frac{x + 1}{x - 1}$.
+  \item $\displaystyle y = x\sen x + \cos x$.
+  \item $\displaystyle y = x^{\frac{2}{3}}$.
+  \end{enumerate}
+
+\item Para los valores de $\Delta x$ y de $x$ dados, calcule $\Delta y$ y $\mathrm{d}y$:
+  \begin{enumerate}
+  \item $\displaystyle y = x^2 + x + 1, \ \Delta x \in \{0.1, 0.5, 1\}, \ x = 1$.
+  \item $\displaystyle y = \frac{2x}{x - 1}, \ \Delta x \in \{0.1, 0.5\}, \ x = 1$.
+  \item $\displaystyle y = \frac{1}{x}, \ \Delta x \in \{0.1, 0.5\}, \ x = 1$.
+  \end{enumerate}
+
+\item Calcule, mediante diferenciales, un valor aproximado de:
+  \begin{enumerate}
+  \item $\sqrt{26}$.
+  \item $\displaystyle\frac{1}{\sqrt{50}}$.
+  \item $\displaystyle\frac{0.9^3}{1.9}$.
+  \item $\sen(\pi/3 - 0.1)$.
+  \item $\sqrt{82}$.
+  \item $\displaystyle\frac{1}{\sqrt{37}}$.
+  \item $\sen 44^\circ$ (¡Atención: utilice radianes!).
+  \item $(2.1)^3 + 3(2.1)^2$.
+  \end{enumerate}
+\end{enumerate}
+\end{multicols}
+\endgroup
+
+\section{Cálculo de los ceros de funciones derivables}
+Si conocemos que una función $\funcjc{f}{I}{\mathbb{R}}$, continua en un intervalo abierto $I$, posee un cero en dicho intervalo (por ejemplo, si para $a$, $b$ números reales tales que $a < b$, hemos constatado que $f(a)f(b) < 0$, con lo cual se garantizará, por el teorema del valor intermedio de las funciones continuas, la existencia de un cero $\overline{x}$ entre $a$ y $b$), es útil conocer métodos para el cálculo aproximado de los ceros.
+
+\begin{enumerate}
+\item [a)]\textit{Método de dicotomía:} Si $f(a)f(b) < 0$, ponemos $c_1 = (a + b)/2$ y $c_1$ es ya una aproximación del cero buscado, y el error de aproximación satisfará la desigualdad
+$|\overline{x} - c_1| < (b - a)/2$. Para $f(c_1)$, tenemos tres posibilidades:
+\begin{enumerate}
+\item [1.]$f(c_1) = 0$, con lo cual $\overline{x} = c_1$.
+\item [2.]$f(c_1)f(a) < 0$. Se aplica la misma idea y se pone $c_2 = (c_1 + a)/2$, el punto intermedio entre $a$ y $c_1$, y es una nueva aproximación de $\overline{x}$, y esta vez el error de aproximación satisface la desigualdad $|\overline{x} - c_2| < (b - a)/2^2$.
+\item [3.] $f(c_1)f(b) < 0$. Se aplica la misma idea, pero se pone $c_2 = (c_1 + b)/2$.
+\end{enumerate}
+Y, así sucesivamente, se obtienen aproximaciones $c_1$, $c_2$, $c_3$, etcétera, de $\overline{x}$; en el paso $n$, para la aproximación $c_n$ del cero $\overline{x}$, el error de aproximación satisface la desigualdad $|\overline x - c_n| < (b - a)/2^n$.
+
+Se puede, entonces, calcular el número de pasos necesarios para lograr una aproximación con un error menor a un valor $\epsilon > 0$ pequeño y predeterminado. Si, por ejemplo, se desea obtener una aproximación con $k$ cifras decimales exactas, bastará resolver la desigualdad
+\begin{equation}
+\label{eq:dc001}
+\frac{b - a}{2^n} < \frac{10^{-k}}{2}
+\end{equation}
+para obtener el número $n$ de pasos necesarios.
+
+\begin{exemplo}[Solución]{Calcule $\sqrt{2}$ con dos cifras decimales exactas mediante el método de dicotomía.}
+El número $\sqrt{2}$ es un cero de la función $\funcjc{f}{[1,2]}{\mathbb{R}}$ definida por $f(x) = x^2 - 2$. Si en el $n$-ésimo paso trabajamos con el intervalo $[a_n,b_n]$, poniendo $a_1 = 1$, $b_1 = 2$, $c_1 = (a_1 + b_1)/2$, $c_n = (a_n + b_n)/2$, y teniendo en cuenta que la inecuación~(\ref{eq:dc001}) en este caso es
+\[
+\frac{2 - 1}{2^n} < \frac{0.01}{2},
+\]
+se tiene que $n = 7$ es suficiente. Los cálculos se resumen en el cuadro siguiente:
+\[
+\begin{array}{|c|l|l|l|l|l|l|}\hline
+n &
+\multicolumn{1}{c|}{a_n} & \multicolumn{1}{c|}{b_n} & \multicolumn{1}{c|}{c_n} &
+\multicolumn{1}{c|}{f(a_n)} & \multicolumn{1}{c|}{f(b_n)} & \multicolumn{1}{c|}{f(c_n)} \\ \hline
+1	& 1	& 2	& 1.5	& -1	& 2	& 0.25 \\
+2	& 1	& 1.5	& 1.25	& -1	& 0.25	 & -0.437\,5 \\
+3	& 1.25	& 1.5	& 1.375	& -0.437\,5	& 0.25	& -0.109\,375 \\
+4	& 1.375	& 1.5	& 1.437\,5	& -0.109\,375	& 0.25	& 0.066\,406\,25 \\
+5	& 1.375	& 1.437\,5	& 1.406\,25	& -0.109\,375	& 0.066\,406\,25	& -0.022\,460\,938 \\
+6	& 1.406\,25	& 1.4375	& 1.421\,875	& -0.022\,460\,938	& 0.066\,406\,25	& 0.021\,728\,516 \\
+7	& 1.406\,25	& 1.421875	& 1.414\,0625	& -0.022\,460\,938	& 0.021\,728\,516	& -0.000\,427\,246 \\ \hline
+\end{array}
+\]
+Se ve, entonces, que la aproximación buscada con dos decimales exactos es $c_7 = 1.41$.
+\end{exemplo}
+
+\item [b)] \textit{Método de Newton:} Cuando la función $f$ es, además, derivable, es más efectivo y rápido el método de \textit{Newton}, siempre y cuando la derivada tome valores distintos de $0$ en $I$. La idea de este método es partir de una aproximación cualquiera $x_0$ del cero $\overline x$ y obtener una nueva aproximación $x_1$, reemplazando el gráfico de $f$ con la tangente a él en el punto de coordenadas $(x_0,f(x_0))$, como se puede observar en el siguiente dibujo:
+\begin{center}
+\def\F{x dup mul 1.75 mul 0.125 sub}%
+\psset{unit=8cm}
+\begin{pspicture}(-0.1,-0.1)(0.8,0.65)
+   \SpecialCoor
+
+   \psaxes{->}(0,0)(-0.1,-0.15)(0.75,0.6)%
+   \uput[-90](0.75,0){$x$}%
+   \uput[0](0,0.6){$y$}%
+
+   \psplot[linewidth=3\pslinewidth]{0}{0.6}{\F}%
+   \psplot[linecolor=red,linewidth=1.25\pslinewidth]{0.3}{0.6}{1.925 x mul 0.654375 sub}
+   \psline[linestyle=dashed,linecolor=blue]%
+      (! 0.55 /x 0.55 def \F)(0.55,0)%
+
+   \uput[180](! 0.55 /x 0.55 def \F){$P_0$}%
+   \uput[-90](0.55,0){$Q_0(x_0)$}%
+   \uput[0](! 0.65 /x 0.65 def \F){$y = f(x)$}%
+   \uput[90](0.267261,0){$\overline x$}%
+   \uput[-90](0.339935,0){$Q_1(x_1)$}%
+   \uput[180](! 0.339935 /x 0.339935 def \F){$P_1$}%
+   \psline[linestyle=dashed,linecolor=blue]%
+      (! 0.339935 /x 0.339935 def \F)(0.339935,0)%
+
+\end{pspicture}
+\end{center}
+
+En el triángulo rectángulo $Q_1Q_0P_0$, tenemos que
+\[
+\tan\angle P_0Q_1Q_0 = \frac{Q_0P_0}{Q_1Q_0} = \frac{f(x_0)}{x_0 - x_1}.
+\]
+Como $\tan\angle P_0Q_1Q_0 = f'(x_0)$, tendremos que
+\[
+x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}.
+\]
+
+Si volvemos a aplicar la misma, pero ahora pariendo de $x_1$ en lugar de $x_2$, obtendremos una nueva aproximación $x_2$ de $\overline x$ mediante la fórmula
+\[
+x_2 = x_1 - \frac{f(x_1)}{f'(x_1)},
+\]
+y así sucesivamente. Si notamos $y_n = f(x_n)$ y $y'_n = f'(x_n)$ para $n\in\mathbb{N}$, tendremos que
+\[
+x_n = x_{n-1} - \frac{y_{n-1}}{y'_{n-1}},
+\]
+que es una fórmula iterativa de fácil aplicación.
+
+Como criterio para suspender el cálculo, se puede exigir que para un valor $\epsilon > 0$, pequeño y predeterminado, se tenga $|y_n| < \epsilon$.
+
+Apliquemos el método de Newton para volver a calcular una aproximación de $\sqrt{2}$, con $x_0 = 1$, $f(x) = x^2 - 2$ y $f'(x) = 2x$. Los cálculos se resumen en el cuadro siguiente:
+\[
+\begin{array}{|c|l|l|l|}\hline
+n & \multicolumn{1}{c|}{x_n} & \multicolumn{1}{c|}{f(x_n)} & \multicolumn{1}{c|}{f'(x_n)} \\ \hline
+0	& 1	& -1	& 2 \\
+1	& 1.5	& 0.25	& 3 \\
+2	& 1.416\,666\,667	& 0.006\,944\,444	& 2.833\,333\,333 \\
+3	& 1.414\,215\,686	& 0.000\,006\,007	& 2.828\,431\,373 \\
+4	& 1.414\,213\,562	& 4.5\times 10^{-12}	& 2.828\,427\,125 \\
+5	& 1.414\,213\,562	& 0	& 2.828\,427\,125 \\ \hline
+\end{array}
+\]
+La aproximación para el cero es $1.414\,213\,562$.
+
+Vemos que en $4$ pasos se tiene ya una aproximación con $8$ cifras decimales que no se va a modificar con más iteraciones.
+\end{enumerate}
+\section{Ejercicios}
+\begingroup
+\small
+\begin{multicols}{2}
+\begin{enumerate}
+\item ¿En cuántos pasos el método de dicotomía le permitirá calcular el número dado con $3$ cifras decimales exactas?
+    \begin{enumerate}
+    \item $\sqrt{3}$.
+    \item $1 + \sqrt{2}$.
+    \item $\sqrt{2} - 1$.
+    \item $\sqrt{2} + \sqrt{3}$.
+    \item La raíz de $x^3 + 5 = 0$.
+    \item La raíz de $\sinh x + 2 = 0$.
+    \end{enumerate}
+
+\item Compare los métodos de dicotomía y de Newton para los cálculos de aproximaciones de los números del ejercicio precedente.
+\end{enumerate}
+\end{multicols}
+\endgroup
+%\subsection{Ejercicios}
+%
+%\section{Ejercicios}
+%\begingroup\small
+%Suponga conocidos las definiciones de las funciones que se dan en la siguiente tabla de derivadas.
+%Con ayuda de esta tabla y de las propiedades algebraicas de las derivadas, calcule la derivada de
+%$f(x)$.
+%
+%Con los conceptos desarrollados hasta este momento, no nos es posible definir satisfactoriamente
+%las funciones exponencial y logaritmo. Sin embargo, para que aquellos lectores que conocen estas
+%funciones, las hemos incluido en la tabla. Debe recordarse, entonces, que:
+%\[
+%a^x = e^{x\ln a} \yjc \log_a x = \frac{\ln x}{\ln a}.
+%\]
+%\[
+%\begin{array}{|l|l|l||l|l|c|}\hline
+%\multicolumn{1}{|c|}{f(x)} &
+%\multicolumn{1}{c|}{f'(x)} &
+%\multicolumn{1}{c||}{\Dm(f')} &
+%\multicolumn{1}{c|}{f(x)} &
+%\multicolumn{1}{c|}{f'(x)} &
+%\multicolumn{1}{c|}{\Dm(f')} \\ \hline
+%c \in \Rbb & 0 & \Rbb & x^\alpha, \ \alpha \geq 1 & \alpha x^{\alpha - 1} & \Rbb \\
+%x^\alpha, \ \alpha < 1 & \alpha x^{\alpha - 1} & \Rbb - \{0\}
+%\end{array}
+%\]
+%\begin{multicols}{2}
+%\begin{enumerate}[leftmargin=*]
+%\item
+%
+%\end{enumerate}
+%\end{multicols}
+%\endgroup

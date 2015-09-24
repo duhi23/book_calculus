@@ -1,0 +1,3121 @@
+\chapter{La derivada: aplicaciones}
+
+\section{Romeo y Julieta: la modelización matemática}
+\begingroup
+\itshape%
+Romeo estaba feliz. Acababa de recibir noticias de su amada Julieta, quien logró enviarle
+clandestinamente un corto recado, escrito apuradamente en un trozo de papel:
+
+---Te esperaré, luego de la cena, en el muelle de mi residencia. Estaré oculta tras el farol
+que queda junto a los sauces.
+
+El dichoso Romeo, quien descansaba ese momento en sus alojamientos, decidió ir lo antes posible en
+su bote a la cita. Recordó que, a un costado del lago, crecía un hermoso jardín lleno de bellas
+rosas en esta época del año, que él sabía que eran de sumo agrado para Julieta. ¡Cómo no llevarle
+un ramo de esas rosas! Estaba, sin embargo, apurado, porque estaba a punto de atardecer. Debía
+escoger el camino más corto posible para llegar cuanto antes donde su amada llevándole el más bello
+ramo de rosas.
+\endgroup
+
+\vspace{\baselineskip}%
+Desde el inicio del pensamiento inteligente, éste consistió, fundamentalmente, en la búsqueda de
+modelos abstractos, teóricos, de la realidad. Pero, simultáneamente, desde el uso de piedrecillas
+(cálculos) y luego del más sofisticado ábaco, para hacer cuentas, seguido del de la ingeniosa regla
+de cálculo, y de las maravillosas máquinas electrónicas de que disponemos hoy en día, objetos
+físicos y máquinas inventadas y construidas por el hombre se constituyen en modelos físicos de
+objetos abstractos, como son los números y las operaciones que se realizan con ellos, las figuras y
+objetos geométricos y su representación gráfica.
+
+Las Ciencias Naturales y, cada vez más, las Ciencias Sociales utilizan modelos matemáticos como
+instrumento fundamental para describir y entender lo más relevante de los objetos o fenómenos
+estudiados. La tecnología de la producción de bienes y servicios utiliza cada vez más problemas
+matemáticos como modelos de problemas reales que se presentan en el quehacer creativo. El
+advenimiento de las computadoras, cada día más poderosas, ha favorecido este fenómeno, porque
+problemas matemáticos cuya solución ``teórica'' es demasiado compleja, y a veces prácticamente
+imposible, es ahora abordable, con excelentes resultados, mediante métodos numéricos que proveen de
+soluciones aproximadas de calidad.
+
+Es, pues, de vital importancia fortalecer la habilidad del matemático para tender puentes entre la
+realidad y la matemática, esto es la de utilizar adecuadamente los modelos matemáticos. La
+modelización matemática consiste, generalmente, en un proceso que puede ser descompuesto en las
+siguientes etapas, que las ilustraremos con el ejemplo de Romeo y Julieta.
+
+\begin{enumerate}[leftmargin=*]
+\item \emph{Identificación clara del problema, objeto o fenómeno que se quiere modelizar}. Como
+    resultado de esta fase, se obtiene el ``enunciado'' del problema o la descripción precisa
+    del objeto o fenómeno estudiado.
+
+\item \emph{Elaboración del modelo}. Consiste en la representación con símbolos y entes
+    matemáticos (números constantes o variables, figuras geométricas, funciones, ecuaciones
+    algebraicas o diferenciales, matrices y otros), los aspectos más relevantes del problema,
+    objeto o fenómeno estudiado. Un aspecto fundamental en esta etapa es la del uso de un
+    sistema coherente de unidades de medida, que permita escoger un modelo matemático que
+    abstraiga este tipo de información, es decir que no contenga ya unidades de medida sino
+    solo números, funciones numéricas, matrices numéricas, etcétera. Como resultado de esta
+    fase, se obtiene el modelo matemático a utilizarse.
+
+\item \emph{Solución del problema matemático}. Estudio del modelo matemático y solución del
+    problema matemático, de ser el caso. Al final de esta etapa, se obtiene una solución
+    matemática del problema.
+
+\item \emph{Interpretación del modelo matemático}. Se interpretan los resultados del problema
+    matemático para dar respuestas al problema original o se da la adecuada interpretación al
+    estudio del modelo matemático escogido.
+
+\end{enumerate}
+
+En este capítulo, vamos a conocer los métodos matemáticos que permiten resolver problemas como el
+de Romeo, entre otros. A manera de ejemplo, ilustremos las dos primeras etapas del proceso de
+modelización con el problema de Romeo y Julieta. Luego de desarrollar las técnicas apropiadas para
+resolver estos problemas mediante el cálculo diferencial, completaremos las otras dos etapas.
+
+\subsection{Identificación del problema}
+Sabemos que las residencias de Romeo y Julieta, representadas con los puntos $R$ y $J$
+respectivamente, están separadas por una laguna rectangular de $3$ kilómetros de ancho como se
+ilustra en el siguiente dibujo:
+\begin{center}
+\begin{pspicture}(6,4)
+   \psframe(0.5,0.5)(6,3)%
+   \uput[180](0.5,3){$A$}%
+   \uput[180](0.5,0.5){$B$}%
+
+   \pstGeonode[PosAngle={90,180,-90},PointSymbol=none,PointNameSep={1em,0.5em,1em}]%
+      (2.5,3){R}(0.5,2){P}(1.5,0.5){J}%
+
+   \psline{|<->|}(0.5,3.1)(2.5,3.1)%
+   \uput[90](1.5,3.25){$2$ km}%
+
+   \psline{|<->|}(0.5,0.4)(1.5,0.4)%
+   \uput[-90](1,0.4){$1$ km}%
+
+   \psline{|<->|}(6.1,0.5)(6.1,3)%
+   \uput[0](6.1,1.5){$3$ km}%
+
+   \psline(R)(P)(J)%
+
+   \rput(4,2.5){Laguna}%
+   \rput[t](0,1){\pstVerb{
+/vshowdict 4 dict def /vshow { vshowdict begin /thestring exch def /lineskip exch def thestring {
+/charcode exch def /thechar ( ) dup 0 charcode put def 0 lineskip neg rmoveto gsave thechar
+stringwidth pop 2 div neg 0 rmoveto thechar show grestore } forall end } def
+   64 (lasoR) vshow }}
+
+\end{pspicture}
+\end{center}
+
+El jardín se halla entre el extremo $A$ del lago, situado a $2$ kilómetros de la residencia de
+Romeo, y el extremo $B$ del lago, situado a $1$ kilómetro de la de Julieta. Lo que debemos hallar
+es el punto $P$ situado en algún lugar de la orilla $AB$ del lago, para que el recorrido total, $RP
++ PJ$, sea lo más corto posible.
+
+\subsection{Elaboración del modelo matemático}
+Este es un problema de extremos, cuya solución se obtiene a través del concepto de derivada. Más
+adelante estudiaremos el siguiente modelo matemático que es adecuado para el problema de Romeo y
+Julieta.
+
+\begin{quote}
+Dado un intervalo $I$ y una función $f\colon I \longrightarrow \mathbb{R}$ continua en $I$, se
+busca $x_m\in I$ tal que
+\[
+f(x_m) = \min_{x\in I} f(x).
+\]
+\end{quote}
+
+Determinemos la que sería la variable $x$, la función objetivo $f$ y el intervalo $I$ en el caso
+del problema de Romeo y Julieta.
+
+Para ello, recordemos que lo que debemos minimizar es la longitud del recorrido de Romeo en su
+barca. Nombremos con $d$ el número de kilómetros de dicha distancia. Entonces, tenemos que
+\[
+d = RP + PJ,
+\]
+donde la longitud del recorrido desde la casa de Romeo, situada en $R$ hasta el punto $P$ ---allí
+el joven recogerá las rosas para su amada---, es igual a $RP$ kilómetros, y la distancia recorrida
+desde $P$ hasta el punto $J$ ---lugar en el que Julieta se encuentra--- es igual a $PJ$ kilómetros.
+
+Sea $x = AP$, donde $AP$ kilómetros es la distancia recorrida en línea recta desde $A$ hasta $P$.
+
+Como datos, tenemos que $AR = 2$, $AB = 3$, $BJ = 1$ y que los ángulos $\angle RAP$ y $\angle ABJ$
+son rectos. En el triángulo $\triangle RAP$, $RP$ es la hipotenusa, por lo que
+\[
+RP = \sqrt{x^2 + 4}.
+\]
+En el triángulo rectángulo $\triangle PBJ$, se tiene que $PB = 3 - x$. Entonces, por el teorema de
+Pitágoras, otra vez, se tiene que:
+\[
+PJ = \sqrt{(3 - x)^2 + 1}.
+\]
+Finalmente, tenemos que:
+\[
+d = \sqrt{x^2 + 4} + \sqrt{(3 - x)^2 + 1}.
+\]
+
+Puesto que se busca que la distancia $d$ recorrida por Romeo sea la mínima, la función cuyo mínimo
+hay que hallar es $f$ definida por:
+\[
+f(x) = \sqrt{x^2 + 4} + \sqrt{(3 - x)^2 + 1}.
+\]
+
+De la definición de $x$ ---la distancia entre $A$ y $P$---, se tiene que $x\in (0,3) = I$.
+Entonces, $f\colon I \longrightarrow \mathbb{R}$ está definida para todo $x\in I$.
+
+Lo que resta del capítulo, lo vamos a dedicar a aprender cómo encontrar dicho $x$ en $I$ que
+optimice la función $f$.
+
+\section{Extremos globales o absolutos}
+
+\begin{defical}[Conjunto acotado]
+Un conjunto no vacío $A\subset \Rbb$ es \textbf{acotado por abajo (arriba)} si existe $c_1\in\Rbb$
+($c_2\in\Rbb$) tal que $x \geq c_1$ ($x \leq c_2$) para todo $x\in A$. A $c_1$ se le llama
+\textbf{cota inferior de $A$} y a $c_2$, \textbf{cota superior de $A$}.
+\end{defical}
+
+Sea $A\subset\Rbb$ y no vacío. Si $A$ es acotado por abajo, como consecuencia del axioma de
+completitud del conjunto de los números reales $\Rbb$, existe la más grande de las cotas inferiores
+de $A$, a la que se le llama \textbf{ínfimo de $A$} y se la representa por $\inf A$.
+
+Análogamente, si $A$ es acotado por arriba, existe la más pequeña de las cotas superiores de $A$,
+que se llama \textbf{supremo de $A$} y se la representa por $\sup A$.
+
+Evidentemente, en estos casos, se verifican las siguientes desigualdades:
+\[
+x \geq \inf A \yjc x \leq \sup A
+\]
+para todo $x\in A$.
+
+Puede ocurrir que $\inf A \in A$. En este caso, al ínfimo se le llama \textbf{mínimo de $A$} y se
+lo representa por $\min A$.
+
+De manera similar, puede suceder que $\sup A\in A$, en cuyo caso, se lo denomina \textbf{máximo de
+$A$} y se lo representa por $\max A$.
+
+Si $A$ no es acotado por abajo, se dice que el ínfimo es $-\infty$ y se escribe $\inf A = -\infty$.
+Si $A$ no es acotado por arriba, se dice que el supremo es $\infty$ y se escribe $\sup A = \infty$.
+
+Usando la notación de los ``infinitos'', cuando $A$ es acotado por abajo, se suele escribir $\inf A
+> -\infty$, y cuando es acotado por arriba, $\sup A < \infty$.
+
+Resumamos estos conceptos en la siguiente definición:
+
+\begin{defical}[Ínfimo, supremo, mínimo y máximo]
+Sea $A \subset \Rbb$. Entonces, se define
+\[
+\begin{array}{l}
+\inf A =
+\begin{cases}
+\text{más grande de las cotas inferiores de $A$} & \text{si $A$ es acotado por abajo,} \\
+-\infty & \text{si $A$ no es acotado por abajo};
+\end{cases}
+\\[16pt]
+\sup A =
+\begin{cases}
+\text{más pequeña de las cotas superiores de $A$} & \text{si $A$ es acotado por arriba,} \\
+\infty & \text{si $A$ no es acotado por arriba};
+\end{cases}
+\\[16pt]
+\min A = \inf A \ \text{si $\inf A \in A$ y $\inf A > -\infty$}; \\[4pt]
+\max A = \sup A \ \text{si $\sup A \in A$ y $\sup A < \infty$}.
+\end{array}
+\]
+\end{defical}
+
+En el siguiente dibujo se ilustran estas definiciones:
+\begin{center}
+\begin{pspicture}(0,0)(8,7)
+\footnotesize%
+\psset{}%
+
+\pstGeonode[PointName={c_1,c_2}]%
+  (2,0.5){A}(! \psGetNodeCenter{A} A.x 4 add A.y){A'}
+\pstGeonode[PointSymbol={default,o},PointName=none]%
+  (2,1.5){B}(! \psGetNodeCenter{B} B.x 4 add B.y){B'}
+\uput[0](B){$\min A$}%
+\uput[0](B'){$\not\exists\min A$}%
+\uput[180](B){$\inf A$}%
+\uput[180](B'){$\inf A$}%
+
+\pstGeonode[PointName=none]%
+  (2,2){C}
+\pstGeonode[PointName=none,PointSymbol={o,o}]%
+  (2,2.5){D}(! \psGetNodeCenter{D} D.x 4 add D.y 0.5 add){D'}
+
+\pstGeonode[PointName=none,PointSymbol={default,o}]%
+  (2,3.5){E}(! \psGetNodeCenter{E} E.x 4 add E.y){E'}
+
+\pstGeonode[PointName=none]%
+  (2,4){F}(! \psGetNodeCenter{F} F.x 4 add F.y 1 add){F'}
+\uput[0](F'){$\max A$}%
+\uput[180](F'){$\sup A$}%
+
+\pstGeonode[PointName=none,PointSymbol=o]%
+  (2,5){H}
+\uput[0](H){$\not\exists\max A$}%
+\uput[180](H){$\sup A$}%
+
+\pstGeonode[PointName={c_2,c_2}]%
+  (2,6){G}(! \psGetNodeCenter{G} G.x 4 add G.y){G'}
+
+\uput[0](! \psGetNodeCenter{D} D.x D.y 0.5 sub){$A$}%
+\uput[0](D'){$A$}%
+\psaxes[arrows=->,ticks=none,xAxis=false,labels=none]%
+  (2,0)(2.5,0)(2.5,6.75)%
+\psaxes[arrows=->,ticks=none,xAxis=false,labels=none]%
+  (6,0)(6.5,0)(6.5,6.75)%
+\end{pspicture}
+\end{center}
+
+En el dibujo, representamos, sobre sendas rectas reales verticales, dos casos cuando $A\subset\Rbb$
+es acotado por arriba y por abajo. En casos así, se dice, simplemente, que $A$ es acotado. Se
+tiene, entonces, la siguiente definición.
+
+\begin{defical}[Conjunto acotado]
+Un conjunto $A\subset\Rbb$ es acotado si y solo si $A$ es acotado por arriba y por abajo.
+\end{defical}
+
+En otras palabras, un conjunto $A$ es acotado si y solo existen dos constantes reales $c_1$ y $c_2$
+tales que
+\[
+c_1 \leq x \leq c_2
+\]
+para todo $x \in A$. Si tomamos $R = |\max\{c_1,c_2\}|$, entonces, $A$ es acotado si y solo si
+existe $R > 0$ tal que
+\[
+|x| < R
+\]
+para todo $x \in A$.
+
+La siguiente es una caracterización del supremo y del ínfimo, muy útil a la hora de trabajar con
+estos dos números.
+
+\begin{teocal}\label{teo:daCaracterizacionSupInf}
+Sea $A\subset\Rbb$. Entonces:
+\begin{enumerate}
+\item Si $\inf A > -\infty$, entonces para todo $\epsilon > 0$, existe $a \in A$ tal que $\inf
+    A \leq a < \inf A + \epsilon$.
+\item Si $\sup A < \infty$, entonces para todo $\epsilon > 0$, existe $a \in A$ tal que $\sup A
+    - \epsilon < a \leq \sup A$.
+\end{enumerate}
+\end{teocal}
+
+Es decir, el $\inf A$ ($\sup A$) puede ser aproximado por un elemento de $A$ con la precisión que
+queramos.
+
+Gracias a estos conceptos, podemos introducir otros análogos para las funciones reales, que son
+aquellas cuyo conjunto de llegada es $\Rbb$.
+
+\begin{defical}[Función acotada]
+Sean $\Omega\neq\emptyset$ y $\funcjc{f}{\Omega}{\Rbb}$. Entonces, las función $f$ es:
+\begin{enumerate}
+\item \textbf{acotada por abajo (arriba)} si y solo si el conjunto $\Img(f)$ es acotado por
+    abajo (arriba).
+\item \textbf{acotada} si y solo si el conjunto $\Img(f)$ es acotado.
+\end{enumerate}
+\end{defical}
+
+A partir de las definiciones de conjuntos acotados, podemos caracterizar de la siguiente manera a
+las funciones acotadas.
+
+\begin{teocal}\label{teo:daCaracterizacionFuncAcotadas}
+Sean $\Omega\neq\emptyset$ y $\funcjc{f}{\Omega}{\Rbb}$. Entonces, las función $f$ es:
+\begin{enumerate}
+\item \textbf{acotada por abajo} si y solo si el conjunto existe $c_1\in\Rbb$ tal que
+    \[
+      f(x) \geq c_1,
+    \]
+\item \textbf{acotada por arriba} si y solo si el conjunto existe $c_2\in\Rbb$ tal que
+    \[
+      f(x) \leq c_2,
+    \]
+\item \textbf{acotada} si y solo si el conjunto existen $c_1\in\Rbb$ y $c_2\in\Rbb$ tales que
+    \[
+      c_1 \leq f(x) \leq c_2,
+    \]
+\item \textbf{acotada} si y solo si el conjunto existe $R > 0$ tal que
+    \[
+      |f(x)| < R,
+    \]
+\end{enumerate}
+para todo $x\in\Omega$.
+\end{teocal}
+
+Tenemos las siguientes definiciones.
+
+\begin{defical}
+Sean $\Omega\neq\emptyset$ y $\funcjc{f}{\Omega}{\Rbb}$. Definimos:
+\begin{enumerate}
+\item $\displaystyle\inf_{x\in\Omega} f(x) = \inf\Img(f)$.
+\item $\displaystyle\sup_{x\in\Omega} f(x) = \sup\Img(f)$.
+\item $\displaystyle\min_{x\in\Omega} f(x) = \min\Img(f)$.
+\item $\displaystyle\max_{x\in\Omega} f(x) = \max\Img(f)$.
+\end{enumerate}
+\end{defical}
+
+En el caso de que exista $\min\Img(f)$, existe $x_m\in\Omega$ tal que
+\[
+f(x_m) = \min_{x\in\Omega} f(x).
+\]
+Se dice, entonces, que \textbf{la función $f$ alcanza su mínimo en $x_m$}.
+
+De manera similar, si existiera $\max\Img(f)$, existiría $x_M\in\Omega$ tal que
+\[
+f(x_M) = \max_{x\in\Omega} f(x).
+\]
+Se dice, entonces, que \textbf{la función $f$ alcanza su máximo en $x_M$}.
+
+Los números $x_m$ y $x_M$ podrían no ser únicos; es decir, una función podría alcanzar o su máximo
+o su mínimo en varios elementos de su dominio. Por ejemplo, la función $f$ definida por $f(x) =
+|\sen(x)|$ para todo $x \in [-\frac{\pi}{2},\frac{\pi}{2}]$, alcanza su valor máximo $1$ tanto en
+$-\frac{\pi}{2}$ como en $\frac{\pi}{2}$.
+
+A los números $\displaystyle\min_{x\in\Omega} f(x)$, que se lee ``mínimo de $f$ en $\Omega$'', y
+$\displaystyle\max_{x\in\Omega} f(x)$, que se lee ``máximo de $f$ en $\Omega$'', se les llama
+\textbf{extremos globales o absolutos de $f$}.
+
+Ilustremos estos conceptos con un ejemplo sencillo.
+
+\begin{exemplo}[]{}
+Sean $\Omega\subset\Rbb$ y $\funcjc{f}{\Omega}{\Rbb}$ definida por
+\[
+f(x) = 1 + (x - 2)^2.
+\]
+\begin{enumerate}[leftmargin=*]
+\item Supongamos que $\Omega = \Rbb$. Entonces, el gráfico de $f$ es la parábola cuyo vértice
+    es el punto de coordenadas $(2,1)$, como se puede ver en el siguiente dibujo:
+    \begin{center}
+    \begin{pspicture}(-1,-0.5)(5,6.5)
+      \psaxes[arrows=->,ticks=none,labels=none]%
+        (0,0)(-1,-0.5)(4.75,6)%
+      \uput[-90](4.75,0){\footnotesize$x$}%
+      \uput[0](0,5.75){\footnotesize$y$}
+
+      \psplot[]%
+        {-0.225}{4.225}{x 2 sub dup mul 1 add}%
+
+      \uput[180](0,1){$1$}%
+      \uput[-90](2,0){$2$}%
+      \psline[linestyle=dashed,linecolor=gray]%
+        (0,1)(2,1)(2,0)
+    \end{pspicture}
+    \end{center}
+    Se puede ver, entonces, que la función $f$ es:
+    \begin{enumerate}[leftmargin=*]
+    \item no acotada por arriba, por lo que $\displaystyle\sup_{x\in\Rbb} f(x) = +\infty$;
+    \item acotada por abajo y:
+        \[
+          \inf_{x\in\Rbb} f(x) = \min_{x\in\Rbb} f(x) = f(2) = 1.
+        \]
+    \end{enumerate}
+
+\item Supongamos que $\Omega = [1,4[$. Entonces la función $f$ es:
+    \begin{enumerate}[leftmargin=*]
+    \item acotada por arriba, $\displaystyle\sup_{x\in\Omega} f(x) = 5$ y no existe
+        $\displaystyle\max_{x\in\Omega} f(x)$;
+    \item acotada por abajo, $\displaystyle\inf_{x\in\Omega} f(x) = 1 = \min_{x\in\Omega}
+        f(x) = f(2)$;
+    \item acotada.
+    \end{enumerate}
+
+\item Supongamos que $\Omega = \ ]2,4]$. Entonces la función $f$ es:
+    \begin{enumerate}[leftmargin=*]
+    \item acotada por arriba, $\displaystyle\sup_{x\in\Omega} f(x) = 5 = \max_{x\in\Omega}
+        f(x) = f(4)$;
+    \item acotada por abajo, $\displaystyle\inf_{x\in\Omega} f(x) = 1$, no existe
+        $\min_{x\in\Omega} f(x)$;
+    \item acotada.
+    \end{enumerate}
+
+\item Supongamos que $\Omega = [1,4]$. Entonces la función $f$ es:
+    \begin{enumerate}[leftmargin=*]
+    \item acotada;
+    \item $\displaystyle\sup_{x\in\Omega} f(x) = 5 = \max_{x\in\Omega} f(x) = f(4)$;
+    \item $\displaystyle\inf_{x\in\Omega} f(x) = 1 = \min_{x\in\Omega} f(x) = f(2)$.
+    \end{enumerate}
+\end{enumerate}
+\end{exemplo}
+
+El último numeral del ejemplo es un caso particular del resultado notable sobre la existencia de
+los extremos globales:
+
+\begin{teocal}[Existencia de los extremos globales para funciones
+continuas]\label{teo:daExistenciaExtremosGlobales} Sean $a$ y $b$ en $\Rbb$ tales que $a < b$ y
+$\funcjc{f}{[a,b]}{\Rbb}$, una función continua en $[a,b]$. Entonces existen $x_m$ y $x_M$ en
+$[a,b]$ tales que
+\[
+f(x_m) = \min_{x\in [a,b]} f(x) \yjc f(x_M) = \max_{x\in [a,b]} f(x).
+\]
+
+Además, se tiene que $\Img(f) \subset [f(x_m),f(x_M)]$; es decir:
+\[
+f(x_m) \leq f(x) \leq f(x_M)
+\]
+para todo $x\in [a,b]$.
+\end{teocal}
+
+Como se verá más adelante, en realidad, se tiene que $\Img(f) = [f(x_m),f(x_M)]$.
+
+El último ejemplo muestra lo indispensable que resulta exigir que $\Omega$ sea un intervalo cerrado
+y acotado. Por ejemplo, si $\Omega$ es uno de los siguientes intervalos: $]-\infty,b]$, $\Rbb$,
+$[a,+\infty[$, $]a,b]$, $]a,b[$, etcétera, el resultado podría no darse.
+
+Es también de suma importancia que la función $f$ sea continua. Esto se ilustra en el siguiente
+ejemplo.
+
+\begin{exemplo}[]{}
+Sean $\Omega = [-1,3]$ y $\funcjc{f}{\Omega}{\Rbb}$, definida por
+\[
+f(x) =
+\begin{cases}
+(x + 1)^2 & \text{si } -1 \leq x < 1, \\
+1 & \text{si } x = 1, \\
+-2 + x & \text{si } 1 < x \leq 3.
+\end{cases}
+\]
+El siguiente es el gráfico de $f$:
+\begin{center}
+\begin{pspicture}(-2,-2)(4.5,5)
+\psaxes[arrows=->,Dy=4]%
+  (0,0)(-2,-2)(4,5)%
+\uput[-90](4,0){$x$}%
+\uput[0](0,5){$y$}%
+
+\psplot[arrows=*-o]%
+  {-1}{1}{x 1 add dup mul}%
+\psplot[arrows=o-*]%
+  {1}{3}{x 2 sub}%
+\psdot[](1,1)
+
+\end{pspicture}
+\end{center}
+Como se puede ver, $f$ no es continua en $x = 1$, por lo que $f$ no es continua en $\Omega$.
+También se puede ver que
+\[
+\sup_{x\in\Omega} f(x) = 4 \yjc \not\exists \max_{x\in\Omega} f(x)
+\]
+y que
+\[
+\inf_{x\in\Omega} f(x) = -1 \yjc \not\exists \min_{x\in\Omega} f(x).
+\]
+\end{exemplo}
+
+Si $I$ es un intervalo y $\funcjc{f}{I}{\Rbb}$ es una función continua, el cálculo de $\Img(f)$
+puede no ser tan simple como el dado en el teorema~\ref{teo:daExistenciaExtremosGlobales} para el
+caso $I = [a,b]$. Es muy útil, en estos casos, expresar $I$ (cuando sea posible) como la unión
+finita de subintervalos de $I$, digamos $\displaystyle I = \bigcup_{k=1}^N I_k$, de modo que $f$
+sea monótona en cada uno de los subintervalos $I_k$, porque se puede aplicar el resultado que sigue
+y el hecho de que $\displaystyle \Img(f) = \bigcup_{k=1}^N f(I_k)$, donde $f(A) = \{f(x) : x\in
+A\}$ y $A$ es un subconjunto del dominio de $f$.
+
+\begin{lemacal}\label{teo:daImagenMonotonas}
+Sean $I = ]a,b[$ y $\funcjc{f}{I}{\Rbb}$, continua y monótona en $I$. Entonces $f(I)$ es el
+intervalo abierto de extremos $\displaystyle\limjc{f(x)}{x}{a^+}$ y $\displaystyle\limjc{f(x)}{x}{b^-}$.
+\end{lemacal}
+
+De manera más precisa, si $A = \displaystyle\limjc{f(x)}{x}{a^+}$ y $B = \displaystyle\limjc{f(x)}{x}{b^-}$, entonces
+\[
+\Img(f) = \ ]A,B[
+\]
+si $f$ es creciente; en cambio:
+\[
+\Img(f) = \ ]B,A[
+\]
+si $f$ es decreciente.
+
+Si alguno de los límites laterales es infinito, digamos que $A = -\infty$; entonces tenemos que
+\[
+\Img(f) = \ ]-\infty, B[.
+\]
+
+El lema sigue siendo verdadero si en lugar de intervalos finitos se tienen intervalos infinitos.
+Por otro lado, si $I$ es cerrado en un de los dos extremos, o ambos, al ser $f$ una función
+continua en $I$, el limite se reemplaza con el correspondiente valor de la función. Por ejemplo, si
+$I = [a,b[$ y $f$ es decreciente, entonces
+\[
+\Img(f) = \ ]B, f(a)].
+\]
+
+\begin{exemplo}[]{}
+Si $\funcjc{f}{I}{\Rbb}$ está definida por
+\[
+f(x) = x^2 - 4x + 3,
+\]
+donde $I = \ ]-1,4]$, vamos a encontrar su imagen.
+
+Sabemos que el gráfico de $f$ es una parábola de vértice el punto de coordenadas $(2,-1)$ tal que
+la parábola es decreciente en $]-\infty, 2]$ y creciente en $[2,+\infty[$. En particular, $f$ es
+decreciente en $I_1 = \ ]-1,2]$ y creciente en $I_2 = [2,4]$. Además sabemos que $I = I_1 \cup
+I_2$.
+
+Sabemos que
+\[
+f(I_1) = [f(2),\limjc{f(x)}{x}{-1^+}[ = [f(2),f(-1)[,
+\]
+ya que $f$ es continua en $I$. Por lo tanto:
+\[
+f(I_1) = [-1,8[.
+\]
+
+Por otro lado, tenemos que:
+\[
+f(I_2) = [f(2),f(4)] = [-1,3].
+\]
+
+Entonces:
+\[
+\Img(f) = f(I_1) \cup f(I_2) = [-1,8[ \cup [-1,3] = [-1,8[.
+\]
+Además:
+\[
+\min_{x\in I} f(x) = -1 \yjc \sup_{x\in I} f(x) = 8
+\]
+y no existe el máximo de $f$ en $I$.
+\end{exemplo}
+
+\section{Extremos locales o relativos}
+
+\begin{wrapfigure}[14]{r}{0pt}
+\def\f{x RadtoDeg dup dup sin exch 2 mul sin add exch 3 mul sin add}%
+\psset{plotpoints=1000}
+\begin{pspicture}(-3.5,-5)(4,3)
+   %\psgrid[subgriddiv=0,gridlabels=7pt,griddots=10]
+   \psaxes[ticks=none,labels=none]{->}%
+      (0,0)(-3.5,-2.5)(3.75,3)%
+   \uput[-90](3.75,0){$x$}%
+   \uput[0](0,3){$y$}%
+%
+   \psplot[linecolor=gray]%
+      {-\psPi}{\psPi}{\f}%
+\end{pspicture}
+\end{wrapfigure}
+
+Dada una función real $f$ definida en un intervalo $I$, el gráfico de $f$ puede tener ``montes y
+valles'', como se ilustra en gráfico de la derecha. Es interesante poder hallar las cimas ---punto
+más alto de los montes, cerros y collados--- y simas ---cavidad grande y muy profunda en la
+tierra--- que corresponderán a ``máximos locales'' y a ``mínimos locales'', respectivamente. ¿Qué
+queremos decir con ``locales''? Que, como se aprecia en la figura, son los puntos más altos o los
+más bajos pero solamente en una ``zona próxima a ellos'' y no con respecto a todo el intervalo $I$.
+En otras palabras, ``localmente'' son los máximos o los mínimos. A continuación, hagamos precisas
+estas nociones y cómo los extremos locales nos permiten hallar los extremos globales para el caso
+de las funciones continuas.
+
+\begin{defical}[Extremos locales]
+Sean $I$ un intervalo y $\funcjc{f}{I}{\Rbb}$. Sean $\underline{x}$ y $\overline{x}$ dos elementos
+de $I$. Entonces:
+\begin{enumerate}
+\item la función $f$ \textbf{alcanza un mínimo local o relativo en $\underline{x}$} si y solo
+    si existe $r > 0$ tal que
+    \[
+    f(\underline{x}) \leq f(x)
+    \]
+    para todo $x \in I \cap \ ]\underline{x} - r, \underline{x} + r[$.
+
+\item la función $f$ \textbf{alcanza un máximo local o relativo en $\overline{x}$} si y solo si
+    existe $r > 0$ tal que
+    \[
+    f(\overline{x}) \geq f(x)
+    \]
+    para todo $x \in I \cap \ ]\underline{x} - r, \underline{x} + r[$.
+\end{enumerate}
+\end{defical}
+
+En otras palabras, un mínimo local en $\underline{x}$ es el valor más pequeño que toma una función
+en un cierto intervalo centrado en $\underline{x}$. De manera similar, un máximo local en
+$\overline{x}$ es el valor más grande que toma una función en un cierto intervalo centrado en
+$\overline{x}$.
+
+\begin{defical}[Interior de un intervalo]
+Sea $I$ un intervalo abierto. El interior de $I$, representado con $I^\circ$, es el intervalo
+abierto más grande que está contenido en $I$.
+\end{defical}
+
+\begin{exemplo}[]{}
+El interior de $I = [a,b]$ es $I^\circ = ]a,b[$. El interior de $I = [a,b[$ es $I^\circ = ]a,b[$.
+Para $I = ]-\infty,b[$, el interior $I^\circ$ es $]-\infty, b[$.
+\end{exemplo}
+
+\begin{wrapfigure}{r}{0pt}
+\def\f{x RadtoDeg dup dup sin exch 2 mul sin add exch 3 mul sin add}%
+\psset{plotpoints=1000}
+\begin{pspicture}(-3.5,-3)(4,3)
+   %\psgrid[subgriddiv=0,gridlabels=7pt,griddots=10]
+   \psaxes[ticks=none,labels=none]{->}%
+      (0,0)(-3.5,-3)(3.75,3)%
+   \uput[-90](3.75,0){$x$}%
+   \uput[0](0,3){$y$}%
+
+   \psplot[linecolor=gray]%
+      {-\psPi}{\psPi}{\f}%
+
+   \psset{linewidth=0.7pt}
+   \psplotTangent{0.667291072}{0.5}{\f}%
+   \psplotTangent{1.81519841}{0.5}{\f}%
+   \psplotTangent{2.640083649}{0.5}{\f}%
+   \psplotTangent{-0.66729107}{0.5}{\f}%
+   \psplotTangent{-1.81519841}{0.5}{\f}%
+   \psplotTangent{-2.640083649}{0.5}{\f}%
+\end{pspicture}
+\end{wrapfigure}
+
+Lo que ahora nos interesa es determinar un método para la obtención de los extremos locales de una
+función; es decir, para la localización de los máximos y mínimos locales de una función. En el
+dibujo de la derecha, podemos observar que las rectas tangentes en los extremos de la función lucen
+como rectas horizontales, es decir, con pendiente igual a $0$. Si esto es así, la derivada de la
+función debería ser igual a $0$ en estos puntos. Y esto es, efectivamente, así. Es decir, la recta
+pendiente en un extremo es horizontal. Por ello, se introduce el concepto de punto crítico. Luego
+de la siguiente definición se enuncia el teorema ilustrado por el dibujo.
+
+\begin{defical}[Punto crítico]
+Dada una función real $f$, continua en un intervalo $I$ de extremos $a$ y $b$ ($a < b$), a un número $c$ del interior de $I$ se lo llama \textbf{punto
+crítico de $f$} si y solo si $f'(c) = 0$ o si no existe $f'(c)$, es decir, si $f$ no es derivable
+en $c$.
+\end{defical}
+
+\begin{exemplo}[]{}
+Sea $\funcjc{f}{[-2,3]}{\Rbb}$ definida por
+\[
+f(x) =
+\begin{cases}
+1 - x^2 & \text{si } -2 \leq x \leq 1, \\
+2x^3 - 3x^2 - 12x + 13 & \text{si } 1 < x \leq 3.
+\end{cases}
+\]
+Encontremos los puntos críticos de $f$.
+
+Definamos $p_1$ y $p_2$ de la siguiente manera:
+\[
+p_1(x) = 1 - x^2 \yjc p_2(x) = 2x^3 - 3x^2 - 12x + 13.
+\]
+Entonces, $f$ es continua en $[-2,3]$ pues:
+\begin{enumerate}[leftmargin=*,listparindent=\parindent]
+\item En el intervalo $[-2,1]$, la función $f = p_1$, por lo que $f$ es continua en el abierto
+    $]-2,1[$, continua en $-2$ por la derecha y continua en $1$ por la izquierda.
+
+\item En el intervalo $]1,3]$, la función $f = p_2$, por lo que $f$ es continua en el abierto
+    $]1,3[$ y continua en $3$ por la izquierda.
+
+\item En el punto $x = 1$, tenemos que:
+    \[
+      f(1) = p_1(1) = 0 = p_2(1) = \limjc{p_2(x)}{x}{1^+},
+    \]
+    por lo que $f$ es continua en $1$.
+\end{enumerate}
+
+Por otro lado, tenemos que
+\[
+f'(x) =
+\begin{cases}
+-2x & \text{si } -2 \leq x < 1, \\
+6x^2 - 6x - 12 & \text{si } 1 < x \leq 3,
+\end{cases}
+\]
+y para $x = 1$, no existe $f'(x)$, pues
+\[
+ f_-'(1) = -2 \neq -12 = f_+'(1).
+\]
+Entonces
+\[
+f'(x) = 0 \ \Longleftrightarrow \
+\begin{cases}
+-2x = 0 & \text{si } -2 \leq x < 1, \\
+6x^2 - 6x - 12 = 0 & \text{si } 1 < x \leq 3,
+\end{cases}
+\]
+de donde
+\[
+f'(x) = 0 \ \Longleftrightarrow \
+x \in\{0,2\}.
+\]
+
+Por lo tanto, de acuerdo a la definición de punto crítico, a más de $0$ y de $2$, el número $1$
+también es un punto crítico de $f$.
+\end{exemplo}
+
+El siguiente teorema es el mecanismo que tenemos para la determinación de los extremos relativos.
+
+\begin{teocal}[Extremos locales]\label{teo:daExtremosLocalesPuntosCriticos}
+Sean $I$ un intervalo, $\funcjc{f}{I}{\Rbb}$ y $c\in I^\circ$. Si $f$ alcanza un extremo local en
+$c$, entonces $c$ es un valor crítico de $f$.
+\end{teocal}
+
+Usaremos este teorema para la obtención de los extremos absolutos de una función real continua
+definida en un intervalo cerrado y acotado.
+
+En efecto, supongamos que $\funcjc{f}{[a,b]}{\Rbb}$ es continua. Entonces, existen $x_m$ y $x_M$ en
+$[a,b]$ en los cuales $f$ alcanza el mínimo y el máximo globales, respectivamente. Sea $K$ el
+conjunto de todos los puntos críticos de $f$; es decir:
+\[
+K = \{c \in \ ]a,b[ : c \ \text{ es un punto crítico de } \ f\}.
+\]
+Se tiene entonces que $x_m\in \{a,b\}\cup K$ y que $x_M\in \{a,b\}\cup K$, pues todo extremo global
+también es un extremo local.
+
+Ahora bien, si $K$ es finito, por ejemplo, $K = \{c_1, c_2,\ldots, c_N\}$, y es conocido, para
+encontrar los extremos globales de $f$ es suficiente que hagamos una tabla de valores con los
+elementos del conjunto
+\[
+\{f(a), f(c_1), f(c_2), \ldots, f(c_N), f(b)\}.
+\]
+Es obvio que el mayor de estos números corresponderá al máximo global de $f$ y el menor, al mínimo
+global. En el caso de que $K = \emptyset$, los únicos extremos son $f(a)$ y $f(b)$. Veamos un
+ejemplo.
+
+\begin{exemplo}[]{}
+Sea $I = [0,\frac{5}{2}]$ y $\funcjc{f}{I}{\Rbb}$ definida por
+\[
+f(x) = 2x^3 - 9x^2 + 12x.
+\]
+Determinemos el conjunto $K$.
+
+Como $f'(x) = 6x^2 - 18x + 12 = 6(x - 2)(x-1)$, tenemos que los $c\in I$ que satisfacen la igualdad
+$f'(c) = 0$ son $c = 1$ y $c = 2$. Además, como $f$ es derivable en el interior de $I$, el conjunto
+$K$ es, entonces $K = \{1,2\}$.
+
+Ahora construyamos la tabla de valores de $f$ en $K \cup \{f(0),f(\frac{5}{2})\}$:
+\[
+\setlength\extrarowheight{4pt}
+\begin{array}{c|cccc}
+x & 0 & 1 & 2 & \frac{5}{2} \\[4pt] \hline
+f(x) & 0 & 5 & 4 & 5
+\end{array}
+\]
+Por lo tanto, la función $f$ alcanza el mínimo en $0$ y el máximo en $\frac{5}{2}$. Además:
+\[
+\min_{x\in I} f(x) = 0 = f(0) \yjc \max_{x\in I} f(x) = 5 = f\left(\frac{5}{2}\right)=f(1).
+\]
+\end{exemplo}
+
+\section{Monotonía}
+
+Dada una función $\funcjc{f}{I}{\Rbb}$, donde $I$ es un intervalo, se dice que $f$ es creciente si
+al aumentar el valor de la variable independiente $x$, lo hace también el valor $f(x)$. Si $f(x)$
+decrece, entonces se dice que $f$ es decreciente. Precisemos estos conceptos.
+
+\begin{defical}[Funciones creciente y decreciente]
+Sean $I$ un intervalo y $\funcjc{f}{I}{\Rbb}$. Entonces la función $f$ es
+\begin{enumerate}
+\item \textbf{creciente en $I$} si y solo si
+    $
+      f(x_1) < f(x_2)
+    $; para todo $x_1 \in I$ y todo $x_2 \in I$ tales que $x_1 < x_2$; y, 
+      
+\item \textbf{no decreciente en $I$} si y solo si
+    $
+      f(x_1) \leq f(x_2)
+    $; para todo $x_1 \in I$ y todo $x_2 \in I$ tales que $x_1 < x_2$; y,
+
+\item \textbf{decreciente en $I$} si y solo si
+    $
+      f(x_1) > f(x_2)
+    $; para todo $x_1 \in I$ y todo $x_2 \in I$ tales que $x_1 < x_2$; y,
+
+\item \textbf{no creciente en $I$} si y solo si
+    $
+      f(x_1) \geq f(x_2)
+    $; para todo $x_1 \in I$ y todo $x_2 \in I$ tales que $x_1 < x_2$; y,
+
+\item \textbf{monótona} si y solo si es creciente o decreciente.
+\end{enumerate}
+\end{defical}
+
+Es claro de la definición que una función puede ser creciente en un subintervalo pero creciente en
+otro.
+
+\begin{exemplo}[]{}
+Sea $\funcjc{f}{]\frac{3}{2},+\infty [}{\Rbb}$ definida por $f(x) = x^2 - 3x + 2$. Determinemos si es
+creciente o decreciente. Para ello, sean $x_1$ y $x_2$ tales que sean mayores que $\frac{3}{2}$ y
+$x_1 < x_2$. Ahora estudiemos el signo de $f(x_2) - f(x_1)$.
+
+Para ello, observemos que:
+\begin{align*}
+f(x_2) - f(x_1) &= (x_2^2 - 3x_2 + 2) - (x_1^2 - 3x_1 + 2) \\
+  &= (x_2^2 - x_1^2) - 3(x_2 - x_1) \\
+  &= (x_2 - x_1)(x_2 + x_1 - 3) \\
+  &= (x_2 - x_1)[(x_2 - \frac{3}{2}) + (x_1 - \frac{3}{2})] > 0,
+\end{align*}
+pues $x_1 < x_2$, $x_1 > \frac{3}{2}$ y $x_2 > \frac{3}{2}$. Por lo tanto, $f(x_1) < f(x_2)$; es
+decir, $f$ es creciente.
+\end{exemplo}
+
+Probar que una función es creciente o decreciente no siempre es una tarea sencilla como la que
+muestra el último ejemplo. El lector podrá convencerse de esta afirmación si estudia la monotonía
+de la función $f$ definida por $f(x) = 2x^3 - 9x^2 + 12x$ con el método utilizado en el ejemplo.
+Constataría lo engorrosos que pueden llegar a ser los cálculos.
+
+\begin{wrapfigure}[14]{r}{0pt}
+\def\f{x RadtoDeg dup dup sin exch 2 mul sin add exch 3 mul sin add}%
+\psset{plotpoints=1000}
+\begin{pspicture}(-3.5,-3)(4,3)
+   %\psgrid[subgriddiv=0,gridlabels=7pt,griddots=10]
+   \psaxes[ticks=none,labels=none]{->}%
+      (0,0)(-3.5,-3)(3.75,3)%
+   \uput[-90](3.75,0){$x$}%
+   \uput[0](0,3){$y$}%
+%
+   \psplot[linecolor=gray]%
+      {-\psPi}{\psPi}{\f}%
+%
+   \psset{linewidth=0.6pt}
+   \psplotTangent{-2.8}{0.5}{\f}%
+   \psplotTangent{-2}{0.5}{\f}%
+   \psplotTangent{-0.7}{0.5}{\f}%
+   \psplotTangent{0.5}{0.5}{\f}%
+   \psplotTangent{1.6}{0.5}{\f}%
+   \psplotTangent{2.5}{0.5}{\f}%
+\end{pspicture}
+\end{wrapfigure}
+
+Viene entonces en nuestra ayuda un resultado que se ilustra, previamente, en el dibujo de la
+derecha. Podemos observar que la recta tangente en cualquier punto de la curva en los intervalos en
+los que es creciente tiene una pendiente positiva. En cambio, en los intervalos en que la curva es
+decreciente, la pendiente es negativa.
+
+Esta observación, y el hecho de que la derivada representa la pendiente de la tangente, inducen a
+pensar que si la derivada de una función fuera positiva en $(a,b)$, esa función debería ser
+creciente en ese intervalo y, en el caso contrario, si la derivada fuera negativa, la función
+debería ser decreciente.
+
+\begin{teocal}\label{teo:daDerivadaPositiva}%
+Sean $I$ un intervalo de extremos $a < b$ $f\colon I \rightarrow  \mathbb{R}$ continua en $I$. Si,
+además, $f$ es derivable en $]a,b[$, entonces:
+\begin{enumerate}
+\item si $f'(x) > 0$ para todo $x\in\ ]a,b[$, entonces $f$ es creciente en $I$; y
+\item si $f'(x) < 0$ para todo $x\in\ ]a,b[$, entonces $f$ es decreciente en $I$.
+\end{enumerate}
+\end{teocal}
+
+Veamos un ejemplo.
+
+\begin{exemplo}[]{}
+Sea $\funcjc{f}{\Rbb}{\Rbb}$ definida por $f(x) = 2x^3 - 9x^2 + 12x$. Su derivada es $f'(x) = 6x^2
+- 18x + 12$. Como $f'(x) = 6(x - 1)(x - 2)$, los signos de $f$ son los siguientes:
+\[
+\begin{array}{c|c|c|c|c|c}
+x & & 1 & & 2 & \\ \hline
+(x - 1) & - & 0 & + & + & + \\
+(x - 2) & - & - & - & 0 & + \\
+f'(x) & + & 0 & - & 0 & +
+\end{array}
+\]
+
+Vemos, entonces, que $f'(x) > 0$ si $x \in \ ]-\infty, 1[ \cup \ ]2, +\infty[$ y que $f'(x) < 0$ si
+$x \in \ ]1,2[$. Por lo tanto, la función $f$ es creciente en $]-\infty, 1[ \cup \ ]2, +\infty[$ y
+es decreciente en $]1,2[$.
+\end{exemplo}
+
+\begin{corocal}[Extremos locales]
+Sean $I$ un intervalo abierto, $c \in I$ y $\funcjc{f}{I}{\Rbb}$ una función continua en $I$ y
+derivable en $I - \{c\}$. Si $c$ es un punto crítico de $f$ y $f'(x)$ cambia de signo en $c$,
+entonces $f$ alcanza un extremo local en $c$. De manera más precisa: si $x\in I$ y
+\begin{enumerate}
+\item si $f'(x) < 0$ para todo $x < c$; y
+\item si $f'(x) > 0$ para todo $x > c$,
+\end{enumerate}
+entonces $f$ alcanza un mínimo local en $c$; y
+\begin{enumerate}
+\item si $f'(x) > 0$ para todo $x < c$; y
+\item si $f'(x) < 0$ para todo $x > c$,
+\end{enumerate}
+entonces $f$ alcanza un máximo local en $c$.
+\end{corocal}
+
+\begin{exemplo}[]{}
+En el ejemplo precedente, si $f$ está definida por $f(x) = 2x^3 - 9x^2 + 12x$, la derivada $f'(x)$
+de esta función cambia de signo en $1$ y en $2$. Antes de $1$ es creciente, luego de $1$ es
+decreciente; por lo tanto, $f$ alcanza un máximo local en $1$. Antes de $2$ es decreciente y luego
+es creciente. Entonces, $f$ alcanza un mínimo local en $2$.
+\end{exemplo}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Para la función $f$, halle los puntos críticos y los intervalos de monotonía. Distinga
+    los puntos críticos que son extremos locales:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = 3x^2 - 5x + 4$.
+    \item $\displaystyle f(x) = 6x^4 - 8x^3 + 2$.
+    \item $\displaystyle f(x) = \frac{x + 1}{x^2 + 1}$.
+    \item $\displaystyle f(x) = x^{\frac{4}{2}} - x^{\frac{1}{3}}$.
+    \item $\displaystyle f(x) = \frac{x - 1}{(x + 7)^{\frac{1}{3}}}$.
+    \item $\displaystyle f(x) = x^3 + 2x^2 - 7x + 4$.
+    \item $\displaystyle f(x) = \frac{x - 2}{\sqrt{1 - x}}$.
+    \item $\displaystyle f(x) = (5x + 2)^{\frac{1}{3}}$.
+    \item $\displaystyle f(x) = x^2(x + 7)^{\frac{1}{3}}$.
+    \item $\displaystyle f(x) = 3\sen x + 4\cos x$.
+    \end{enumerate}
+
+\item Halle los extremos absolutos de $f$ en el intervalo $I$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = x^3 - 2x^2 + x; \ I = [-1,4]$.
+    \item $\displaystyle f(x) = 3x^2 - 5x + 2; \ I = [-1,3]$.
+    \item $\displaystyle f(x) = (x - 1)^{\frac{2}{3}}; \ I = [0,10]$.
+    \item $\displaystyle f(x) = (x - 1)^{\frac{2}{3}}(x^2 - 2x); \ I = [0,2]$.
+    \item $\displaystyle f(x) = x^3 + x^2 - 5x + 3; \ I = [-2,4]$.
+    \item $\displaystyle f(x) = (x + 1)^4(x - 2)^2; \ I = [0,5]$.
+    \item $\displaystyle f(x) = \frac{\sqrt{x - 1}}{x^2 + 2}; \ I =
+        \left[\frac{5}{4},5\right]$.
+    \end{enumerate}
+
+\item Halle los valores críticos y los extremos absolutos y relativos de la función $f$ en el
+    intervalo $I$:
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = x^4 - 4 - |x + 2|; \ I = [-3,3]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            2x + 1 & \text{si } -2 \leq x < 1, \\
+            x^2 + 2 & \text{si } 1 \leq x \leq 3;
+          \end{cases}\\[6pt]
+          I = [-2,3]$.
+    \item $\displaystyle f(x) = 2x^3 - 3x^2 - 12x + 13; \ I = [-2,3]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            x^2 + x - 2 & \text{si } -2 \leq x < 1, \\
+            x^3 - 3x^2 + 2 & \text{si } 1 \leq x \leq 3;
+          \end{cases}\\[6pt]
+          I = [-2,3]$.
+    \item $\displaystyle f(x) = x + \frac{1}{x - 1} - 1; \ I = [-10,10]$.
+    \item $\displaystyle f(x) = \lfloor x \rfloor; \ I = [-10,2]$.
+    \item $\displaystyle f(x) = \frac{ax + b}{cx + d}; \ I = [-L,L]$, con $L > 0$, y si $ad
+        \neq bc$ o si $ad = bc$.
+    \end{enumerate}
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Teoremas del valor intermedio}
+
+\begin{wrapfigure}[11]{r}{0pt}
+\def\f{2*cos(x-4.5)-2*sin(2*x - 9)+2*cos(2*x - 9)-2*sin(x - 4.5)+ 2.5 }%
+\def\g{x RadtoDeg dup dup dup 4.5 RadtoDeg sub cos 2 mul exch
+   4.5 RadtoDeg sub 2 mul sin 2 mul sub exch
+   4.5 RadtoDeg sub 2 mul cos 2 mul add exch
+   4.5 RadtoDeg sub sin 2 mul sub 2.5 add }
+
+\begin{pspicture}(-0.5,-0)(5,4.25)
+   %\psgrid[subgriddiv=0,gridlabels=7pt,griddots=10]
+   \psaxes[ticks=none,labels=none]{->}%
+      (0,0)(-0.5,-0.5)(4.75,4)%
+   \uput[-90](4.75,0){$x$}%
+   \uput[0](0,4){$y$}%
+
+   \begingroup
+      \psset{linecolor=gray}
+      \psline(2.712185027,0)(! 2.712185027 /x 2.712185027 def \g)%
+      \psline(0.5,0)(! 0.5 /x 0.5 def \g)%
+      \psline[linestyle=dashed,linecolor=gray]%
+         (!0.5 /x 0.5 def \g)(! 2.712185027 /x 2.712185027 def \g)%
+
+      \uput[-90](0.5,0){$a$}%
+      \uput[180](! 0.5 /x 0.5 def \g 2 div){$f(a)$}%
+      \uput[-90](2.712185027,0){$b$}%
+      \uput[0](! 2.712185027 /x 2.712185027 def \g 2 div){$f(b)$}%
+   \endgroup
+
+   \psplot[linewidth=1.5\pslinewidth]%
+      {0.5}{2.712185027}{\g}%
+
+   \psplotTangent[plotpoints=1000]%
+      {1.090732918}{1}{\g}
+
+   \pnode(! 1.090732918 /x 1.090732918 def \g){M}
+
+   \psline[linestyle=dashed,linecolor=gray,linewidth=0.75\pslinewidth]%
+         (!1.090732918 0)(! 1.090732918 /x 1.090732918 def \g)%
+   \uput[-90](1.090732918,0){$c$}%
+
+   \pnode(2,3.2){A}%
+   \psline[linecolor=gray]{->}(A)(M)%
+   \uput[0](A){$f'(c) = 0$}
+
+\end{pspicture}
+\end{wrapfigure}
+En el dibujo de la derecha, se muestra el gráfico de una función $f\colon [a,b] \rightarrow
+\mathbb{R}$ que es continua en $[a,b]$, derivable en $(a,b)$ y tal que $f(a)=f(b)$. Parece que, en
+el punto $c\in (a,b)$, punto en el que la función $f$ alcanza un máximo local, la tangente al
+gráfico de $f$ es horizontal; es decir, $f'(c) = 0$, de donde $c$ es un punto crítico. Aunque no
+está dibujado, el punto dónde se alcanza el mínimo local, la recta tangente es también paralela al
+eje horizontal; esto significa también que ese punto es un punto crítico.
+
+Y esta situación es siempre verdadera bajo las hipótesis adecuadas, como se expresa en el siguiente
+teorema.
+
+\begin{teocal}[Teorema de Rolle]
+Si $f $ es continua en el intervalo $[a,b]$ y derivable en $(a,b)$, entonces existe un número $c\in
+(a,b)$ tal que:
+\[
+f(a) = f(b).
+\]
+Entonces, existe un número $c\in (a,b)$ tal que $f'(c) = 0$.
+\end{teocal}
+
+\begin{exemplo}[]{}
+Vamos a utilizar el teorema de Rolle para averiguar si la función $f$ definida por
+\[
+f(x) = x^3 - 3x^2 + 2
+\]
+tiene puntos críticos en el intervalo $]-\sqrt{3} + 1,\ \sqrt{3} + 1[$.
+
+Como $f$ es derivable en $\Rbb$ por ser un polinomio, es continua en $\Rbb$ y, por consiguiente,
+también es continua en $]-\sqrt{3} + 1,\ \sqrt{3} + 1[$. Por lo tanto, los puntos críticos son
+todos los $x\in\ ]-\sqrt{3} + 1,\ \sqrt{3} + 1[$ para los cuales $f'(x) = 0$.
+
+Como $f(-\sqrt{3} + 1) = f(\sqrt{3} - 1) = 0$, el teorema de Rolle nos garantiza que existe $c$ en
+$]-\sqrt{3} + 1,\ \sqrt{3} + 1[$ tal que $f'(c) = 0$. Para hallar tales números $c$, debemos
+resolver la ecuación $f'(c) = 0$.
+
+Ahora bien, como $f'(x) = 3x^2 - 6x = 3x(x - 2)$, tenemos que
+\[
+f'(c) = 0 \ \Longleftrightarrow \ c(c - 2) = 0 \ \Longleftrightarrow \ c \in\{0,2\}.
+\]
+
+En resumen, los números $0$y $2$ son los puntos críticos buscados, puesto que $\{0,2\}$ está
+incluido en $]-\sqrt{3} + 1,\ \sqrt{3} + 1[$.
+\end{exemplo}
+
+\begin{teocal}[Teorema del valor intermedio o de los incrementos finitos]
+Si $f $ es continua en el intervalo $[a,b]$ y derivable en $(a,b)$, entonces existe un número $c\in
+(a,b)$ tal que:
+\begin{equation*}
+	f'(c)=\frac{f(b)-f(a)}{b-a},
+\end{equation*}
+o también:
+\[
+   f(b) - f(a) = f'(c)(b - a).
+\]
+\end{teocal}
+
+\begin{exemplo}[]{}
+Sea $f$ la función real definida por $f(x) = x^3 - 3x^2 + 3$. Veamos cómo se aplica el teorema del
+valor intermedio en el intervalo $[1,3]$.
+
+Como $f$ es un polinomio, es una función continua y derivable en $\Rbb$ y, por ende, es continua en
+el intervalo $[1,3]$ y derivable en el intervalo $]1,3[$. Entonces, se verifican las hipótesis del
+teorema del valor intermedio, el que nos garantiza que existe $c\in\ ]1,3[$ tal que
+\[
+f'(c) = \frac{f(3) - f(1)}{2 - 1} = \frac{3 - 1}{3 - 1} = 1.
+\]
+Como $f'(x) = 3x^2 - 6x$, el número $c$ satisface la ecuación
+\[
+3c^2 - 6c = 1.
+\]
+
+Las raíces de esta ecuación son $c_1 = 1 - \frac{2}{\sqrt{3}}$ y $c_2 = 1 + \frac{2}{\sqrt{3}}$.
+Puesto que $c_1\not\in\ ]1,3[$, entonces el número $c$ del teorema del valor intermedio es $c_2$.
+\end{exemplo}
+
+Supongamos que una función $\funcjc{f}{I}{\Rbb}$, donde $I$ es un intervalo de extremos $a$ y $b$
+tales que $a < b$, tiene derivada nula en $]a,b[$; es decir, supongamos que $f'(x) = 0$ para todo
+$x\in\ ]a,b[$. Tomemos dos elementos en $I$, $x_1$ y $x_2$ tales que $x_1 < x_2$. Si sucediera que
+$f(x_1) \neq f(x_2)$, por el teorema del valor intermedio, existe $c\in\ ]x_1,x_2[$ tal que
+\[
+f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1}.
+\]
+Por un lado, $f'(c) = 0$; por otro, como $x_1 \neq x_2$ y, hemos supuesto que $f(x_1)\neq f(x_2)$,
+tenemos que
+\[
+0 = f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1} \neq 0.
+\]
+Esta contradicción nos indica que no es posible que $f(x_1) \neq f(x_2)$; por lo tanto, la función
+$f$ debe ser constante en $]a,b[$.
+
+Resumamos este resultado en el siguiente teorema.
+
+\begin{teocal}\label{teo:daDerivadaCero}
+Si $f$ está definida y es continua en un intervalo $I$, y si $f$ es derivable en el interior de $I$ y su derivada es igual a $0$, entonces $f$ es constante en $I$.
+\end{teocal}
+
+Finalmente, el siguiente es una generalización del teorema del valor intermedio. En los ejercicios
+de esta sección, se provee una sugerencia para la demostración del teorema general.
+
+\begin{teocal}[Teorema general del valor intermedio]
+Sean $f\colon \mathbb{R} \rightarrow  \mathbb{R}$ y $g\colon \mathbb{R} \rightarrow  \mathbb{R}$
+dos funciones continuas en el intervalo $[a,b]$ y derivables en $(a,b)$. Supongamos que $g'(x)\neq
+0$ para todo $x\in (a,b)$ y que $g(a)\neq g(b)$. Entonces existe $c\in (a,b)$ tal que:
+\begin{equation*}
+	 \frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(c)}{g'(c)}.
+\end{equation*}
+\end{teocal}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Verifique si en el intervalo $I$ se puede aplicar el teorema de Rolle para la $f$ dada.
+    De ser así, halle los $c$ cuya existencia garantiza el mencionado teorema.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = x^2 - 5;\ I = [-2,2]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            x^3 + 2 & \text{si } -3 \leq x < 0, \\
+            -x^3 + 2 & \text{si } 0 \leq x \leq 3;
+          \end{cases}\\[6pt]
+          I = [-3,3]$.
+    \item $\displaystyle f(x) = x^3 - 3x^2 + 2x + 4;\ I = [0,1]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            x^2 + 3 & \text{si } -2 \leq x \leq 0, \\
+            8 - x^3 & \text{si } 0 < x \leq 1;
+          \end{cases}\\[6pt]
+          I = [-2,1]$.
+    \item $\displaystyle f(x) = 3\sen x + 4\cos x;\ I =
+        \left[\frac{-\pi}{2},\frac{7\pi}{2}\right]$.
+    \item $\displaystyle f(x) = \sec x;\ I = [0,2\pi]$.
+    \end{enumerate}
+
+\item Verifique si en el intervalo $I$ la función $f$ satisface las hipótesis del teorema del
+    valor intermedio. De ser así, halle los valores de $c$ cuya existencia nos es garantizada
+    por dicho teorema.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = x^3 - x + 1;\ I = [0,3]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            x^3 + 2 & \text{si } -2\leq x < 0,\\
+            2 - x^3 & \text{si } 0 \leq x \leq 3;
+          \end{cases}\\[6pt]
+          I = [-2,3]$.
+    \item $\displaystyle f(x) = x^3 - 3x^2 + 2x;\ I = [0,1]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            x^2 + 3 & \text{si } -2 \leq x \leq 0, \\
+            3 - x^3 & \text{si } 0 \leq x \leq 1;
+          \end{cases}\\[6pt]
+          I = [-2,1]$.
+    \item $\displaystyle f(x) =
+          \begin{cases}
+            x^3 + 2 & \text{si } -3 \leq x \leq 1, \\
+            2x^2 + 3x - 2 & \text{si } 1 \leq x \leq 2;
+          \end{cases}\\[6pt]
+          I = [-3,2]$.
+    \item $\displaystyle f(x) = x - \sqrt[3]{x};\ I = [-1,27]$.
+    \end{enumerate}
+
+\item Un camionero entra en una autopista y recibe un talón que marca la hora de ingreso, las
+    $7$ horas con $55$ minutos. Antes de salir, $250$ kilómetros después, paga el peaje y el
+    recibo marca el valor pagado y la hora del pago: $10$ horas con $35$ minutos. Un policía le
+    revisa los documentos y le multa por exceso de velocidad. ¿Cuál cree que era el límite de
+    velocidad para el transporte pesado en ese tramo? Justifique su respuesta sustentándose en
+    el teorema del valor intermedio.
+
+\item Mediante el teorema del valor intermedio, demuestre el siguiente teorema (de los
+    incrementos finitos). Sean $I$ un intervalo abierto, $\funcjc{f}{I}{\Rbb}$ derivable en
+    $I$, $x_0\in I$ y $\Delta x$ tales que $x_0 + \Delta x \in I$. Entonces existe $\theta\in\
+    ]0,1[$ tal que
+    \[
+      \Delta y = f(x_0 + \Delta x) - f(x_0) = f'(x_0 + \theta\Delta x)\Delta x.
+    \]
+
+\item Usando el teorema de Rolle, pruebe el teorema general del valor medio.
+    \textsc{Sugerencia:} Defina $\funcjc{F}{[a,b]}{\Rbb}$ de la siguiente manera:
+    \[
+      F(x) = f(x) - \frac{f(b) - f(a)}{g(b) - g(a)}[g(x) - g(a)].
+    \]
+
+\item Sea $f(x) = ax^5 + bx^3 + cx + d$. Use el teorema de Rolle para probar que la ecuación
+    $f(x) = 0$ no puede tener dos raíces reales si $a > 0$, $b > 0$, $c > 0$ y si $20ac>9b^2$.
+
+\item Use el teorema de Rolle y el método de inducción para probar que un polinomio de grado
+    $n\in\Nbb$ y coeficientes reales tiene a lo sumo $n$ raíces reales.
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Convexidad}
+
+\subsection{Punto intermedio}
+
+Sean $P_{0}$ y  $P_{1}$ dos puntos cualesquiera, distintos entre sí y situados sobre una recta
+real. Sean  $x_{0}$ y  $x_{1}$ sus respectivas coordenadas. Si tomamos un punto arbitrario $P$
+situado entre $P_{0}$ y  $P_{1}$, de coordenada $x$, resulta que $x$ puede expresarse de una manera
+sencilla en función de $x_{0}$  y  $x_{1}$. En efecto, tenemos el siguiente lema:
+
+\begin{lemacal}
+Sean $x_{0}$  y  $x_{1}$ en $\mathbb{R}$ dos números reales distintos entre sí. Entonces, para
+cualquier $x\in \mathbb{R}$ ``situado'' entre ellos; es decir, tal que $x_0 < x < x_1$ o $x_1 < x <
+x_0$, existe $t\in (0,1)$ tal que:
+\begin{equation}
+\label{eq:algeom001}
+x=tx_{1}+(1-t)x_{0}.
+\end{equation}
+\end{lemacal}
+
+Tenemos dos casos.
+\begin{enumerate}[leftmargin=*]
+\item Supongamos que $x_0 < x < x_1$: \quad
+      %
+      \begin{pspicture}(0,0)(4.5,1)
+        \psaxes[arrows=->,ticks=none,yAxis=false,labels=none]%
+          (0,0)(0,0.5)(4.5,0.5)%
+        \pstGeonode[PointSymbol=|,PosAngle=90]%
+          (0.5,0){P_0}(2.5,0){P}(3.5,0){P_1}%
+        \uput[-90](P_0){$x_0$}%
+        \uput[-90](P_1){$x_1$}%
+        \uput[-90](P){$x$}%
+      \end{pspicture}
+      %
+
+      \vspace{0.6\baselineskip}%
+      Vemos que las distancias entre $P$ y $P_0$ y entre $P_0$ y $P_1$ son
+      \[
+        PP_0 = x - x_0 \yjc P_0P_1 = x_1 - x_0.
+      \]
+      Además, como
+      \[
+        0 < P_0P < P_0P_1,
+      \]
+      existe $t \in\ ]0,1[$ tal que
+      \[
+        P_0P = tP_0P_1 = t(x_1 - x_0).
+      \]
+      Por lo tanto:
+      \[
+        x = x_0 + P_0P = x_0 + t(x_1 - x_0) = tx_1 + (1 - t)x_0.
+      \]
+
+\item Supongamos que $x_1 < x < x_0$: \quad
+      %
+      \begin{pspicture}(0,0)(4.5,1)
+        \psaxes[arrows=->,ticks=none,yAxis=false,labels=none]%
+          (0,0)(0,0.5)(4.5,0.5)%
+        \pstGeonode[PointSymbol=|,PosAngle=90]%
+          (0.5,0){P_1}(2.5,0){P}(3.5,0){P_0}%
+        \uput[-90](P_1){$x_1$}%
+        \uput[-90](P_0){$x_0$}%
+        \uput[-90](P){$x$}%
+      \end{pspicture}
+      %
+
+      \vspace{0.6\baselineskip}%
+      Vemos que las distancias entre $P$ y $P_0$ y entre $P_0$ y $P_1$ son
+      \[
+        PP_0 = x_0 - x \yjc P_0P_1 = x_0 - x_1.
+      \]
+      Además, como
+      \[
+        0 < P_0P < P_0P_1,
+      \]
+      existe $t \in\ ]0,1[$ tal que
+      \[
+        P_0P = tP_0P_1 = t(x_0 - x_1).
+      \]
+      Por lo tanto:
+      \[
+        x = x_0 - P_0P = x_0 - t(x_0 - x_1) = tx_1 + (1 - t)x_0.
+      \]
+\end{enumerate}
+
+\subsection{Segmento que une dos puntos}
+
+El conjunto de puntos de la recta real situados entre $P_{0}$ y $P_{1}$, incluidos estos, es
+representado por $[P_{0},P_{1}]$; es decir:
+\begin{equation}
+\label{eq:algeom003}
+[P_{0},P_{1}]= \{P_{t} : t\in [0,1] \},
+\end{equation}
+donde $x_{t}$, la coordenada de $P_{t}$, se calcula con la fórmula
+\begin{equation}
+\label{eq:algeom004}
+x_{t} = tx_{1}+(1-t)x_{0}.
+\end{equation}
+Esta fórmula es una notación ``feliz'', ya que, para $t = 0$ y $t = 1$, se obtienen $x_0$ y $x_1$,
+respectivamente.
+
+Las fórmulas~(\ref{eq:algeom003}) y~(\ref{eq:algeom004}) se generalizan a dimensiones superiores.
+Así, por ejemplo, si $P_{0},\ P_{1}$ están en $\mathbb{E}^{3}$, y si $(x_{0},y_{0},z_{0})$ y
+$(x_{1},y_{1},z_{1})$ son las coordenadas de los puntos $P_{0}$ y $P_{1}$, respectivamente, la
+expresión~(\ref{eq:algeom003}) define el conjunto de puntos del segmento de recta de extremos
+$P_{0}$ y $P_{1}$ y las coordenadas de $P_{t}$ son $(x_{t},y_{t},z_{t})$, donde:
+\begin{equation}
+\label{eq:algeom005}
+x_{t}=tx_{1}+(1-t)x_{0}, \quad
+y_{t}=ty_{1}+(1-t)y_{0}, \quad
+z_{t}=tz_{1}+(1-t)z_{0}.
+\end{equation}
+
+Si definimos
+\[
+\overrightarrow{x_{t}} = \left(\begin{array}{c}
+x_{t} \\
+y_{t} \\
+z_{t}
+\end{array}\right)
+\]
+para cada $t\in [0,1]$, la expresión~(\ref{eq:algeom005}) se escribe de la siguiente manera:
+\begin{equation}
+\label{eq:algeom006}
+\overrightarrow{x_{t}} = t\overrightarrow{x_{1}}+(1-t)\overrightarrow{x_{0}}.
+\end{equation}
+Visualicemos este resultado en $\mathbb{E}^{2}$.
+
+\subsection{Ecuación de la recta que pasa por dos puntos dados en $\mathbb{E}^{2}$}
+
+Sean $P_{0}(x_{0}, y_{0})$ y $P_{1}(x_{1},y_{1})$ dos puntos distintos del plano $\mathbb{E}^{2}$
+con $x_{0}\neq x_{1}$. Si la ecuación de la recta que pasa por estos dos puntos es:
+\begin{equation}
+\label{eq:algeom007}
+y = y_{0}+ \frac{y_{1}-y_{0}}{x_{1}-x_{0}} (x-x_{0})= l(x).
+\end{equation}
+Si $x$ está entre $x_{0}$ y $x_{1}$; es decir, si $x = x_t$ con
+\[
+x_{t}=tx_{1}+(1-t)x_{0}
+\]
+y $t\in (0,1)$ o, lo que es lo mismo, si
+\begin{equation}
+\label{eq:algeom008}
+x_{t} = x_{0} + t(x_{1}-x_{0}),
+\end{equation}
+tendremos que, si
+\begin{equation}
+\label{eq:algeom009}
+y_{t}=l(x_{t}),
+\end{equation}
+entonces:
+\begin{equation}
+\label{eq:algeom010}
+y_{t} = y_{0}+ \frac{y_{1}-y_{0}}{x_{0}-x_{1}} (x_{0}+t(x_{1}-x_{0})-x_{0})=y_{0}+t(y_{1}-y_{0}).
+\end{equation}
+
+Cuando $x_{0}=x_{1}$, como $P_{0}\neq P_{1}$, tendremos que $y_{0}\neq y_{1}$, la recta que pasa
+por $P_{0}$ y $P_{1}$ es vertical y se reduce al caso $\mathbb{E}^{1}$ con $x_{t}=x_{0}=x_{1}$, y
+con $y_{t}=ty_{1}+(1-t)y_{0}$. Se tendrá entonces, que si $P_{t}$ es un punto del segmento
+$[P_{0},P_{1}]$ y, si $(x_t,y_t)$ son sus coordenadas, se verificará la siguiente igualdad:
+
+\begin{equation}
+\label{eq:algeom011}
+ \left(\begin{array}{c}
+x_{t} \\
+y_{t}
+\end{array}\right)=
+t\left(\begin{array}{c}
+x_{1} \\
+y_{1}
+\end{array}\right)+
+(1-t) \left(\begin{array}{c}
+x_{0} \\
+y_{0}
+\end{array}\right)
+\end{equation}
+que es la expresión~(\ref{eq:algeom006}) para $\mathbb{E}^{2}$.
+
+\subsection{Funciones convexas y cóncavas}
+
+\begin{defical}[Funciones convexa y cóncava]
+Sean $I\subset \mathbb{R}$ un intervalo y $f\colon I
+\rightarrow \mathbb{R}$ una función definida en $I$. La función \emph{$f$ es convexa
+(\emph{respectivamente} cóncava) en $I$} si para cualquier para $x_{0} \in I$, $x_{1}\in I$ tales
+que $x_{0}<x_{1}$, el gráfico de $f$ correspondiente al intervalo $(x_{0},x_{1})$; es decir, el
+conjunto de $\mathbb{R}^2$
+\begin{equation}
+\label{eq:algeom012}
+\{(x,f(x)) : x\in (x_{0},x_{1})\}=\{(x_{t},f(x_{t})) :  x_{t}=tx_{1}+(1-t)x_{0},\ 0<t<1 \}
+\end{equation}
+queda por debajo (respectivamente por encima) del segmento de recta $[P_{0},P_{1}]$, con
+$P_{0}(x_{0},y_{0})$ y  $P_{1}(x_{1},y_{1})$, donde $y_{0}=f(x_{0})$ y $y_{1}=f(x_{1})$.
+\end{defical}
+
+Teniendo en cuenta la igualdad~(\ref{eq:algeom010}), la ecuación de la recta que une los puntos
+$P_{0}$ y $P_{1}$ es:
+\begin{equation}
+\label{eq:algeom013}
+y = l(x)= y_{0}+ \frac{y_{1}-y_{0}}{x_{1}-x_{0}} (x-x_{0}),
+\end{equation}
+y si $x= x_{t} = tx_{1}+(1-t)x_{0}$, obtenemos que:
+\begin{equation}
+\label{eq:algeom014}
+y = y_{t}=l(x_{t})= y_{0} + t(y_1 - y_0) = ty_{1}+(1-t)y_{0}.
+\end{equation}
+Entonces, $f$ es convexa (respectivamente cóncava) en el intervalo $I$ si para todo $x_{0}$,
+$x_{1}$ en $I$ tales que $x_{0}<x_{1}$, se verifica que
+\begin{equation}
+\label{eq:algeom015}
+f(x_{t})\leq l(x_{t}) \ (\text{respectivamente } f(x_{t})\geq l(x_{t}))
+\end{equation}
+para todo $t\in\ ]0,1[$. Es decir, $f$ es convexa (respectivamente cóncava) si
+\begin{equation}
+\label{eq:algeom016}
+f(x_{t})\leq y_{t} \ (\text{respectivamente } f(x_{t})\geq y_{t})
+\end{equation}
+para todo $t\in\ ]0,1[$.
+
+En resumen, hemos demostrado el siguiente teorema.
+
+\begin{teocal}\label{teo:daCaracterizacionConvexidad}
+Una función $\funcjc{f}{I}{\Rbb}$ es convexa (respectivamente cóncava) si para todo $t \in\ ]0,1[$
+se verifica que
+\[
+f(x_t) \leq y_t \ (\text{respectivamente } f(x_t) \geq y_t),
+\]
+donde
+\[
+y_t = ty_1 + (1 - t)y_0,
+\]
+con $y_0 = f(x_0)$ y $y_1 = f(x_1)$ y $x_0 < x_1$ elementos de $I$.
+\end{teocal}
+
+\begin{exemplo}[]{}
+Sea $f$ una función definida por
+\[
+f(x) = ax^2 + bx + c.
+\]
+Mediante el teorema~\ref{teo:daCaracterizacionConvexidad}, probemos que $f$ es una función convexa
+cuando $a > 0$ y es cóncava si $a < 0$.
+
+\begin{enumerate}[leftmargin=*]
+\item Supongamos que $a > 0$. Sean $x_0\in\Rbb$ y $x_1\in\Rbb$ tales que $x_0 < x_1$. Definamos
+    $y_0 = f(x_0)$ y $y_1 = f(x_1)$. Sea $t\in\ ]0,1[$; entonces:
+    \[
+      x_t = (1 - t)x_0 + tx_1 \yjc y_t = (1 - t)y_0 + ty_1.
+    \]
+    Vamos a probar que $f(x_t) < y_t$. Por ello, calculemos $y_t$ y $f(x_t)$.
+
+    En primer lugar, tenemos que:
+    \begin{align*}
+      y_t &= (1 - t)y_0 + ty_1 \\
+          &= (1 - t)f(x_0) + tf(x_1) \\
+          &= (1 - t)(ax_0^2 + bx_0 + c) + t(ax_1^2 + bx_1 + c) \\
+          &= a[(1 - t)x_0^2 + tx_1^2] + b[(1-t)x_0 + tx_1] + c.
+    \end{align*}
+    En segundo lugar, tenemos que:
+    \begin{align*}
+    f(x_t) &= a[(1-t)x_0 + tx_1]^2 + b[(1-t)x_0 + tx_1] + c \\
+           &= a[(1-t)^2x_0^2 + t^2x_1^2 + 2t(1-t)x_0x_1] + b[(1-t)x_0 + tx_1] + c.
+    \end{align*}
+    Por lo tanto:
+    \begin{align*}
+    y_t - f(x_t) &= a\left\{[(1-t) - (1-t)^2]x_0^2 - 2(1-t)tx_0x_1 + (t - t^2)x_1^2\right\} \\
+                 &= a(1-t)t(x_0^2 - 2x_0x_1 + x_1^2) = a(1-t)t(x_0 - x_1)^2.
+    \end{align*}
+    Como $a > 0$, $1 - t > 0$, pues $0 < t < 1$ y $(x_0 - x_1)^2 > 0$, ya que $x_0 \neq x_1$,
+    entonces
+    \[
+      y_t - f(x_t) \geq 0,
+    \]
+    de donde $f(x_t) \leq y_t$. Por lo tanto, por el
+    teorema~\ref{teo:daCaracterizacionConvexidad}, $f$ es convexa.
+
+\item Si $a < 0$, un procedimiento similar al anterior muestra que $y_t - f(x_t) < 0$.
+\end{enumerate}
+\end{exemplo}
+
+Cuando una función es derivable, su convexidad o concavidad está relacionada con la monotonía de la
+derivada. En el siguiente teorema, se muestra esta relación.
+
+\begin{teocal}[Criterio de la derivada para la convexidad]\label{teo:daConvexidadDerivabilidad}
+Sea $f\colon [a,b] \rightarrow \mathbb{R}$ continua en $[a,b]$ y derivable en $(a,b)$. Si $f'$ es
+creciente (respectivamente decreciente) en $(a,b)$, entonces $f$ es convexa (respectivamente
+cóncava) en $[a,b]$.
+\end{teocal}
+
+\begin{exemplo}[]{}
+Sea $f(x) = x^4 + x^2 + 1$. Mediante la monotonía de $f'$, determinemos si $f$ es o no convexa.
+
+En primer lugar, tenemos que $f'(x) = 4x^3 + 2x$. Sean $x_1$ y $x_2$ en $\Rbb$ tales que $x_1 <
+x_2$. Entonces:
+\begin{align*}
+f'(x_2) - f'(x_1) &= 4x_2^3 - 2x_2 - 4x_1^3 + 2x_1 \\
+                  &= 4(x_2^3 - x_1^3) + 2(x_2 - x_1).
+\end{align*}
+Como $x_2 > x_1$, entonces $x_2^3 - x_1^3 > 0$ (la función cúbica es creciente) y $x_2 - x_1 > 0$.
+Por lo tanto
+\[
+f'(x_2) - f'(x_1) = 4(x_2^3 - x_1^3) + 2(x_2 - x_1) > 0.
+\]
+Entonces $f'(x_1) < f'(x_2)$; es decir, $f'$ es una función creciente. Entonces, por el
+teorema~\ref{teo:daConvexidadDerivabilidad}, $f$ es una función convexa.
+\end{exemplo}
+
+Del teorema~\ref{teo:daConvexidadDerivabilidad} y por el teorema~(\ref{teo:daDerivadaPositiva}), es
+inmediato el siguiente teorema.
+
+\begin{teocal}\label{teo:daConvexidadSegundaDerivada}
+Si $f$ es continua en $[a,b]$ y existe $f''$ y es positiva (respectivamente negativa) en $(a,b)$,
+entonces $f$ es convexa (respectivamente cóncava) en $[a,b]$.
+\end{teocal}
+
+\begin{exemplo}[]{}
+Sea $f(x) = 3x^4 - 4x^3 + 29x^2 + 2x - 7$. Probemos que esta función es convexa. Para ello,
+mostremos que la segunda derivada de $f$ es siempre positiva. Así, por el
+teorema~\ref{teo:daConvexidadSegundaDerivada}, $f$ debe ser convexa.
+
+Calculemos $f''(x)$. En primer lugar, tenemos que
+\[
+  f'(x) = 12x^3 - 12x^2 + 58x + 2.
+\]
+En segundo lugar:
+\[
+  f''(x) = 36x^2 - 24x + 58.
+\]
+Ahora bien, el discriminante del polinomio de segundo grado $36x^2 - 24x + 58$ es negativo, pues
+\[
+(24)^2 - 4(36)(58) = -7\,776.
+\]
+Por lo tanto, para todo $x\in\Rbb$ $f''(x)$ tiene el mismo signo. Así, el signo de $f''(0)$ es el
+signo de todos los $f''(x)$. Pues, como $f''(0) = 58 > 0$, tenemos que $f''(x) > 0$ para todo
+$x\in\Rbb$. Es decir, $f$ es convexa.
+\end{exemplo}
+
+\section{Puntos de inflexión}
+En el dibujo:
+\begin{center}
+\begin{pspicture}[showgrid=false](0,-1)(4.5,4)
+\psset{plotpoints=200}
+\psaxes[ticks=none,labels=none]{->}(0,0)(-0.5,-0.5)(4.3,4)[$x$,-90][$y$,180]
+\pscurve[xunit=1.2cm](0.1,-0.7)(0.8,0.8)(2,1.7)(2.5,3)(3,3.5)
+\psline(-0.5,0.6)(4,2)
+\psset{linestyle=dashed,xunit=1.2}
+\psline(1.4,0)(1.4,1.3)(0,1.3)
+\psline(2.2,0)(2.2,2.1)
+\rput[br](-0.1,-0.3){\footnotesize{$O$}}
+\rput[b](1.4,-0.2){\footnotesize{$x_0$}}
+\rput[b](2.2,-0.2){\footnotesize{$x$}}
+\rput[r](0,1.3){\footnotesize{$f(x_0)$}}
+\rput[U](1.4,1.5){\footnotesize{$P_0$}}
+\rput[U](3,3.7){\footnotesize{$f$}}
+\rput[U](3.5,2){\footnotesize{$g$}}
+\end{pspicture}
+\end{center}
+$f$ es una función definida en un intervalo abierto $I$ y $x_0\in I$ tal que existe $f'(x_0)$. El
+punto $P_0(x_0,f(x_0))$ tiene la propiedad de que la gráfica de $f$ pasa de un lado a otro de la
+recta tangente a la gráfica de $f$ en $P_0$, cuya ecuación es
+\[
+y = g(x) = f(x_0) + f'(x_0)(x - x_0).
+\]
+El punto $P_0$ es denominado \emph{punto de inflexión} de la gráfica de $f$.
+
+He aquí la definición precisa.
+
+\begin{defical}[Punto de inflexión]
+Sean $f\colon [a,b]\rightarrow\mathbb{R}$ y $x_{0}\in (a,b)$. Si $f$ es convexa en $[a,x_{0}]$ y
+cóncava en $[x_{0},b]$, o viceversa (cóncava en $[a,x_{0}]$ y convexa en $[x_{0},b]$), se dice que
+el punto de coordenadas $(x_{0}, f(x_{0}))$ es un \emph{punto de inflexión} del gráfico de $f$.
+\end{defical}
+
+\subsection*{Observaciones}
+\begin{enumerate}
+\item Si ponemos $h(x)=f(x)-g(x)$, $P_0$ es punto de inflexión de la gráfica de $f$ si y solo
+    si $h(x)$ cambia de signo en $x_0$, es decir, si y solo si el punto de coordenadas
+    $(x_0,0)$ es punto de inflexión de la gráfica de $h$.
+
+\item Si $f\colon [a,b]\rightarrow\mathbb{R}$ es derivable en $(a,b)$ y si $f''$ cambia de signo
+    en $x_{0}\in (a,b)$, entonces el punto de coordenadas $(x_{0}, f(x_{0}))$ es un punto de
+    inflexión del gráfico de $f$.
+
+\item Sea $f\colon [a,b]\rightarrow\mathbb{R}$. Si para $x_{0}\in (a,b)$, el punto de
+    coordenadas $(x_{0}, f(x_{0}))$ es un punto de inflexión del gráfico de $f$, y si $f$ es
+    derivable en $x_{0}$, existirá $r>0$ tal que el gráfico de $f$; es decir, de los puntos de
+    coordenadas $(x,f(x))$, estarán de un lado de la recta tangente en el punto $(x_{0},
+    f(x_{0}))$ para $x\in (x_{0}-r,x_{0})$ y del otro lado para $x\in (x_0,x_0+r)$.
+\end{enumerate}
+
+La siguiente es una condición necesaria para la existencia de un punto de inflexión.
+
+\begin{teocal}
+Si existe $f''(x_0)$ y si $P_0(x_0,f(x_0))$ es un punto de inflexión de la gráfica de $f$, entonces
+$f''(x_0)=0$.
+\end{teocal}
+
+Esta condición no es suficiente; es decir, el recíproco de este teorema no es cierto. Por ejemplo,
+si $y=f(x)=x^4$, el punto $P(0,0)$ no es punto de inflexión de la gráfica de $f$ a pesar de que
+$f''(0)=0$.
+
+\begin{exemplo}[Solución]{%
+Analizar la función $f$ y su gráfico si $f\colon\mathbb{R}\to \mathbb{R}$ está definida por
+\[
+f(x) = x^3-px
+\]
+con $p\in \mathbb{R}$, una constante dada. A la gráfica de $f$ se le llama parábola cúbica.
+}%
+En primer lugar, $f$ es una función impar, pues:
+\begin{equation*}
+    f(-x)=(- x)^3-p(-x)=-(x^3-px)=-f(x).
+\end{equation*}
+Por lo tanto, la gráfica de $f$ es simétrica respecto al punto de coordenadas $(0,0)$. Esto
+significa que bastará con analizar $f$ solo en uno de los dos intervalos: $[0,+\infty[$ o
+$]-\infty,0]$, porque en el otro intervalo el gráfico se obtiene del primero por medio de un
+reflexión y una rotación, y los valores $f(x)$ de la identidad $f(x) = -f(-x)$.
+
+Ahora, busquemos los cortes de la gráfica de $f$ con el eje $x$; es decir, busquemos los $x$ tales
+que $f(x)=0$:
+\begin{equation}
+\label{eq:da001}
+   x^3-px=0
+\end{equation}
+La solución de esta ecuación depende del signo de $p$. Por lo tanto, hay tres casos que analizar.
+
+\begin{enumerate}
+\item  Si $p<0$, $x=0$ es la única raíz real de~(\ref{eq:da001}); las otras dos son complejas.
+\item  Si $p=0$, $x=0$ es una raíz triple de la ecuación.
+\item  Si $p>0$, $x_0=0$, $x_1=-\sqrt{p}$ y $x_2=\sqrt{p}$ son las tres raíces reales de la
+    ecuación~(\ref{eq:da001}).
+\end{enumerate}
+
+Ahora calculemos la derivada de $f$:
+\begin{equation}
+\label{eq:da002}
+    f'(x)= 3x^2-p.
+\end{equation}
+Estudiemos el signo de $f'(x)$, para lo cual es conveniente buscar los valores de $x$ para los
+cuales $f'(x)=0$, en los tres casos ya considerados.
+
+\begin{enumerate}
+\item Si $p<0$, $f'(x)>0$ para todo $x\in \mathbb{R}$. Entonces $f$ será estrictamente
+    creciente en $\mathbb{R}$.
+
+\item Si $p=0$, $f'(x)>0$  para todo $x\in \mathbb{R} - \{0\}$; además, $f'(0)=0$. Entonces $f$
+    es estrictamente creciente en $(-\infty,0)$ y en $(0,+\infty)$.
+
+    Como en este caso $f(x)<0$ si $x<0$ y $f(x)>0$ si $x>0$, y $f(0) = 0$, se concluye que
+    también $f$ es estrictamente creciente en $\mathbb{R}$.
+
+\item Si $p>0$, la ecuación~(\ref{eq:da002}) tiene dos raíces:
+
+   \[
+      \bar{x}_1=-\sqrt{\frac{p}{3}} \yjc \bar{x}_2=\sqrt{\frac{p}{3}}.
+   \]
+    Se tiene que $f'(x)>0$ en $(-\infty,\bar{x}_1)$ y en $(\bar{x}_2,+\infty)$, mientras que
+    $f'(x)<0$ en $(\bar{x}_1,\bar{x}_2)$, por lo que $f$ es creciente en los dos primeros
+    intervalos y decreciente en el tercer intervalo.
+
+    Adicionalmente, esto implica que, en $(\bar{x}_1,f(\bar{x_1}))$, la función $f$ tiene un
+    máximo local y, en $(\bar{x}_2,f(\bar{x_2}))$, un mínimo local.
+\end{enumerate}
+
+Ahora estudiemos los puntos de inflexión de la gráfica de $f$. Como $f'(0)=-p$, la recta $g$ de
+ecuación
+\[
+y=g(x)=-px
+\]
+es tangente a la gráfica de $f$ en $(0,0)$. La recta $g$ divide al plano en 3 partes: $g_+$ el
+semiplano superior, la propia recta $g$ y $g_-$ el semiplano inferior:
+\begin{gather*}
+g_+=\{(x,y)\in \mathbb{R}\ |\ y>g(x)=-px\}\\
+g=\{(x,y)\in \mathbb{R}\ |\ y=g(x)=-px\}\\
+g_-=\{(x,y)\in \mathbb{R}\ |\ y<g(x)=-px\}.
+\end{gather*}
+
+\begin{center}
+\psset{unit=0.65}
+\begin{pspicture}[showgrid=false](-3,-2.5)(3,3.5)
+\psaxes[ticks=none,labels=none]{->}(0,0)(-3,-2)(3,2.5)[$x$,-90][$y$,180]
+\pstGeonode[PointSymbol=none,PointName={g,none},PointNameSep=0.5em,PosAngle=45]
+            (2.5,1.3){A}(-2.5,-1.3){B}
+\pstLineAB{A}{B}
+\rput[B](1,1.2){$g_+$}
+\rput[B](2,0.4){$g_-$}
+\rput[bl](0,-0.4){\footnotesize{$O$}}
+\end{pspicture}
+\end{center}
+
+Para ver la ubicación de los puntos $(x,f(x))$ de la gráfica de $f$ respecto a la recta
+$y=g(x)=-px$, basta analizar el signo de
+\begin{equation*}
+    h(x)= f(x)-g(x)= (x^3-px)-(-px)=x^3.
+\end{equation*}
+El signo de $h(x)$ coincide con el de $x$, por lo que la gráfica de $f$ estará en el semiplano
+$g_+$ para $x>0$ y en el semiplano $g_-$ para $x<0$.
+
+El punto  $(0,0)$ es pues un punto de inflexión de la gráfica de $f$.
+
+Como $f$ es dos veces derivable para todo $x$ y
+\begin{equation*}
+    f''(x)=6x,
+\end{equation*}
+tenemos que
+\begin{equation*}.
+    f''(x)=0 \quad \Leftrightarrow \quad x=0
+\end{equation*}
+Por lo tanto, como $(0,0)$ es un punto de inflexión, éste será el único (de haber otros para $x\neq
+0$, se tendría que $f''(x)=0$; es decir, $6x =0$, lo cual es imposible).
+
+Los resultados que sirven para analizar la función se pueden resumir en una tabla donde se los
+anota a medida que se los obtiene y, finalmente, sirve para tener una idea completa del gráfico de
+la función que luego, con la ayuda de un número adecuado de puntos de la forma $(a, f(a))$, podrá
+ser realizado. En el ejemplo, para el tercer caso, $p>0$, tenemos:
+\begin{center}
+\setlength\extrarowheight{5pt}
+\begin{tabular}{ c | c | c | c | c | c | c}
+
+      % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+      $x$   &   $\left (-\infty,-\sqrt{p}\right )$   &   $-\sqrt{p}$   &
+      $\left (-\sqrt{p},-\frac{\sqrt{p}}{3}\right )$   &   $-\frac{\sqrt{p}}{3}$   &
+      $\left (-\frac{\sqrt{p}}{3},0\right )$   &   $0$ \\
+      \hline
+     $f(x)$ &  $-$  &  0  &  +  &   + &  +  &    0    \\
+      \hline
+    $ f'(x) $&  +  &  +  &  +  &  0  & $-$   &  $-$    \\
+      \hline
+    Resultados &    &    &    & Máx. local   &    &   Punto infl.     \\ \hline
+
+       $x$ &$0$   &   $\left (0,\frac{\sqrt{p}}{3}\right )$   &   $\frac{\sqrt{p}}{3}$   &   %
+      $\left(\frac{\sqrt{p}}{3},\sqrt{p}\right )$   &   $\sqrt{p}$   &   $\left (\sqrt{p},+\infty\right )$ \\
+      \hline
+     $f(x)$ & 0   & $-$   & $-$   & $-$   &   0   &  + \\
+      \hline
+    $ f'(x) $&  $-$  & $-$   &  0  & +   &   +   &  +  \\
+      \hline
+    Resultados & Punto infl.   &    &  Mín local  &    &     &  \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\psset{unit=0.55}
+\begin{pspicture}[showgrid=false](-3,-3.8)(3,3.5)
+\psaxes[labels=none,ticks=none]{->}(0,0)(-3,-3.3)(3,3.5)[$x$,-90][$y$,180]
+\psplot[yunit=0.2]{-2.3}{2.3}{x 3 exp x add}
+\rput[bl](0.1,-0.4){\footnotesize{$O$}}
+\rput[b](0,-3.8){$p<0$}
+\end{pspicture}
+\hspace{0.5cm}
+\begin{pspicture}[showgrid=false](-3,-3.8)(3,3.5)
+\psaxes[labels=none,ticks=none]{->}(0,0)(-3,-3.3)(3,3.5)[$x$,-90][$y$,180]
+\psplot[yunit=0.2]{-2.3}{2.3}{x 3 exp}
+\rput[bl](0.1,-0.4){\footnotesize{$O$}}
+\rput[b](0,-3.8){$p=0$}
+\end{pspicture}
+\hspace{0.5cm}
+\def\fun{x 3 exp x 5 mul sub}
+\begin{pspicture}[showgrid=false](-3,-3.8)(3,3.5)
+\psaxes[labels=none,ticks=none]{->}(0,0)(-3,-3.3)(3,3.5)[$x$,-90][$y$,180]
+\psplot[yunit=0.2]{-2.5}{2.5}{\fun}
+\pstGeonode%
+[PointSymbol=none,PointName={none,none,\overline{x_1},\overline{x_2}},PosAngle={0,0,90,-90},PointNameSep=0.5em,yunit=0.2]%
+          (! /x 1.29099 def x \fun){A}(! /x 1.29099 neg def x \fun){B}
+          (1.29099,0){C}(-1.29099,0){D}
+\pstLineAB[linestyle=dashed]{A}{C}
+\pstLineAB[linestyle=dashed]{B}{D}
+\rput[bl](2.23606,-0.4){\footnotesize{$x_1$}}
+\rput[br](-2.23606,0){\footnotesize{$x_2$}}
+\rput[br](0.1,-0.4){\footnotesize{$O$}}
+\rput[b](0,-3.8){$p>0$}
+\end{pspicture}
+\end{center}
+
+¿Cómo se corta la gráfica de $f$ con rectas horizontales de ecuación $y=c$? Para responder a esta
+pregunta en los tres casos considerados, podemos analizar las soluciones de la ecuación $f(x)=0$:
+\begin{equation}
+\label{eq:da003}
+    x^3-px=c.
+\end{equation}
+
+\begin{enumerate}
+\item Si $p<0$, la ecuación~(\ref{eq:da003}) tiene una raíz real simple para todo $c$.
+
+\item Si $p=0$, la ecuación tiene una raíz real simple para todo $c\neq 0$. Para $c=0$, $x=0$
+    es una raíz real triple.
+
+\item Si $p>0$, hay, a su vez, cuatro casos:
+
+    \begin{enumerate}
+    \item Si $c<f(\bar{x_2})$ o $c>f(\bar{x_1})$, la ecuación~(\ref{eq:da003}) tiene una
+        sola raíz real simple.
+
+    \item Si $f(\bar{x_2})<c<f(\bar{x_1})$, la ecuación tiene tres  raíces reales
+        distintas.
+
+    \item Si $c=f(\bar{x_2})$, $\bar{x_2}$ es raíz doble de la ecuación~(\ref{eq:da003}), y
+        se tiene otra raíz simple y negativa.
+
+    \item Si $c=f(\bar{x_1})$, $\bar{x_1}$ es raíz doble de la ecuación, y se tiene otra
+        raíz simple y negativa.
+    \end{enumerate}
+
+\end{enumerate}
+\end{exemplo}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Utilice la segunda derivada de $f$ para determinar los intervalos en los cuales $f$ es
+    cóncava y en los cuales es convexa, así como los puntos de inflexión.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = 14x - x^2$.
+    \item $\displaystyle f(x) = 2x^3 - 15x^2 + 24x$.
+    \item $\displaystyle f(x) = (x + 2)^3 + 1$.
+    \item $\displaystyle f(x) = (x + 1)(x - 1)^3$.
+    \item $\displaystyle f(x) = 6x^4 + 2x^3 - 12x^2 + 4$.
+    \item $\displaystyle f(x) = \sqrt[3]{x} + x$.
+    \item $\displaystyle f(x) = x + \frac{16}{x}$.
+    \item $\displaystyle f(x) = \sqrt{x^2 + 26}$.
+    \item $\displaystyle f(x) = \frac{1}{x^2 + 1}$.
+    \item $\displaystyle f(x) = \frac{x - 3}{x + 2}$.
+    \item $\displaystyle f(x) = x^{\frac{7}{3}} + x$.
+    \item $\displaystyle f(x) = \sen x$.
+    \item $\displaystyle f(x) = x - \cos x + 1$.
+    \item $\displaystyle f(x) = \tan x$.
+    \end{enumerate}
+
+\item Para la función $f$ dada, utilice la segunda derivada para hallar los extremos locales y
+    los puntos de inflexión. Dibuje, aproximadamente, el gráfico de $f$.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = (2 - 3x)^2$.
+    \item $\displaystyle f(x) = \frac{1}{3}x^3 - 2x^2 + 3x$.
+    \item $\displaystyle f(x) = 5x^4 + x^2$.
+    \item $\displaystyle f(x) = \frac{x^4 + 4}{x^2}$.
+    \item $\displaystyle f(x) = x^{\frac{1}{3}}(x + 2)$.
+    \item $\displaystyle f(x) = x\sqrt{x + 1}$.
+    \item $\displaystyle f(x) = \sqrt{x} - \frac{x}{9}$.
+    \item $\displaystyle f(x) = 3\sen x + 4\cos x$.
+    \item $\displaystyle f(x) = x^4 - 6x^3 + 12x^2$.
+    \item $\displaystyle f(x) = \sen(3x)$.
+    \end{enumerate}
+
+\item Dibuje, aproximadamente, el gráfico de la función $f$ que tenga las propiedades dadas.
+    \begin{enumerate}[leftmargin=*]
+    \item $f'(-1) = f'(2) = 0$; $f''(x) < 0$ para todo $x < 1$ y $f'(x) > 0$ para todo $x
+        > 1$; y $f(0) = 1$.
+
+    \item $f'(-2) = f'(-1) = f'(1) = f'(3) = 0$; $f''(x) > 0$ para todo $x < -\frac{3}{2}$
+        o $0 < x < 2$ y $f''(x) < 0$ para todo $-\frac{3}{2} < x < 0$ o $x > 2$; y $f(0) =
+        0$.
+    \end{enumerate}
+
+\item Halle los puntos de inflexión de $f$ si
+    \[
+      f(x) =
+      \begin{cases}
+      x^4 & \text{si } x \geq 0, \\
+      -x^4 & \text{si } x < 0.
+      \end{cases}
+    \]
+
+\item Dibuje, aproximadamente, el gráfico de $f$.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) =
+        \begin{cases}
+          |x - 1| & \text{si } x \leq 1, \\
+          2x^2 - 5x + 3 & \text{si } x > 1.
+        \end{cases}$
+    \item $\displaystyle f(x) =
+        \begin{cases}
+          -x^2 + 1 & \text{si } x^2 - 3x + 2 \geq 0, \\
+          -3(x - 1) & \text{si no}.
+        \end{cases}$
+    \end{enumerate}
+
+%\item Pruebe con un cambio de variable
+%\begin{equation*}
+%    x=\alpha x_1, \quad y=\beta y_1
+%\end{equation*}
+% (cambio de escala), que los tres casos de parábola cúbica se pueden reducir a
+%\begin{equation*}
+%    y_1=x_1^3-x_1, \quad y_1=x_1^3, \quad y_1=x_1^3+x_1.
+%\end{equation*}
+%\item Analice la función $f$ dada por
+%\begin{equation}
+%\label{eq:da004}
+%    f(x)= a_0+a_1x+a_2x^2+x^3,
+%\end{equation}
+%con $a_0,a_1,a_2$ en $\mathbb{R}$. Halle los intervalos donde $f$ es monótona. Luego halle
+%$\alpha, \beta$ en $\mathbb{R}$ tales que con un traslado paralelo dado por el cambio de
+%variables
+%\begin{equation*}
+%    x=x_1+\alpha, \quad y=y_1+\beta
+%\end{equation*}
+%la ecuación (\ref{eq:da004}) sea equivalente a
+%\begin{equation*}
+%    y_1=x_1^3-x_1.
+%\end{equation*}
+%
+%Lo puede hacer mediante cálculos directos o teniendo en cuenta que $(\alpha, \beta)$ es el
+%punto de inflexión de la gráfica de $f$. Exprese entonces $p$ en función de $a_0,a_1\text{ y
+%}a_2$
+%\begin{equation*}
+%   p = p(a_0,a_1,a_2).
+%\end{equation*}
+%Del análisis hecho anteriormente para la parábola cúbica, deduzca en qué casos (para qué
+%relaciones entre $a_0,a_1\text{ y }a_2$) dados por $p<0$,  $p=0$ y  $p>0$, se tendrán para $f$
+%una raíz real simple, una raíz real triple o tres raíces reales distintas.
+%\item Analice la función  $f$ si
+%\begin{equation*}
+%    f(x)=b_0+b_1x+b_2x^2+b_3x^3+x^4,
+%\end{equation*}
+%usando para $f'$ los resultados obtenidos en el ejercicio anterior. Saque conclusiones respecto
+%al número posible de máximos y mínimos en función de los coeficientes $b_0$, $b_1$, $b_2$ y
+%$b_3$, y halle los puntos de inflexión en función de $b_0$, $b_1$, $b_2$ y $b_3$.
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Graficación de funciones}
+Los resultados estudiados hasta ahora, a más de proveernos de la herramienta necesaria para
+resolver los problemas de optimización (encontrar el máximo o el mínimo de una función), se
+utilizan para trazar el gráfico de funciones de manera aproximada, como ya se ha propuesto en los
+ejercicios de la sección anterior.
+
+En esta sección, vamos a establecer un procedimiento bastante general para dibujar el gráfico de
+una función. Empecemos con un ejemplo.
+
+\begin{exemplo}[Solución]{%
+Dibujar el gráfico de la función $f$ definida por $y=f(x)=
+\frac{1}{10}x^{3}-\frac{3}{10}x^{2}-\frac{8}{10}x$.
+}%
+La primera y la segunda derivadas de $f$ son:
+\begin{eqnarray*}
+  f'(x) &=& \frac{3}{10}x^{2}-\frac{3}{5}x-\frac{9}{10}, \\
+  f''(x) &=& \frac{3}{5}x-\frac{3}{5}.
+\end{eqnarray*}
+
+Busquemos los puntos en los cuales se anulan $f$, $f'$ y $f''$; es decir, sus raíces. Para
+\begin{equation*}
+f(x_{k})=0,
+\end{equation*}
+tenemos que las raíces son
+\[
+x_{1}=-\frac{3}{2}(\sqrt{5}-1)\approx -1.85,\  x_{2}=0 \text{ y }
+x_{3}=\frac{3}{2}(\sqrt{5}+1)\approx 4.85.
+\]
+Para
+\begin{equation*}
+	f'(x_{k})=0,
+\end{equation*}
+las raíces son:
+\[
+x_{4}=-1 \yjc  x_{5}=3.
+\]
+Finalmente, para
+\begin{equation*}
+	f''(x_{k})=0,
+\end{equation*}
+obtenemos una sola raíz:
+\[
+x_{6}=1.
+\]
+
+En $x_{1},x_{2}$ y $x_{3}$ el gráfico de $f$ interseca con el eje horizontal. En $x_{4}$ y $x_{5}$
+es posible que $f$ tenga extremos locales,  en $x_{5}$, un punto de inflexión. La siguiente tabla
+muestra los signos de  $f$, $f'$ y $f''$ en los intervalos comprendidos entre las raíces arriba
+encontradas:
+
+\[
+\setlength\extrarowheight{4pt}
+\begin{array}{c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+x & \multicolumn{1}{r|}{\hspace*{2em} -2} & -1.85 & & -1 & & 0 & & 1 &
+\multicolumn{1}{r|}{2} & 3 & \multicolumn{1}{r|}{4} & \multicolumn{1}{r|}{4.85} &
+\multicolumn{1}{l}{5} \\ \hline
+f(x) & - & 0 & + & & + & 0 & - & & - & & - & 0 & + \\ \hline
+f'(x) & + & & & 0 & - & - & & & - & 0 & + & & + \\ \hline
+f''(x) & - & & - & & - & & - & 0 & + & & + & & +
+\end{array}
+\]
+
+De la información contenida en esta tabla, colegimos que:
+\begin{enumerate}
+\item La función $f$ alcanza un máximo local en $-1$, ya que antes de este punto, la derivada
+    es positiva y luego, negativa.
+\item La función $f$ alcanza un mínimo local en $3$, ya que antes de este punto, la derivada es
+    negativa y luego, positiva.
+\item En el punto $1$, hay un punto de inflexión, ya que antes de este punto, la segunda
+    derivada es negativa y luego, positiva.
+\end{enumerate}
+
+Dado que
+\[
+\setlength\extrarowheight{4pt}
+\begin{array}{c|cccccc}
+x & -1.85 & -1 & 0 & 1 & 3 & 4.85 \\ \hline
+f(x) & 0 & 0.4 & 0 & -1 & -2.4 & 0
+\end{array}
+\]
+podemos concluir que la gráfica de $f$:
+\begin{enumerate}
+\item corta el eje horizontal en $-1.85$, $0$ y $4.85$;
+\item alcanza un máximo local igual a $0.4$ en $-1$;
+\item alcanza un mínimo local igual a $-2.4$ en $3$;
+\item es creciente en $]-\infty,-1]$ y $[3,+\infty[$;
+\item es decreciente en $[-1,3]$;
+\item es cóncava en $]-\infty, 0]$; y
+\item es convexa en $[0,+\infty[$.
+\end{enumerate}
+
+Con esta información, podemos realizar el dibujo del gráfico de $f$ y obtener algo similar al
+siguiente dibujo:
+\begin{center}
+\psset{algebraic}%
+\def\psvlabel#1{\footnotesize $#1$}
+\def\pshlabel#1{\footnotesize $#1$}
+\begin{pspicture}(-4.5,-3.25)(6,2.5)
+  \psplot[plotpoints=500]{-3}{5}{0.1*x^3-(3/10)*x^2-(8/10)*x}
+  \psaxes[Dx=1,Dy=2,arrows=->](0,0)(-4.5,-3.25)(6,2.5)
+  \psset{dotscale=0.8}
+  \psdot[dotstyle=Bar,dotangle=-90](0,0.4)\uput[0](0,0.4){\footnotesize$0.4$}%
+  \psdot(-1,0.4)\uput[90](-1,0.4){\footnotesize$(-1,0.4)$}%
+  \psdot(-1.85,0)\uput[-45](-1.85,0){\footnotesize$x_1$}%
+  \psdot[dotstyle=Bar,dotangle=-90](0,-2.4)\uput[0](0,-2.4){\footnotesize$-2.4$}%
+  \psdot(3,-2.4)\uput[-90](3,-2.4){\footnotesize$(3,-2.4)$}%
+  \psdot(4.85,0)\uput[-90](4.85,0){\footnotesize$x_2$}%
+\end{pspicture}
+\end{center}
+\end{exemplo}
+
+
+\begin{exemplo}[Solución]{Sea $f$ una función real definida por:
+\begin{equation*}
+	f(x)=
+\begin{cases}
+-2x-3 & \text{si $x\leq -1$}\\
+x^3 & \text{si $|x|<1$}\\
+\frac{1}{x^2}& \text{si $x\geq 1$}.
+\end{cases}
+\end{equation*}
+Analice y dibuje el gráfico de $f$.
+}%
+La función $f$ está definida en $\mathbb{R}$. Hay cambio de definición en los puntos $x=-1$ y
+$x=1$.
+
+La función $f$ es continua en $\mathbb{R} - \{-1,1\}$ pues las partes en las cuales está definida
+son dos polinomios y una función racional, que son continuos en sus dominios. Averigüemos si es
+continua en $x=-1$ y $x=1$.
+
+En primer lugar, $f$ está definida en dichos puntos: $f(-1)=-1$ y $f(1)=1$. Veamos ahora si existen
+los límites en esos puntos. Calculamos primero los correspondientes límites laterales:
+\begin{align*}
+\lim_{x\to -1^-}f(x)&=\lim_{x\to -1^-}(-2x-3)= -1 & \lim_{x\to -1^+}f(x)&=\lim_{x\to -1^-}(-x^3)= -1\\
+\lim_{x\to 1^-}f(x)&=\lim_{x\to -1^-}x^3= 1 & \lim_{x\to 1^+}f(x)&=\lim_{x\to -1^-}\frac{1}{x^2}= 1.
+\end{align*}
+Como los correspondientes límites laterales son iguales, concluimos la verdad de las siguientes
+igualdades:
+\begin{gather*}
+\lim_{x\to -1}f(x)=-1,\\
+ \lim_{x\to1}f(x)=1.
+\end{gather*}
+Finalmente, podemos decir que la función es continua en $x=-1$ y $x=1$ porque
+\begin{gather*}
+\lim_{x\to -1}f(x)=-1= f(-1),\\
+ \lim_{x\to1}f(x)=1=f(1).
+\end{gather*}
+
+En resumen, la función $f$ es continua en su dominio $\mathbb{R}$.
+
+Como no existen puntos de discontinuidad no hay posibilidad de que existan asíntotas verticales.
+Veamos si existen asíntotas horizontales. Para ello, calculemos los límites al infinito:
+\begin{gather*}
+\lim_{x\to -\infty} f(x) =\lim_{x\to -\infty} (-2x-3) = -\infty,\\
+\lim_{x\to +\infty} f(x) =\lim_{x\to +\infty} \frac{1}{x^2} = 0.
+\end{gather*}
+Entonces $y=0$ es una asíntota horizontal de la gráfica de $f$ cuando $x$ tiende a $+\infty$.
+
+Para continuar con el análisis de la función $f$, necesitaremos su primera y su segunda derivada:
+\begin{equation*}
+	f'(x)=
+\begin{cases}
+-2 & \text{si $x< -1$}\\
+3x^2 & \text{si $|x|<1$}\\
+-\frac{2}{x^3}& \text{si $x> 1$}.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+	f''(x)=
+\begin{cases}
+0 & \text{si $x< -1$}\\
+6x & \text{si $|x|<1$}\\
+\frac{6}{x^4}& \text{si $x>1$}.
+\end{cases}
+\end{equation*}
+Veamos si existe la primera derivada de $f$ en $x=-1$ y $x=1$. Como en esos puntos la función
+cambia de definición, hallemos, primeramente, las derivadas laterales correspondientes:
+\begin{align*}
+f_-'(-1) & =\lim_{x\to -1^-}\frac{f(x)-f(-1)}{x-(-1)}= \lim_{x\to -1^-}\frac{(-2x -3) - (-1)} {x-(-1)}\\
+&=\lim_{x\to -1^-}\frac{-2(x+1)}{x+1} =\lim_{x\to -1^-}(-2)=-2,
+\end{align*}
+
+\begin{align*}
+f_+'(-1) & =\lim_{x\to -1^+}\frac{f(x)-f(-1)}{x-(-1)} =\lim_{x\to -1^+}\frac{x^3 -(- 1)}{x-(-1)} \\
+& =\lim_{x\to -1^+}(x^2-x+1)) = 3,
+\end{align*}
+
+\begin{equation*}
+f_-'(-1) = -2\neq 3=f_+'(-1).
+\end{equation*}
+Entonces no existe $f'(-1)$.
+
+\begin{align*}
+f_-'(1) & =\lim_{x\to 1^-}\frac{f(x)-f(1)}{x-1}= \lim_{x\to 1^-}\frac{x^3-1}{x-1}\\
+& = \lim_{x\to 1^-}(x^2+x+1)= 3,
+\end{align*}
+
+\begin{align*}
+f_+'(1) & =\lim_{x\to 1^+}\frac{f(x)-f(1)}{x-1} = \lim_{x\to 1^+}\frac{\frac{1}{x^2}-1}{x-1}\\
+& = \lim_{x\to 1^+}\left(-\frac{x+1}{x^2}\right) = -2,
+\end{align*}
+\begin{equation*}
+f_-'(1) = 3\neq -2=f_+'(1).
+\end{equation*}
+Entonces no existe $f'(1)$.
+
+Como en los puntos $x=-1$ y  $x=1$ no existe la derivada, la gráfica de $f$ no tiene tangente en
+esos puntos. Además, existe la posibilidad de que en ellos existan extremos locales. Claramente,
+$f'(0)=0$; entonces hay la posibilidad de que en $x=0$ exista un extremo local.
+
+Como el $D(f')= \mathbb{R} - \{-1,1\}$, no existe la segunda derivada  en $x=-1$ y  $x=1$ y, como
+en dichos puntos no existe recta tangente, no puede haber en ellos puntos de inflexión de la
+gráfica de $f$.
+
+Ya solo falta averiguar en qué puntos la segunda derivada es igual a cero; ello sucede en $x=0$. En
+$x=0$ podría haber un punto de inflexión.
+
+En resumen, en $x=-1$, $x=0$ y $x=1$ buscaremos extremos locales. En $x=0$ además buscaremos un
+punto de inflexión. Esta búsqueda la realizamos con ayuda de la siguiente tabla:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  $x$    & $]-\infty,-1[$ & $-1$ & $]-1,0[$ & $0$ & $]0,+1[$ & $+1$ & $]+1,+ \infty[$ \\
+  \hline
+  $f(x)$ & $$                 & $-1$ & $$           & $0$ & $$            & $1$ & $$ \\
+  \hline
+  $f'(x)$ & $-$ & n. e. & $+$ & $0$ & $+$ & n. e. & $-$ \\
+  \hline
+  Monotonía & $\searrow$ & $$ & $\nearrow$ & $$ & $\nearrow$ & $$ & $\searrow$ \\
+  \hline
+  $f''(x)$ & $0$ & n. e. & $-$ & $0$ & $+$ & n. e & $+$ \\
+  \hline
+  Concavidad & $$ & $$ & $\frown$ & $$ & $\smile$ & $$ & $\smile$ \\
+  \hline
+  Resultados & $$ & m. l. & $$ & p. i. & $$ & M. l. & $$ \\
+   \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline
+n. e. = no existe; m. l. = mínimo local; M. l. = máximo local; p. i. = punto de inflexión \\
+\hline
+\end{tabular}
+\end{center}
+
+A partir de la tabla podemos dibujar la forma de la gráfica de la función $f$ como se muestra en la
+figura.
+
+\begin{center}
+   \psset{xAxisLabel={},yAxisLabel={}}
+   \begin{psgraph}[ticks=none](0,0)(-2.1,-1.25)(3,1.5){0.75\textwidth}{5.5cm}
+      \psplot[algebraic,plotpoints=1000]%
+         {-2}{3}{IfTE(x<-1,-2*x-3,IfTE(x<1,x^3,1/x^2))}%
+      \psaxes{->}%
+         (0,0)(-2.1,-1.25)(3.25,1.5)%
+      \uput[-90](3.25,0){$x$}%
+      \uput[0](0,1.5){$y$}%
+   \end{psgraph}
+\end{center}
+
+\end{exemplo}
+
+De los dos ejemplos, podemos proponer el siguiente procedimiento, bastante general, para analizar
+el gráfico de una función real.
+\begin{enumerate}[leftmargin=*]
+\item Si la función es par o impar, basta considerar el intervalo $[0,+\infty[$.
+\item Se identifican los ``valores especiales'' para $f$, que son sus raíces. También sus
+    puntos de discontinuidad. Digamos que estos son $x_1 < x_2 < \cdots < x_N$.
+
+\item En cada uno de los intervalos $]-\infty, x_1[$, $]x_k, x_{k+1}[$ y $]x_N, +\infty[$ la
+    función $f$ no cambia de signo. Para determinar el signo en cada intervalo, basta calcular
+    $f(x)$ para un $x$ en el intervalo correspondiente.
+
+\item El paso anterior se aplica también a $f'$ y a $f''$.
+
+\item Se elabora una tabla con los puntos especiales de $f$, $f'$ y $f''$.
+\end{enumerate}
+Con la tabla obtenida, podemos determinar los extremos locales, puntos de inflexión, intervalos de
+monotonía, concavidad y convexidad.
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Dibuje, aproximadamente, el gráfico de la función $f$.
+    \begin{enumerate}
+    \item $\displaystyle f(x) = x^3 + 2x$.
+    \item $\displaystyle f(x) = (x + 2)^3(x - 1)^2$.
+    \item $\displaystyle f(x) = x^3 - 6x^2 + 9x + 5$.
+    \item $\displaystyle f(x) = x + \frac{1}{x^2}$.
+    \item $\displaystyle f(x) = \frac{x - 1}{(x + 2)(x - 3)}$.
+    \item $\displaystyle f(x) = \frac{6x + 1}{3x - 1}$.
+    \item $\displaystyle f(x) = -x + \cos x$.
+    \item $\displaystyle f(x) = \sen^3 x + \cos^3 x$.
+    \item $\displaystyle f(x) = x^2\ln x$.
+    \item $\displaystyle f(x) = x^2e^x$.
+    \item $\displaystyle f(x) = 
+    \begin{cases} 
+    |x^2-5x+4| & \text{si $x\geq 0$,}\\
+    4-x^2 & \text{si $x< 0$.}
+    \end{cases}$
+    \end{enumerate}
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Problemas de extremos}
+
+Una de las principales aplicaciones de las derivadas consiste en proveer de un método para resolver
+problemas de optimización; es decir, problemas en los que hay que escoger de entre varias opciones
+para la solución la mejor o la más conveniente, o la menos inconveniente. Por ejemplo, en una
+empresa se busca que las pérdidas sean mínimas y que las utilidades sean máximas; un transportista
+busca la ruta más corta o la más rápida; un bodeguero trata de guardar más objetos en cada bodega,
+etcétera. El problema de Romeo y Julieta con el que iniciamos este capítulo, es un ejemplo de un
+problema de optimización.
+
+El modelo matemático de una gran variedad de problemas de optimización se ajustan al siguiente
+problema matemático, denominado, \textbf{problema de optimización}:
+
+\begin{probcal}[Básico de optimización]
+Dados $I$ un intervalo y $\funcjc{f}{I}{\Rbb}$ continua en $I$, se debe determinar si existen el
+máximo y el mínimo de $f$ en $I$. De existir, se debe hallar $x_m\in I$ y $x_M\in I$ tales que
+\[
+\underline{y} = f(x_m) = \min_{x\in I}f(x) \yjc \overline{y} = f(x_M) = \max_{x\in I}f(x).
+\]
+\end{probcal}
+
+A continuación vamos a enunciar los resultados desarrollados en las secciones anteriores y que nos
+permitirán establecer un ``algoritmo'' para el problema de optimización.
+
+\begin{teocal}
+Sean $I$ un intervalo y $\overline{x} \in I^\circ$ tal que $f$ alcanza un extremo local en
+$\overline{x}$. Entonces $\overline{x}$ es un punto crítico de $f$; es decir, $f'(\overline{x}) =
+0$ o no existe la derivada de $f$ en $\overline{x}$.
+\end{teocal}
+
+Al combinar estos dos resultados, tenemos el siguiente algoritmo para el problema de optmización
+cuando $I = [a,b]$ y $f$ tiene un número finito de puntos críticos en el interior de $I$.
+
+\begin{algocal}
+Sea $\funcjc{f}{[a,b]}{\Rbb}$ una función continua en $[a,b]$.
+\begin{enumerate}
+\item Hallar $K_0 = \{x \in \ ]a,b[ \ : f'(x) = 0\}$ y $K_1 = \{x \in \ ]a,b[ \ : \not\exists
+    f'(x)\}$. Si $K_0$ y $K_1$ son finitos, vaya al siguiente paso.
+
+\item Sea $K = \{a,b\} \cup K_0 \cup K_1$. Este es el conjunto de los ``candidatos'' a ser los
+    puntos en los que se alcancen los extremos globales. Obligatoriamente $x_m$ y $x_M$, cuya
+    existencia está garantizada por el primer teorema, son elementos de $K$.
+
+    Escribamos $K = \{a_1 = a < a_2 < a_3 < \cdots < a_N = b\}$.
+
+\item Calcular la tabla de valores $b_k = f(a_k)$ con $1 \leq k \leq N$, ordenando los valores
+    de manera que $b_{k_1} \leq b_{k_2} \leq \cdots \leq b_{k_N}$.
+
+\item Entonces $x_m = a_{k_1}$, $x_M = a_{k_N}$, $\underline{y} = b_{k_1}$ y $\overline{y} = b
+    _{k_N}$.
+\end{enumerate}
+\end{algocal}
+
+Los siguientes teoremas, en cambio, nos permiten establecer un algoritmo cuando el intervalo $I$ no
+es cerrado y acotado.
+
+\begin{teocal}
+Sean $I$ un intervalo y $\funcjc{f}{I}{\mathbb{R}}$ una función continua. Si existe un único extremo local en $I$, entonces este extremo es también es global.
+\end{teocal}
+
+\begin{teocal}
+Sean $I$ un intervalo y $\funcjc{f}{I}{\Rbb}$ una función continua en $I$. Entonces la imagen de
+$f$, el conjunto $\Img(f)$ es un intervalo. En particular, si $I=[a,b]$, entonces $\Img(f) =
+[f(x_m),f(x_M)]$.
+\end{teocal}
+
+\begin{teocal}
+Si $\displaystyle I = \bigcup_{k=1}^n A_n$ y $\funcjc{f}{I}{\Rbb}$, entonces:
+\[
+\Img(f) = \bigcup_{k=1}^n f(A_k).
+\]
+\end{teocal}
+
+Y, finalmente:
+
+\begin{teocal}
+Sean $I = ]a,b[$ y $\funcjc{f}{I}{\Rbb}$ una función continua en $I$. Entonces:
+\begin{enumerate}
+\item Si $f$ es creciente en $I$, entonces $\displaystyle \Img(f) =
+    \left]\limjc{f(x)}{x}{a^+},\limjc{f(x)}{x}{b^-}\right[$.
+
+\item Si $f$ es decreciente en $I$, entonces $\displaystyle \Img(f) =
+    \left]\limjc{f(x)}{x}{b^-},\limjc{f(x)}{x}{a^+}\right[$.
+
+\item Resultados análogos a los anteriores son verdaderos si $I$ es uno de los siguientes
+    intervalos: $]-\infty,b[$, $]a,+\infty[$ y $]-\infty,\infty[$.
+\end{enumerate}
+\end{teocal}
+
+Al combinar los resultados precedentes, se tiene el siguiente algoritmo para resolver el problema
+de optimización cuando $I$ no es un intervalo cerrado y acotado, pero sí es la unión de $3$ subintervalos de $I$, digamos $I_1$, $I_2$ e $I_3$, de modo que en $I_1$ y en $I_3$ $f$ es monótona y que $I_2=[a,b]$, con $a$, $b\in I$. El
+algoritmo permite, además, hallar la imagen de $f$.
+
+\begin{algocal}
+Sean $I$ un intervalo que no es cerrado ni acotado y $\funcjc{f}{I}{\Rbb}$ una función continua en $I$.
+
+\begin{enumerate}
+\item Determinar $a$, $b\in I$ y los subintervalos $I_1$ e $I_3$ de $I$ en los cuales $f$ es
+    monótona y que $I=I_1\cup [a,b]\cup I_3$.
+
+\item Calcular $J_k = f(I_k)$ para todo $k \in \{1,2,3\}$ (Para $J_2$ se usa el Algoritmo $1$, mientras que para $J_1$ y $J_3$ se aplica el Teorema precedente).
+
+\item Calcular $\displaystyle J = \Img(f) = \bigcup_{k=1}^3 J_k$.
+
+\item El conjunto $J$ es un intervalo. Si $J$ es uno de los intervalos:
+    \begin{enumerate}
+    \item $\Rbb$, $]-\infty,\beta[$ o $]-\infty,\beta]$, entonces $\displaystyle \inf_{x\in
+        I}f(x) = -\infty$ y $f$ no alcanza el mínimo en $I$.
+
+    \item $]\alpha,\beta[$ o $]\alpha,\beta]$, entonces $\displaystyle \inf_{x\in I}f(x) =
+        \alpha$ y $f$ no alcanza el mínimo en $I$.
+
+    \item $[\alpha,\beta[$, $[\alpha,\beta]$ o $[\alpha,+\infty [$, entonces $\displaystyle
+        \min_{x\in I}f(x) = \alpha$.
+
+    \item $\Rbb$, $[\alpha,\infty[$ o $]\alpha,\infty[$, entonces $\displaystyle \sup_{x\in
+        I}f(x) = +\infty$ y $f$ no alcanza el máximo en $I$.
+
+    \item $]-\infty,\beta[$ o $]\alpha,\beta[$ o $[\alpha,\beta[$, entonces $\displaystyle
+        \sup_{x\in I}f(x) = \beta$ y $f$ no alcanza el máximo en $I$.
+
+    \item $]\alpha,\beta]$, $[\alpha,\beta]$ o $]-\infty,\beta]$, entonces $\displaystyle
+        \max_{x\in I}f(x) = \beta$.
+    \end{enumerate}
+\end{enumerate}
+\end{algocal}
+
+Este algoritmo sirve también si el dominio de la función se puede expresar como la unión finita de
+intervalos, pues se lo puede aplicar a cada uno de esos intervalos y luego se calcula la imagen de
+$f$ con lo que, si existen, se determinan los extremos de la función.
+
+Ahora resolvamos el problema de Romeo y Julieta.
+
+Empecemos calculando la derivada de $f$ para todo $x\in I$ ya que $f$ es derivable en su dominio:
+\begin{align*}
+f'(x) &= \frac{2x}{2\sqrt{x^2 + 4}} + \frac{-2(3 - x)}{2\sqrt{}(3 - x)^2 + 1} \\
+      &= \frac{x}{\sqrt{x^2 + 4}} - \frac{3 - x}{\sqrt{}(3 - x)^2 + 1}.
+\end{align*}
+Por lo tanto:
+\begin{align*}
+f'(x) = 0 &\Leftrightarrow \frac{x}{\sqrt{x^2 + 4}} - \frac{3 - x}{\sqrt{}(3 - x)^2 + 1} \\
+    &\Leftrightarrow \frac{x}{\sqrt{x^2 + 4}} = \frac{3 - x}{\sqrt{}(3 - x)^2 + 1}.
+\end{align*}
+
+Pero:
+\begin{align*}
+\frac{x}{\sqrt{x^2 + 4}} = \frac{3 - x}{\sqrt{}(3 - x)^2 + 1} &\Rightarrow
+x^2\big[(3 - x)^2 + 1\big] = (3 - x)^2(x^2 + 4) \\
+&\Rightarrow 3x^2 - 24x + 36 = 0 \\
+&\Rightarrow x \in\{2,6\}.
+\end{align*}
+Es decir, si $f'(x) = 0$, necesariamente $x = 2$ ó $x = 6$.
+
+Dado que $6\not\in I$ y
+\begin{align*}
+f'(2) &= \frac{2}{\sqrt{2^2 + 4}} - \frac{3 - 2}{\sqrt{(3 - 2)^2 + 1}} \\
+    &= \frac{2}{2\sqrt{2}} - \frac{1}{2\sqrt{2}} = 0,
+\end{align*}
+tenemos que $2$ es un punto crítico de $f$ en $I$. Además, es el único punto crítico, por que si
+hubiera otro, diferente de $2$, debería ser el número $6$, lo que no es posible.
+
+Ahora calculemos la segunda derivada de $f$ en $2$ para saber si, en este número, la función $f$
+alcanza un máximo o un mínimo local.
+
+Para ello, luego de un cálculo sencillo, vemos que, para cualquier $x\in I$, tenemos que:
+\[
+f''(x) = \frac{4}{(x^2 + 4)^{\frac{3}{2}}} +
+\frac{1}{\big[(3 - x)^2 + 1\big]^{\frac{3}{2}}}.
+\]
+
+Entonces, $f''(x) > 0$ para todo $x\in I$. En particular, $f''(2) > 0$.  Esto significa que $f(2)$
+es un mínimo local de $f$ en $I$. Por lo tanto, el mínimo de $f$ es:
+\[
+f(2) = \min_{x\in I}f(x) = 3\sqrt{2} \approx 4.24.
+\]
+
+\subsubsection{Solución del problema original (interpretación de la solución del problema matemático)}
+Romeo irá donde Julieta, llevándole rosas recogidas a $2$ kilómetros del extremo $A$ del lago.
+Cuando el joven enamorado llegue, habrá remado aproximadamente un recorrido de $4$ kilómetros con
+$240$ metros aproximadamente. A su edad, y con el deseo enorme de encontrarse con su amada, ese
+recorrido no representará para él ningún problema.
+
+\subsubsection{Epílogo}
+Se cuenta que Romeo llegó con un bello ramo de rosas donde Julieta cuando ella estaba a punto de
+retirarse de su escondite creyendo que su amado no vendría. Las flores la llenaron de alegría y
+justificaron plenamente su impaciente espera.
+
+Para terminar, examinemos algunos ejemplos adicionales de optimización.
+
+\begin{exemplo}[Solución]{%
+Sea $f\colon ]0, \infty[\ \to \mathbb{R} $, definida por
+\[
+f(x) = x^2-\frac{8}{x}.
+\]
+Halle el punto en el cual la gráfica de $f$ tiene la recta tangente de mínima pendiente.
+}%
+El dominio de $f$ es el conjunto $]0,+\infty[$.
+
+La pendiente de la recta tangente $m_x$ en un punto de coordenada $x$ viene dada por la derivada de
+$f(x)$. Entonces:
+\begin{equation*}
+    m_x = g(x) = f'(x) = 2x + \frac{8}{x^2}.
+\end{equation*}
+El dominio de $g$ es el conjunto $]0,+\infty[$.
+
+El problema a resolver es hallar los extremos de la función $g$. Para ello necesitamos su derivada:
+\begin{equation*}
+    m_x' = g'(x) =2 - \frac{16}{x^3}= 2\frac{x^3-8}{x^3}.
+\end{equation*}
+La función $g$ no es derivable en $x=0$ pero $0\notin D(g)$.
+
+Por otro lado, $g'(2)=0$. Posiblemente, existe extremo local en $x=2$. Para averiguarlo,
+necesitamos la segunda derivada de $g$ (es decir, la tercera de $f$):
+\begin{equation*}
+    m_x'' = g''(x) = \frac{48}{x^4}.
+\end{equation*}
+Tenemos que $g''(2)= 3>0$.
+
+Por el criterio de la segunda derivada, podemos concluir que, en $x=2$, la función $g$ tiene un
+mínimo local. Debido a que es el único extremo en $D(g)$, es, a la vez, un mínimo absoluto y su
+valor es:
+\begin{equation*}
+    m_x\Big |_{x=2}= g(2) = 2(2) + \frac{8}{2^2}= 6.
+\end{equation*}
+
+Así, pues, la pendiente será mínima e igual a 6 para la recta tangente a la gráfica de $f$ en el
+punto de coordenadas $(2,0)$.
+
+\begin{center}
+   %\psset{xAxisLabel={},yAxisLabel={}}
+   \begin{psgraph}[ticks=none](0,0)(-0.5,-30)(4,30){0.75\textwidth}{6cm}
+      \psplot[algebraic,plotpoints=1000]%
+         {0.27}{4}{x^2-8/x}%
+      \psaxes[ticks=none,labels=x]{->}%
+         (0,0)(-0.5,-30)(4.25,30.5)%
+      \uput[-90](4.25,0){$x$}%
+      \uput[0](0,30){$y$}%
+
+      \psplotTangent[algebraic,linewidth=0.75\pslinewidth,linecolor=red,arrows=<->]%
+         {2}{1.5}{x^2-8/x}%
+      \psplotTangent[algebraic,linewidth=0.75\pslinewidth,linecolor=red,arrows=<->]%
+         {1}{0.5}{x^2-8/x}%
+      \psplotTangent[algebraic,linewidth=0.75\pslinewidth,linecolor=red,arrows=<->]%
+         {0.5}{0.5}{x^2-8/x}%
+   \end{psgraph}
+\end{center}
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Halle dos números positivos cuya suma sea 100 y cuyo producto sea máximo.
+}%
+Sea $x>0$ uno de dichos números. El otro será $100-x>0$ para que su suma sea 100. Tenemos entonces
+que $0<x<100$.
+
+Sea $P$ el producto de los dos números. Naturalmente dependerá de $x$:
+\begin{equation*}
+    P=f(x)=x(100-x)= 100 x-x^2.
+\end{equation*}
+
+Debemos, entonces, hallar $x_1\in ]0,100[$ tal que:
+\begin{equation*}
+  f(x_1)=\max_{x\in (0,100)}f(x).
+\end{equation*}
+
+Como $f$ es derivable en $]0,100[$, los puntos críticos de $f$ en ese intervalo serán solución de
+\begin{equation*}
+  f'(x)=100-2x=0
+\end{equation*}
+que equivale a $x=50$.
+
+Como $f''(x)=-2<0$, en $x_1=50$, $f$ alcanza un máximo local que por ser el único extremo en el
+intervalo de interés $]0,100[$ es, a la vez, un máximo absoluto.
+
+El otro número es $100-x_1= 100-50=50$. Los dos números buscados, tales que su suma es igual a 100
+y su producto  2500 es máximo, son iguales a 50.
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Halle el punto de la parábola que es la gráfica de $y = 1-x^2$ más cercano al punto
+$A(2.5,2.75)$. Puede usar el hecho de que
+\begin{equation*}
+    (4x^3+9x-5)\Big |_{x=0.5}=0.
+\end{equation*}
+}%
+Si $P(x,y)$ es un punto arbitrario de la parábola de ecuación $y = 1-x^2$, tendremos que
+$P(x,1-x^2)$.
+
+La distancia entre los puntos $A$ y $P$ está dada por:
+\begin{equation*}
+    d = f(x) = \sqrt{(x-2.5)^2+[  (1-x^2)-2.75 ]^2}= \sqrt{(x-2.5)^2+ (x^2+1.75)^2}, \ x\in \mathbb{R}.
+\end{equation*}
+
+Como la función $h$ definida por $h(x) = x^2$ para todo $x > 0$ es continua y estrictamente
+creciente, los extremos de $h\circ f$ coinciden con los extremos de $f$. Entonces, si la distancia
+$d$ va a ser mínima, la distancia al cuadrado $d^2$ también será mínima. Sea
+\begin{equation*}
+    d^2 = g(x) = (x-2.5)^2+ (x^2+1.75)^2, \ x\in \mathbb{R}.
+\end{equation*}
+
+Tenemos que resolver el problema:
+$\displaystyle
+    \text{Hallar} \min_{x\in \mathbb{R}}g(x).
+$
+Necesitamos la derivada
+\begin{equation*}
+    g'(x) = 2(x-2.5)+ 4x(x^2+1.75)= 4x^3+9x-5
+\end{equation*}
+para hallar los puntos críticos de $g$. La ecuación $g'(x)=4x^3+9x-5=0$ puede escribirse como
+\begin{equation*}
+    4x^3+9x-5=(2x-1)(2x^2+x+5)= 0.
+\end{equation*}
+Puesto que el segundo factor es un trinomio de discriminante negativo, la única solución real de la
+ecuación cúbica es $x = \frac{1}{2}$ la cual es, a la vez, número crítico de $g$.
+
+Ahora, usemos el criterio de la segunda derivada para saber si existe o no extremo en $x =
+\frac{1}{2}$. El signo del valor en $x = \frac{1}{2}$ de la segunda derivada  $g''(x)= 12x^2+9$,
+que es
+\begin{equation*}
+  g''\left( \frac{1}{2}\right)= 12\left(\frac{1}{2}\right)^2+9 = 12>0,
+\end{equation*}
+nos dice que $g$ tiene un mínimo local en $x = \frac{1}{2}$. Como $x = \frac{1}{2}$ es el único
+número crítico de $g$ en su dominio dicho extremo es un mínimo absoluto, de modo que
+\begin{equation*}
+    d^2\Big|_{x=\frac{1}{2}} = \min_{x\in \mathbb{R}}g(x),
+\end{equation*}
+y
+\begin{equation*}
+    d\Big|_{x=\frac{1}{2}} = \min_{x\in \mathbb{R}}f(x).
+\end{equation*}
+
+El punto buscado es
+\begin{equation*}
+   P(x,1-x^2)\Big|_{x=\frac{1}{2}}=  P\left(\frac{1}{2},\frac{3}{4}\right),
+\end{equation*}
+y la distancia de $A$ a $P$ es
+\begin{equation*}
+ d\Big|_{x=\frac{1}{2}} = f\left(\frac{1}{2}\right) =
+ \sqrt{\left(\frac{1}{2}-2.5\right)^2 + \left( \frac{1}{2}+1.75\right)^2}=
+ \sqrt{2^2+2^2} = 4\sqrt{2}.
+\end{equation*}
+\end{exemplo}
+
+
+%\subsection{Ejemplo}
+%\ejemplo{Las residencias de Romeo y Julieta, $R$ y $J$ en el gráfico, están separadas por una
+%laguna rectangular de 2 km de ancho. Romeo desea ir en su barca a ver a su amada pero llevándole
+%rosas del rosal que se encuentra al extremo del lago. ¿En qué lugar $P$ del rosal tomará las rosas
+%para llegar lo más pronto posible donde su amada?
+%\begin{center}
+%%\includegraphics[scale=0.25]{Derivadas/RomeoJulieta.eps}
+%\begin{pspicture}(6,4)
+%   \psframe(0.5,0.5)(6,3)%
+%
+%   \pstGeonode[PosAngle={90,180,-90},PointSymbol=none,PointNameSep={1em,0.5em,1em}]%
+%      (2.5,3){R}(0.5,2){P}(1.5,0.5){J}%
+%
+%   \psline{|<->|}(0.5,3.1)(2.5,3.1)%
+%   \uput[90](1.5,3.25){$2$ km}%
+%
+%   \psline{|<->|}(0.5,0.4)(1.5,0.4)%
+%   \uput[-90](1,0.4){$1$ km}%
+%
+%   \psline{|<->|}(6.1,0.6)(6.1,3)%
+%   \uput[0](6.1,1.5){$3$ km}%
+%
+%   \psline(R)(P)(J)%
+%
+%   \rput(4,2.5){Lago}%
+%   \rput[t](0,1){\pstVerb{
+%/vshowdict 4 dict def
+%/vshow
+%{ vshowdict begin
+%/thestring exch def
+%/lineskip exch def
+%thestring
+%{
+%/charcode exch def
+%/thechar ( ) dup 0 charcode put def
+%0 lineskip neg rmoveto
+%gsave
+%thechar stringwidth pop 2 div neg 0 rmoveto
+%thechar show
+%grestore
+%} forall
+%end
+%} def
+%   64 (lasoR) vshow }}
+%
+%\end{pspicture}
+%\end{center}}{%
+%Sea $x=|AP|$ la distancia de $A$ a $P$ en km, $0\leq x\leq3$. Entonces $3-x=|PB|$ la distancia de
+%$P$ a $B$ en km. Como $|AR|=2$ y $|BJ|=1$ y utilizando el teorema de Pitágoras obtenemos
+%\begin{gather*}
+%|RP|= \sqrt{x^2+4},\\
+%|PJ|=  \sqrt{(3-x^2)+1} .
+%\end{gather*}
+%
+%Sean $t(RP), t(PJ), \text{ y } t$ el tiempo en horas que demora Romeo en ir en su barca de $R$ a
+%$P$,  de $P$ a $J$, y de  $R$ a $J$ pasando por $P$, respectivamente. Suponemos que la barca de
+%Romeo avanza con velocidad constante $v$ en km/h. Estos tiempos en términos de las distancias y la
+%velocidad son:
+%\begin{gather*}
+%t(RP)  = \frac{|RP|}{v} =  \frac{\sqrt{x^2+4}}{v}, \\
+%t(PJ)  = \frac{|PJ|}{v} =  \frac{\sqrt{(3-x)^2+1}}{v}, \\
+%t  = t(RP)+t(PJ)= \frac{\sqrt{x^2+4}}{v} + \frac{\sqrt{(3-x)^2+1}}{v}.
+%\end{gather*}
+%
+%El tiempo total que dura el recorrido de Romeo en su barca es una función de $x$:
+%\begin{equation*}
+%   t = f(x) = \frac{1}{v}\left( \sqrt{x^2+4} +   \sqrt{(3-x)^2+1} \right), \ x\in [0,3]
+%\end{equation*}
+%
+%Tenemos entonces que resolver el problema
+%\begin{equation*}
+%    \text{Hallar }\ \min_{x\in [0,3]}f(x).
+%\end{equation*}
+%
+%Procedemos a hallar los puntos críticos de $f$ para lo cual necesitamos la derivada
+%\begin{equation*}
+%    T'=f'(x)= \frac{1}{v}\left(\frac{x}{\sqrt{x^2+4}} -\frac{3-x}{\sqrt{(x-3)^2+1}}\right).
+%\end{equation*}
+%La función $f$ es derivable en el intervalo de interés $[0,3]$. Buscamos los puntos críticos
+%igualando a cero la derivada:
+%\begin{align*}
+%f'(x)= 0 & \quad \Leftrightarrow \quad \frac{x}{\sqrt{x^2+4}} = \frac{x-3}{\sqrt{(3-x)^2+1}}\\
+% & \quad \Leftrightarrow \quad   x^2[(3-x)^2+1] = (3-x)^2(x^2+4)        \\
+%  & \quad \Leftrightarrow \quad  3x^2-24x+36=0,
+%\end{align*}
+% y como la última ecuación tiene como soluciones $x=x_1=2\in[0,3]$ y $x=x_2=6\notin[0,3]$, el único punto crítico en $[0,3]$ es 2.
+%
+% Como la función $f$ es continua en el intervalo cerrado $[0,3]$ podemos aplicar el teorema del valor extremo que nos asegura que en dicho intervalo existe 1 mínimo absoluto y 1 máximo absoluto. Dichos extremos pueden estar también en los extremos del intervalo $[0,3]$; para encontrarlos hacemos la siguiente tabla:
+% \begin{center}
+% \begin{tabular}{c|c}
+%    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+%   $x$ & $t=f(x)$ \\
+%     \hline
+%   0 & $\dfrac{2+\sqrt{10}}{v}\approx \dfrac{5.1}{v}$ \\1
+%   2 & $ \dfrac{3\sqrt{2}}{v}\approx \dfrac{4.2}{v}$\\
+%  3& $\dfrac{\sqrt{13}+1}{v}\approx \dfrac{4.6}{v}$ \\
+% \end{tabular}
+%\end{center}
+%
+%Vemos que $t\Big|_{x=2}= \dfrac{3 \sqrt{2}}{v}$ es el valor mínimo.
+%
+%Romeo irá entonces donde Julieta llevándole rosas recogidas en el lugar $P$ situado a 2 km del
+%extremo $A$ de la laguna y de esa forma estará junto a su amada en el menor tiempo posible,
+%$\dfrac{3 \sqrt{2}}{v}\approx \dfrac{4.2}{v}$ h.
+%}%Fin de \ejemplo
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Resuelva el problema básico de optimización para las siguientes funciones $f$ definidas
+    en el intervalo $I$. Adicionalmente, determine el conjunto $\Img(f)$.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle f(x) = 2x^3 - 15x^2 + 24x$, \ $I = [0,5]$.
+    \item $\displaystyle f(x) = 2x^3 - 15x^2 + 24x$, \ $I = [0,5[$.
+    \item $\displaystyle f(x) = 2x^3 - 15x^2 + 24x$, \ $I = ]0,5[$.
+    \item $\displaystyle f(x) = 2x^3 - 15x^2 + 24x$, \ $I = ]0,5]$.
+    \item $\displaystyle f(x) = 2x^3 - 15x^2 + 24x$, \ $I = [0,3]$.
+    \item $\displaystyle f(x) = \frac{x - 3}{x - 2}$, \ $I = [0,+\infty[$.
+    \item $\displaystyle f(x) = \frac{1}{\sqrt{x^2 + 25}}$, \ $I = \Rbb$.
+    \item $\displaystyle f(x) = 5x^4 + 2x^2 - 7$, \ $I = [-1,1]$.
+    \item $\displaystyle f(x) = x^4 + 6x^2 - 7$, \ $I = ]-3,1]$.
+    \item $\displaystyle f(x) = x^4 + 6x^2 - 7$, \ $I = [-4,1]$.
+    \item $\displaystyle f(x) = 4\sen x + 3\cos x$, \ $I = \Rbb$.
+    \item $\displaystyle f(x) = 4\sen x + 3\cos x$, \\ $\displaystyle I =
+        \left]-\frac{\pi}{4},\frac{\pi}{2}\right]$.
+    \item $\displaystyle f(x) = 4\sen x + 3\cos x$, \\ $\displaystyle I =
+        \left[\arctan\frac{3}{4},\pi\right[$.
+        \item $\displaystyle f(x) =
+        \begin{cases}
+          1 - x^2 & \text{si $x < 1$ o $x >2$}, \\
+          3 - 3x & \text{si } 1 \leq x \leq 2,
+        \end{cases}$ \ $I = [0,3]$.
+        \item $\displaystyle f(x) =
+        \begin{cases}
+          4 - x^2 & \text{si } x \leq 2, \\
+          \frac{1}{2}(x - 2) & \text{si } 2 < x,
+        \end{cases}$ \ $I = [-1,3]$.
+    \item $\displaystyle f(x) = \sqrt{x^2 + x + 1}$, \ $I = [-2,1[$.
+    \item $\displaystyle f(x) = (x^2 - 2x + 10)^{\frac{5}{2}}$, \ $I = ]-7,5[$.
+    \item $\displaystyle f(x) =
+        \begin{cases}
+          x - x^2 & \text{si } 0 \leq x \leq 1, \\
+          \sen(\pi x) & \text{si no},
+        \end{cases}$ \ $I = \Rbb$.
+    \end{enumerate}
+
+\item Halle dos números no negativos tales que:
+    \begin{enumerate}[leftmargin=*]
+    \item Su suma sea igual a $1$ y su producto sea máximo.
+    \item Su producto sea igual a $1$ y su suma sea mínima.
+    \item Su suma sea igual a $100$ y el producto del cuadrado del primero y el cubo del
+        segundo sea máximo.
+    \end{enumerate}
+
+\item Halle el punto de $P$ de coordenadas $(a,b)$ de la parábola de ecuación $y = 1 - x^2$ más
+    cercano al punto $Q$ de coordenadas $(\frac{5}{2},\frac{11}{4})$.
+
+\item Dadas la recta $l$ de ecuación $y = 4 - x$ y la parábola $p$ de ecuación $y = 1 - x^2$,
+    halle los puntos $P\in l$ y $Q \in p$ más cercanos entre sí.
+
+\item Halle el punto del gráfico de $f$ donde la pendiente de la recta tangente sea mínima si
+    $f(x) = x^3 - 6x^2$.
+
+\item Se desea cerrar un terreno que es rectangular junto a un río con una pared paralela a la
+    orilla del río que cuesta $25$ dólares el metro lineal y dos alambradas perpendiculares al
+    río que cuestan $20$ dólares el metro lineal. Si el terreno debe tener diez mil metros
+    cuadrados de área, ¿cuáles deben ser sus dimensiones para que los costos sean mínimos?
+
+\item Se quiere construir una caja abierta de un volumen dado $V$ metros cúbicos, cuya base
+    rectangular tenga el doble de largo que de ancho. ¿Cuáles deben ser sus dimensiones para
+    que el costo de los materiales sea mínimo? ¿Y si la caja es cerrada?
+
+\item Halle las dimensiones del cilindro circular recto de máximo volumen que puede inscribirse
+    en un cono circular recto de diámetro $D$ metros y de altura $H$ metros.
+
+\item Halle las dimensiones del cono circular recto de volumen máximo que puede inscribirse en
+    una esfera de radio $R$ metros.
+
+\item Se desea elaborar tarros de un litro para conservas de duraznos. ¿Qué dimensiones tendrá
+    cada tarro para que el costo por el metal utilizado sea mínimo?
+
+\item De un trozo cuadrado de cartulina se desea elaborar una pirámide de base cuadrada
+    desechando la parte rayada y doblando en las líneas punteadas como se muestra en el dibujo:
+    \begin{center}
+    \begin{pspicture}(0,0)(4,4)
+      \psset{PointSymbol=none,PointName=none}
+      \pstGeonode[]%
+        (2,0){A}(4,2){B}(2,4){C}(0,2){D}%
+      \pstGeonode[]%
+        (1.5,1.5){E}(2.5,1.5){F}(2.5,2.5){G}(1.5,2.5){H}%
+
+      \psset{fillstyle=vlines,hatchcolor=gray}
+      \pspolygon[]%
+        (A)(B)(F)%
+      \pspolygon[hatchangle=-45]%
+        (B)(C)(G)%
+      \pspolygon[]%
+        (C)(D)(H)%
+      \pspolygon[hatchangle=-45]%
+        (D)(A)(E)%
+      \pspolygon[fillstyle=none,linestyle=dashed]%
+        (E)(F)(G)(H)
+
+    \end{pspicture}
+    \end{center}
+    ¿Qué dimensiones tendrá la pirámide de volumen máximo si la cartulina tiene un metro de
+    lado?
+
+\item Dos calles de diez metros de ancho se intersecan. Se desea transportar horizontalmente
+    una varilla larga y delgada, pero, en la intersección, se requiere virar a la derecha.
+    ¿Cuál es el largo máximo de la varilla que se puede transportar si el grosor de la varilla
+    es despreciable?
+
+    \begin{center}
+    \begin{pspicture}(0,0)(5,4.5)
+      \psset{PointName=none,PointSymbol=none}%
+      \pstGeonode[]%
+        (1.5,0){A}(3.5,0){B}(5,1.5){C}(5,3.5){D}(3.5,4.5){E}(1.5,4.5){F}(0,3.5){G}(0,1.5){H}%
+      \pstGeonode[]%
+        (1.5,1.5){I}(3.5,1.5){J}(3.5,3.5){K}(1.5,3.5){L}(1.75,0.25){M}(3.75,3.25){N}%
+      \psline[]%
+        (A)(I)(H)%
+      \psline[]%
+        (B)(J)(C)%
+      \psline[]%
+        (D)(K)(E)%
+      \psline[]%
+        (F)(L)(G)%
+      \psline[linewidth=4\pslinewidth]%
+        (M)(N)%
+    \end{pspicture}
+    \end{center}
+
+\item Halle las dimensiones del cono circular recto de volumen mínimo que circunscribe una
+    esfera de radio $R$.
+
+\item Un joven puede remar a razón de dos kilómetros por hora y correr a seis kilómetros por
+    hora. Si está en el punto $A$ de la isla que está a dos kilómetros del punto C de la playa y desea llegar lo antes posible al punto $B$, situado en la playa de enfrente, que está a dos kilómetros del punto $C$ en la playa, ¿hasta
+    qué punto $P$ de la playa debe remar para luego correr desde $P$ hasta $B$? ¿En qué tiempo
+    llegará?
+    \begin{center}
+    \begin{pspicture}(-0.5,0)(6.5,4)
+      \pstGeonode[PosAngle={90,135,45,45}]%
+        (1,1){B}(4,1){P}(5,1){C}(5,3){A}%
+      \pstGeonode[PointName=none,PointSymbol=none]%
+        (0,1){X}(6,1){Y}(5,4){O}%
+
+      \pstLineAB[]%
+        {X}{Y}
+
+      \psarc[linewidth=2\pslinewidth,linestyle=solid]%
+          (O){1.25}{215}{325}
+
+      \psset{linestyle=dashed}
+        \pstLineAB[]%
+          {A}{P}%
+        \pstLineAB[]%
+          {A}{C}%
+
+      \psline[arrows=<->]%
+        (! \psGetNodeCenter{B} B.x B.y 0.25 sub)(! \psGetNodeCenter{C} C.x C.y 0.25 sub)
+
+      \pstMiddleAB[PointName=none,PointSymbol=none]%
+        {B}{C}{N}%
+      \uput[-90](! \psGetNodeCenter{N} N.x N.y 0.2 sub){$4\kilometros$}%
+
+      \pstMiddleAB[PointName=none,PointSymbol=none]%
+        {A}{C}{M}%
+      \uput[0](! \psGetNodeCenter{M} M.x 0.1 add M.y){$2\kilometros$}%
+
+      \rput[l](0,0.5){Playa}%
+      \rput(! \psGetNodeCenter{A} A.x A.y 0.65 add){Isla}
+    \end{pspicture}
+    \end{center}
+\end{enumerate}
+\endgroup
+\end{multicols}
+
+\section{Regla de L'Hôpital}
+
+\subsection{Formas indeterminadas}
+
+Al tratar de utilizar las propiedades de los límites de la suma, producto, etcétera, se puede
+llegar a situaciones en que los resultados no se pueden aplicar por no cumplirse las condiciones
+que las garantizan. Y resulta que bajo condiciones similares, los resultados obtenidos no siempre
+son iguales. Por ejemplo, el límite del cociente de dos funciones tales que cada una tiende a $0$,
+puede ser, en algunos casos, igual a $0$; en otros, $+\infty$; en otros, no existir; etcétera. Se
+dice, entonces, que estamos frente a una \emph{forma indeterminada}. Veamos algunos casos.
+
+Sean $f$ y $g$ dos funciones definidas en un intervalo abierto $I$. Sea $x_{0}\in I$:
+
+\begin{enumerate}[leftmargin=*]
+\item Cuando se calculan límites de cocientes, como $\displaystyle{\lim_{x\rightarrow a}\frac{f(x)}{g(x)}}$,
+    sabemos que si existen los límites
+\begin{equation*}
+	\lim_{x\rightarrow a}f(x)=L\quad \text{y}\quad \lim_{x\rightarrow a}g(x)=M
+\end{equation*}
+y si $M\neq 0$ se tiene que
+\begin{equation*}
+	\lim_{x\rightarrow a}\frac{f(x)}{g(x)}=\frac{\displaystyle{\lim_{x\rightarrow a}f(x)}}{\displaystyle{\lim_{x\rightarrow a}g(x)}}=\frac{L}{M}.
+\end{equation*}
+Puede suceder, sin embargo, que $L=M=0$, de modo que, al tratar de aplicar este resultado se
+obtiene:
+\begin{equation*}
+	 \displaystyle{\frac{\displaystyle{\lim_{x\rightarrow a}f(x)}}{\displaystyle{\lim_{x\rightarrow a}g(x)}}=\frac{0}{0}.}
+\end{equation*}
+La expresión $\frac{0}{0}$  es un ejemplo de ``indeterminación''. En este caso no se puede
+afirmar nada sobre la existencia o no del límite buscado. A veces existe, a veces no, como se
+ve en los siguientes ejemplos.
+
+Por ejemplo, si $f(x)=\sen x$ y $g(x)= x$, entonces
+\begin{equation*}
+	 \frac{\displaystyle{\lim_{x\rightarrow a}f(x)}}{\displaystyle{\lim_{x\rightarrow a}g(x)}}=1.
+\end{equation*}
+En cambio, si $f(x)=x\sen \frac{1}{x}$ y $g(x)= 1-\cos x$, el límite
+\begin{equation*}
+	 \frac{\displaystyle{\lim_{x\rightarrow a}f(x)}}{\displaystyle{\lim_{x\rightarrow a}g(x)}}
+\end{equation*}
+no existe.
+
+\item Si $\displaystyle{\lim_{x\rightarrow x_{0}}f(x)}=+\infty$ (respectivamente $-\infty$) y si
+    $\displaystyle{\lim_{x\rightarrow x_{0}}g(x)}=-\infty$ (respectivamente $+\infty$), las expresiones
+    $(f+g)(x)$ y $\left(\frac{f}{g}\right)(x)$ pueden tener diferentes comportamientos posibles
+    cuando $x\rightarrow x_{0}$. La primera es una indeterminación del tipo $+\infty -\infty$
+    ($-\infty +\infty$, respectivamente), y la segunda, del tipo $\frac{\infty}{\infty}$.
+
+\item Si $\displaystyle\lim_{x\rightarrow x_{0}}f(x)=0$ y si $\displaystyle\lim_{x\rightarrow x_{0}}g(x)=+\infty$ (o
+    $-\infty$), la expresión $(fg)(x)$ puede comportarse de diferentes maneras cuando
+    $x\rightarrow x_{0}$. Es una indeterminación del tipo $0\cdot \infty$ o $0\cdot (-\infty)$.
+
+\end{enumerate}
+
+Hemos visto algunos casos en los que se pueden hallar los límites buscados como aplicación del
+teorema 1.1. Se dice entonces que ``hemos levantado la indeterminación'' Un método muy útil para
+ello también es la regla de L'H\^{o}pital que veremos a continuación.
+
+
+\subsection{Regla de L'H\^{o}pital}
+
+\begin{teocal}[Regla de L'H\^{o}pital]
+Sea $a\in \mathbb{R}$. Si $\displaystyle\lim_{x\rightarrow a}\frac{f(x)}{g(x)}$ es una indeterminación de tipo $\frac{0}{0}$ o $\frac{\infty}{\infty}$ y si
+\begin{equation*}
+	\lim_{x\rightarrow a}\frac{f'(x)}{g'(x)}=L\in \mathbb{R}\cup \{-\infty, \infty\},
+\end{equation*}
+entonces
+\begin{equation*}
+	\lim_{x\rightarrow a}\frac{f(x)}{g(x)}=\lim_{x\rightarrow a}\frac{f'(x)}{g'(x)}.
+\end{equation*}
+\end{teocal}
+
+Se tiene un resultado similar si, en vez de que $x$ tienda al número $a$, lo haga a $a^+$, $a^-$,
+$+\infty$ o $-\infty$.
+
+\begin{exemplo}[Solución]{%
+Calcular $\displaystyle\lim_{x\rightarrow 0}\frac{\sen x}{x}$.
+}%
+Como el límite es una indeterminación de tipo $\dfrac{\infty}{\infty}$, y como
+\begin{equation*}
+	\lim_{x\rightarrow 0}\frac{(\sen x)'}{(x)'}=\lim_{x\rightarrow 0}\frac{\cos x}{1} = 1
+\end{equation*}
+existe, entonces, por la regla de L'H\^{o}pital:
+\begin{equation*}
+	\lim_{x\rightarrow 0}\frac{\sen x}{x}=1.
+\end{equation*}
+\end{exemplo}
+
+\begin{exemplo}[Solución]{
+Calcular $\displaystyle\lim_{x\rightarrow \infty}\frac{\ln x}{x}$.
+}%
+Como el
+\begin{equation*}
+	\lim_{x\rightarrow \infty}\frac{(\ln x)'}{(x)'}=\lim_{x\rightarrow \infty}\frac{\frac{1}{x}}{1} = 0
+\end{equation*}
+existe, entonces, por la regla de L'H\^{o}pital:
+\begin{equation*}
+	\lim_{x\rightarrow \infty}\frac{\ln x}{x}=0.
+\end{equation*}
+\end{exemplo}
+
+Con ciertas manipulaciones previas, el teorema es también útil para levantar otras
+indeterminaciones como son
+\begin{equation*}
+	\infty -\infty,\ 0\cdot \infty,\  0^{0},\  \infty^{0}\ \text{ y }\ 1^{\infty}.
+\end{equation*}
+Veamos un ejemplo.
+
+\begin{exemplo}[Solución]{%
+Calcular $\displaystyle\lim_{x\rightarrow 0^{+}}\left( \frac{1}{\sqrt{x}} -\frac{1}{x} \right)$.
+}%
+Este límite conduce a la indeterminación $\infty -\infty$.
+
+Pero como
+\begin{equation*}
+	\frac{1}{\sqrt{x}} -\frac{1}{x}=\frac{x-\sqrt{x}}{x\sqrt{x}},
+\end{equation*}
+el límite del segundo miembro de la expresión anterior conduce a una indeterminación del tipo
+$\frac{0}{0}$, que puede ser tratada con la regla de L'H\^{o}pital.
+
+El límite
+\begin{equation*}
+	\lim_{x\rightarrow 0^{+}}\frac{(x-\sqrt{x})'}{(x\sqrt{x})'}=\lim_{x\rightarrow 0^{+}}
+  \frac{1-\frac{1}{2\sqrt{x}}}{\frac{3}{2}\sqrt{x}}=\lim_{x\rightarrow 0^{+}}
+  \frac{2\sqrt{x}-1}{3x}=-\infty.
+\end{equation*}
+De donde, por la la regla de L'H\^{o}pital se tiene el límite pedido:
+\begin{equation*}
+\lim_{x\rightarrow 0^{+}}\left( \frac{1}{\sqrt{x}} -\frac{1}{x}\right)= -\infty.
+\end{equation*}
+\end{exemplo}
+
+\begin{exemplo}[Solución]{%
+Pruebe, utilizando la regla de L'Hôpital, que
+\begin{equation*}
+	\lim_{x \to 0}\frac{\sen x-x\cos x}{x^2+\tan^2x}=0.
+\end{equation*}
+}%
+Sean $f(x)= \sen x-x\cos x$ y $g(x)=x^2+\tan^2x$. Se pide demostrar que
+\begin{equation*}
+	\lim_{x \to 0}\frac{f(x)}{g(x)}=0.
+\end{equation*}
+
+
+Aplicando propiedades de los límites se encuentra fácilmente que
+\begin{gather*}
+\lim_{x \to 0}f(x) = \lim_{x \to 0}(\sen x-x\cos x)=0,\\
+\lim_{x \to 0}g(x) = \lim_{x \to 0}(x^2+\tan^2x)=0.
+\end{gather*}
+Como el límite de la función del denominador $\displaystyle\lim_{x \to 0}g(x)$ es igual a cero no podemos
+aplicar el teorema del límite de un cociente de funciones. Pero, por otro lado, tenemos que la
+función $\frac{f}{g}$ tiene la forma indeterminada $\frac{0}{0}$ en $x=0$, lo cual nos permitiría
+aplicar la regla de L'Hôpital. Para ello debemos encontrar el límite
+\begin{equation*}
+	\lim_{x \to 0}\frac{f'(x)}{g'(x)}.
+\end{equation*}
+Si este límite existe la regla de L'Hôpital nos dice que el límite buscado es igual al anterior.
+Veamos, pues, si existe dicho límite:
+\begin{align*}
+	\lim_{x \to 0}\frac{f'(x)}{g'(x)}&= \lim_{x \to 0}\frac{(\sen x-x\cos x)'}{(x^2+\tan^2x)'}\\
+&=\lim_{x \to 0}\frac{\cos x-\cos x+x\sen x}{2x+2\tan x\sec^2x}\\
+ &= \lim_{x \to 0}\frac{x\sen x}{2x+2\tan x\sec^2x}\\
+ &{}=\lim_{x\to 0}\frac{\sen x}{2+2\frac{\sen x}{x}\sec^3 x}=\frac{0}{2+2(1)(1)}=0.
+\end{align*}
+Una inspección rápida del límite anterior nos dice que la función $\frac{f'}{g'}$ tiene también la
+forma indeterminada $\frac{0}{0}$ en $x=0$. Intentamos nuevamente aplicar la regla de L'Hôpital:
+\begin{align*}
+	\lim_{x \to 0}\frac{(f'(x))'}{(g'(x))'}&= \lim_{x \to 0}\frac{f''(x)}{g''(x)}\\
+&=  \lim_{x \to 0}\frac{(x\sen x)'}{(2x+2\tan x\sec^2x)'}\\
+ &= \lim_{x \to 0}\frac{\sen x+x\cos x}{2+2\sec^4 x+2\tan^2 x \sec^2 x}\\
+ &=0.
+\end{align*}
+Como el último límite existe podemos aplicar la regla de L'Hôpital:
+\begin{equation*}
+	\lim_{x \to 0}\frac{f'(x)}{g'(x)}=\lim_{x \to 0}\frac{(f'(x))'}{(g'(x))'}= 0.
+\end{equation*}
+Esto nos permite aplicar nuevamente la regla de L'Hôpital:
+\begin{equation*}
+	\lim_{x \to 0}\frac{f(x)}{g(x)}=\lim_{x \to 0}\frac{f'(x)}{g'(x)}= 0.
+\end{equation*}
+Con lo cual hemos probado que
+\begin{equation*}
+	\lim_{x \to 0}\frac{f(x)}{g(x)}=\lim_{x \to 0}\frac{\sen x-x\cos x}{x^2+\tan^2x}=0.
+\end{equation*}
+\end{exemplo}
+
+\begin{multicols}{2}[\section{Ejercicios}]
+\begingroup
+\small
+\begin{enumerate}[leftmargin=*]
+\item Calcule los siguientes límites.
+    \begin{enumerate}[leftmargin=*]
+    \item $\displaystyle \limjc{\frac{1 - \cos x^2}{x^4}}{x}{0}$.
+    \item $\displaystyle \limjc{\frac{1 - \cos x^2}{x^3\sin x}}{x}{0}$.
+    \item $\displaystyle \limjc{\frac{a^x - x^a}{x - a}}{x}{a}$.
+    \item $\displaystyle \limjc{x^\epsilon\ln x}{x}{0^+}$ donde $\epsilon > 0$.
+    \item $\displaystyle \limjc{\frac{x}{\sqrt{1 + x^2}}}{x}{+\infty}$.
+    \item $\displaystyle \limjc{\frac{\sen x}{\arctan x}}{x}{0}$.
+    \item $\displaystyle \limjc{\frac{(2 - x)e^x - x - 2}{x^3}}{x}{0}$.
+    \item $\displaystyle \limjc{\frac{\sen(1/x)}{\arctan(1/x)}}{x}{+\infty}$.
+    \item $\displaystyle \limjc{\frac{1}{\sqrt{x}}\left(\frac{1}{\sen x} -
+        \frac{1}{x}\right)}{x}{0^+}$.
+    \item $\displaystyle \limjc{\frac{\tan x - 5}{\sec x + 4}}{x}{\frac{\pi}{2}}$.
+    \end{enumerate}
+\item Demuestre la regla de L'Hopital si $\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}$ es una indeterminación de tipo $\frac 00$, para el caso $L\in\Rbb$. \emph{Indicación: }Use el Teorema 4.10 (Teorema General del Valor Intermedio) para $\displaystyle\lim_{x\to a^-}\frac{f(x)}{g(x)}$ y $\displaystyle\lim_{x\to a^+}\frac{f(x)}{g(x)}$.
+\end{enumerate}
+\endgroup
+
+\end{multicols}
+
+%Como $x_{t}=(1-t)x_{0}+tx_{1}$, se puede obtener que
+%\begin{equation}
+%\label{eq:algeom027}
+%t=\frac{x_{t}-x_{0}}{x_{1}-x_{0}}, \qquad 1-t=\frac{x_{1}-x_{t}}{x_{1}-x_{0}}
+%\end{equation}
+%Como f es convexa
+%\begin{equation}
+%\label{eq:algeom028}
+%f(x_{t})\leq (1-t)f(x_{0}) + tf(x_{1})
+%\end{equation}
+%que equivale a
+%\begin{equation}
+%\label{eq:algeom029}
+%f(x_{t})\leq \frac{x_{1}-x_{t}}{x_{1}-x_{0}}f(x_{0}) + \frac{x_{t}-x_{0}}{x_{1}-x_{0}}f(x_{1}).
+%\end{equation}
+%Se tienen las identidades
+%\begin{equation}
+%\label{eq:algeom030}
+%\frac{x_{1}-x_{t}}{(x_{1}-x_{0})(x_{t}-x_{0})}=\frac{1}{x_{t}-x_{0}}-\frac{1}{x_{1}-x_{0}}
+%\end{equation}
+%y
+%\begin{equation}
+%\label{eq:algeom031}
+%\frac{x_{t}-x_{0}}{(x_{1}-x_{0})(x_{1}-x_{t})}=\frac{1}{x_{1}-x_{t}}-\frac{1}{x_{1}-x_{0}}
+%\end{equation}
+%por lo que de \ref{eq:algeom029}, multiplicando previamente por $\frac{1}{x_{t}-x_{0}}$ y
+%$\frac{1}{x_{1}-x_{t}}$, respectivamente, se obtienen las desigualdades
+%\begin{equation}
+%\label{eq:algeom032}
+%\frac{f(x_{t})}{x_{t}-x_{0}}\leq \frac{f(x_{0})}{x_{t}-x_{0}} - \frac{f(x_{0})}{x_{1}-x_{0}} + \frac{f(x_{1})}{x_{1}-x_{0}},
+%\end{equation}
+%y
+%\begin{equation}
+%\label{eq:algeom033}
+%\frac{f(x_{t})}{x_{1}-x_{t}}\leq \frac{f(x_{0})}{x_{1}-x_{0}} + \frac{f(x_{1})}{x_{1}-x_{t}} - \frac{f(x_{1})}{x_{1}-x_{0}},
+%\end{equation}
+%de donde
+%\begin{equation}
+%\label{eq:algeom034}
+%\frac{f(x_{t})-f(x_{0})}{x_{t}-x_{0}}\leq \frac{f(x_{1})-f(x_{0})}{x_{1}-x_{0}}\leq \frac{f(x_{1})-f(x_{t})}{x_{1}-x_{t}}.\footnote{JC: Poner aquí un "halmos".}
+%\end{equation}
