@@ -1,0 +1,237 @@
+\documentclass{book}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+\usepackage{etex}
+\usepackage[latin1]{inputenc}
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{exscale}
+\usepackage[english,spanish,es-nolayout]{babel}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,bm,amsthm,multicol,ifthen}
+%\usepackage{yhmath}
+\usepackage{tikz}
+\usepackage[svgnames]{pstricks}
+\usepackage{multido,pst-plot,pst-func,pst-node,pst-text}
+\usepackage{pst-eucl,pst-solides3d,pstricks-add,pst-barcode}
+\usepackage{lscape}
+\usepackage{makeidx}
+\usepackage{paralist}
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage[spanish]{varioref}
+\usepackage[scaled]{helvet}
+
+\usepackage{enumitem}
+\usepackage{nextpage}
+
+\usepackage[calcwidth]{titlesec}
+\usepackage{fancyhdr}
+
+\usepackage{xr}
+\usepackage[paperwidth=18cm,paperheight=26cm,twoside,%
+    left=2.2cm,right=1.7cm,top=2.25cm,bottom=1.5cm]{geometry} % con 10pt.
+%\usepackage[a4paper,twoside,left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry} %con 11pt
+
+\pagestyle{fancy}
+%\makeindex
+
+\input Definiciones/yhmath_restricted.sty
+\input Definiciones/macmatjc
+\input Definiciones/maccaljc
+
+%\externaldocument[L-]{Limites/Limites}
+\bibliographystyle{plain}
+
+\title{Cálculo}
+\author{Escuela Politécnica Nacional}
+\date{Julio 2010}
+
+\includeonly{%
+            Prefacio/Prefacio,
+            Limites/Limites,
+            Derivadas/DerivadaMotivacion,
+            Derivadas/DerivadaConcepto,
+            Derivadas/DerivadaAplicaciones,
+%            Integrales/IntegralIndefinida,
+%            Integrales/IntegralDefinida,
+%            Integrales/IntegralAplicaciones,
+%            Integrales/IntegralLogaritmoExponencial,
+%            Sucesiones/SucesionesSeries,
+%            Apendices/TablasIntegracion
+            }
+
+\setlength{\headheight}{13.70743pt}
+
+\allowdisplaybreaks
+
+
+
+%\usepackage[colorlinks,linkcolor=red]{hyperref}
+\makeindex
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\frontmatter
+
+\newlength{\drop}
+\newcommand*{\titleTMB}{\begingroup% Three Men in a Boat
+\drop=0.1\textheight
+\centering
+\settowidth{\unitlength}{\LARGE CÁLCULO EN UNA VARIABLE}
+\vspace*{\baselineskip}
+{\Large\scshape Cuadernos de Matemática}\\[\baselineskip]
+{\Large\scshape de la Escuela Politécnica Nacional}\\[7.5\baselineskip]
+{\large\scshape G. Rojas - J. C. Trujillo - F. Barba}\\[\baselineskip]
+%{\large\scshape G. Rojas}\\[\baselineskip]
+\rule{\unitlength}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+\rule{\unitlength}{0.4pt}\\[\baselineskip]
+{\LARGE CÁLCULO EN UNA VARIABLE}\\[\baselineskip]
+{\itshape Cálculo Diferencial}\\[0.2\baselineskip]
+%{\itshape Cálculo Integral}\\[0.2\baselineskip]
+\rule{\unitlength}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{\unitlength}{1.6pt}\\[\baselineskip]
+\par
+\vfill
+\includegraphics[scale=0.15]{Logos/LogoCiencias.eps}\hspace{4em}
+\includegraphics[scale=0.15]{Logos/LogodMatematica.eps}\par
+\vspace*{\drop}
+
+\newpage
+
+\raggedright
+\vspace*{\baselineskip}
+{\large\textbf{Cuaderno de Matemática No. 1}}\\[0.6\baselineskip]
+{\large\scshape Cálculo en una variable: Cálculo Diferencial} \\[0.5\baselineskip]
+{\large\scshape Germán Rojas I. - Juan Carlos Trujillo - Fabián Barba}
+\par
+
+\vspace*{4\baselineskip}
+
+\textbf{Responsable de la Edición}: Juan Carlos Trujillo \\
+\textbf{Revisión técnica}: Rolando Sáenz \\
+%\textbf{Asistentes}: \\
+\textbf{Portada}: Byron Reascos\par
+
+\vspace*{3\baselineskip}
+
+Registro de derecho autoral No. 34995\\
+ISBN: 978-9978-383-03-2
+%\hspace{0.3cm}
+%\begin{pspicture}(3,1in)
+% \psbarcode{978-9978-383-03-2}{includetext guardwhitespace}{isbn}
+%\end{pspicture}
+
+
+\vspace*{4\baselineskip}
+
+Publicado por la Unidad de Publicaciones de la Facultad de Ciencias de la Escuela Politécnica Nacional, Ladrón de Guevara E11-253, Quito, Ecuador. \par
+
+\vspace*{3\baselineskip}
+
+\copyright \ Escuela Politécnica Nacional 2010
+
+
+\endgroup}
+
+\pagestyle{empty}
+\titleTMB
+\cleartooddpage[\thispagestyle{empty}]
+%\clearpage
+
+\pagestyle{fancy}
+
+%\begingroup
+%\newcommand{\contentsformat}[1]{%
+%\parbox[b]{.75\textwidth}{\filleft\bfseries #1}}
+%\titleformat{\chapter}% command
+%            [block]% shape
+%            {\filleft\fontsize{29.86}{29.86}\selectfont\sffamily}% format
+%            {}% label
+%            {0pt}% sep
+%            {\contentsformat}% before code
+
+\def\contentsname{Tabla de contenidos}
+\tableofcontents
+\cleartooddpage[\thispagestyle{empty}]
+%\endgroup
+
+\include{Prefacio/Prefacio}
+
+\begingroup
+\mainmatter
+%\input Definiciones/FormatoCapitulos.tex
+\input Definiciones/FormatoEncabezados.tex
+\parindent 15.0pt
+\include{Limites/Limites}
+\include{Derivadas/DerivadaMotivacion}
+\include{Derivadas/DerivadaConcepto}
+\include{Derivadas/DerivadaAplicaciones}
+
+%\nocite{*}
+\bibliography{Bibliografia/Biblio}
+%\include{Integrales/IntegralIndefinida}
+%\include{Integrales/IntegralDefinida}
+%\include{Integrales/IntegralAplicaciones}
+%\include{Integrales/IntegralLogaritmoExponencial}
+%\include{Sucesiones/SucesionesSeries}
+%
+%\appendix
+%\include{Apendices/TablasIntegracion}
+\endgroup
+
+
+
+%\mainmatter
+%\def\indexname{\textsf{Índice Alfabético}}
+%\setcounter{page}{191}
+%\printindex
+\end{document}
