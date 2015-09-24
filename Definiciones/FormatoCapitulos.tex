@@ -1,0 +1,41 @@
+\newcommand{\chapformat}[1]{%
+\parbox[b]{.5\textwidth}{\filleft\bfseries #1}%
+\quad\rule[-12pt]{2pt}{85pt}\quad
+{\fontsize{60}{60}\selectfont\thechapter}}
+\titleformat{\chapter}% command
+            [block]% shape
+            {\filleft\fontsize{29.86}{29.86}\selectfont\sffamily}% format
+            {}% label
+            {0pt}% sep
+            {\chapformat}% before code
+
+\titleformat{\section}% command
+            [hang]% shape
+            {\filright\bfseries}% format
+            {\Large\sffamily\thesection}% label
+            {1ex}% sep
+            {\Large\sffamily}% before code
+            [\vspace{-.85\baselineskip}\rule{\titlewidth}{.8pt}]%aftercode
+
+\titleformat{\subsection}% command
+            [hang]% shape
+            {\filright\bfseries}% format
+            {\large\sffamily\thesubsection}% label
+            {1ex}% sep
+            {\large\sffamily}% before code
+            [\vspace{-.8\baselineskip}\rule{\titlewidth}{.6pt}]%aftercode
+
+\renewcommand{\chaptermark}[1]{%
+\markboth{\sffamily#1}{}}
+\renewcommand{\sectionmark}[1]{%
+\markright{\sffamily \thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\sffamily\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{.2pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{.1pt}
+\fancypagestyle{plain}{%
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}}

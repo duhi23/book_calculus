@@ -1,0 +1,817 @@
+%%%%
+%%Redefine el texto para \chapter
+\def\chaptername{Capítulo}
+\def\tablename{Tabla}
+\def\contentsname{Índice}
+%%%%
+
+%%%%
+%%%% 19/04/07
+%%%%
+
+%%%%
+%\marcojc: #1 - ancho del texto en fracción de \textwidth
+%\marcojc: #2 - ancho de separación entre el marco y el texto en factor de ex
+%\marcojc: #3 - color del marco
+%\marcojc: #4 - color del texto
+%\marcojc: #5 - color de fondo
+%\marcojc: #6 - el texto
+\newcommand{\marcojc}[6]{%
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node[text justified, text width=#1\textwidth, fill = #5, inner sep = #2ex]%
+{\color{#4} #6};%
+\draw[color = #3, rounded corners] (current bounding box.south west) rectangle (current bounding
+box.north east);
+\end{tikzpicture}
+\end{center}%
+}
+%%%%
+
+%%%%
+%Definicion del comando "\marco{Texto a enmarcar}{Ancho del texto}":
+%
+\newcommand{\marco}[2]{%
+\setlength{\fboxsep}{8pt}\framebox[#2][c]{%
+\begin{minipage}[c]{#2-.5cm}
+#1
+\end{minipage}}
+ }
+%%%%%
+
+%%%%%
+%\Comentario
+\newcommand{\Comentario}[1]{%
+\textcolor[cmyk]{1,0.25,1,0.25}{\marco{\textsc{#1}}{0.75\textwidth}}}
+%%%%%
+
+%%%%%
+%
+\definecolor{sFase}{cmyk}{1,1,0.25,0}
+\definecolor{miCeleste}{cmyk}{0.2,0,0,0}
+\definecolor{verdeA}{cmyk}{0.05,0,0.2,0}
+%
+%%%%%
+
+%%%%%
+%\SubFase: #1: color, #2: texto
+\newcommand{\SubFase}[2]{\subsection*{\textcolor{#1}{#2}}}
+%
+%%%%%
+
+%
+\definecolor{verdeC}{cmyk}{1,0.25,1,0.25}
+%
+
+%
+\definecolor{azulM}{cmyk}{1,1,0,0.25}
+%
+
+%
+\definecolor{amarilloB}{cmyk}{0,0,0.1,0}
+%
+
+%
+\definecolor{rojo}{cmyk}{0,1,1,0}
+%
+
+%
+\definecolor{ligero}{cmyk}{0,0,0,0.075}
+%
+
+%
+\definecolor{EstLibF}{cmyk}{0,0,0,0.05}
+%
+
+%
+\definecolor{fondoGlosario}{cmyk}{0,.18,.6,0}
+%
+
+%
+\definecolor{textoRelevante}{cmyk}{1,.66,0,.02}
+%
+
+%
+\definecolor{textoProvisional}{cmyk}{1,0.25,1,0.25}
+%
+
+%
+\definecolor{textoLista}{cmyk}{0,.5,1,.3}
+%
+
+%
+\definecolor{fondoLista}{cmyk}{0,.12,.3,0}
+%
+
+%
+\definecolor{textoEnunciado}{cmyk}{0,.5,1,.3}
+%
+
+%
+\definecolor{fondoEnunciado}{cmyk}{0,.12,.3,0}
+%
+
+%
+\definecolor{textoFormula}{cmyk}{1,.9,0,0}
+%
+
+%
+\definecolor{fondoFormula}{cmyk}{.1,0,.04,0}
+%
+
+%
+\definecolor{textoResumen}{cmyk}{1,.9,0,0}
+%
+
+%
+\definecolor{fondoResumen}{cmyk}{.5,0,.08,0}
+%\definecolor{fondoResumen}{cmyk}{0,0,0,0}
+%
+
+%
+\definecolor{textoTabla}{cmyk}{1,.9,0,0}
+%
+
+%
+\definecolor{fondoTabla}{cmyk}{0,.45,.7,0}
+%
+
+%
+\definecolor{fondoModelo}{cmyk}{0,.12,.3,0}
+%
+
+%
+\definecolor{textoModelo}{cmyk}{0,.5,1,.3}
+%
+
+%
+\definecolor{textoProcedimiento}{cmyk}{.6,0,.65,.3}
+%
+
+%
+\definecolor{fondoProcedimiento}{cmyk}{.12,0,.5,0}
+%
+
+%
+\definecolor{textoSolucion}{cmyk}{.45,0,.65,.3}
+%
+
+%
+\definecolor{fondoSolucion}{cmyk}{.03,0,.55,0}
+%
+
+%
+\definecolor{textoRespuesta}{cmyk}{.45,0,.65,.3}
+%
+
+%
+\definecolor{fondoRespuesta}{cmyk}{.03,0,.55,0}
+%
+
+%
+\definecolor{textoConcepto}{cmyk}{0,.35,1,.3}
+%
+
+%
+\definecolor{fondoConcepto}{cmyk}{0,.07,.45,0}
+%
+
+%
+\definecolor{textoPrerrequisito}{cmyk}{0,0,0,1}
+%
+
+%
+\definecolor{fondoPrerrequisito}{cmyk}{.1,.1,0,0}
+%
+
+%
+\definecolor{sombraPrerrequisito}{cmyk}{0.6,.6,0,0}
+%
+
+%
+\definecolor{primerIntervalo}{cmyk}{0,.45,.7,0}
+%
+
+%
+\definecolor{segundoIntervalo}{cmyk}{0,1,0,.6}
+%
+
+%
+\definecolor{tercerIntervalo}{cmyk}{.14,.05,0,0}
+%
+
+%
+\definecolor{dimensiones}{cmyk}{0,.45,.7,.05}%en lugar del rojo
+%
+
+%
+\definecolor{marcas}{cmyk}{0,1,0,.6}%en lugar del azul.
+%
+
+%
+\definecolor{textos}{cmyk}{0,1,0,.6}%en lugar del gris
+%
+
+%
+\definecolor{pregunta}{cmyk}{0,.45,.7,.05}
+%
+
+%
+\definecolor{extra}{cmyk}{0,.7,1,0}
+%
+
+%
+\definecolor{conceptual}{cmyk}{0,1,.62,0}
+%
+
+%
+\definecolor{conceptualBajo}{cmyk}{0,.1,..05,0}
+%
+
+%
+\definecolor{procedimental}{cmyk}{.61,.89,0,0}
+%
+
+%
+\definecolor{procedimentalBajo}{cmyk}{.1,.05,0,0}
+%
+
+%
+\definecolor{actitudinal}{cmyk}{.34,0,1,.1}
+%
+
+%
+\definecolor{actitudinalBajo}{cmyk}{.04,0,.15,0}
+%
+
+%
+\definecolor{fondoMetaTexto}{cmyk}{.03,.03,0,0}
+%
+
+%
+\definecolor{sombraMetaTexto}{cmyk}{.1,.1,0,.1}
+%
+
+%
+\definecolor{textoMetaTexto}{cmyk}{1,1,0,0}
+%
+
+%
+\definecolor{sol}{cmyk}{0,.3,1,0}
+%
+
+%
+\definecolor{tierra}{cmyk}{0,.54,1,.35}
+%
+
+\def\formula#1{%
+\colorbox{fondoFormula}{\textcolor{textoFormula}{#1}}}
+%
+
+%%
+\newcommand{\historia}[2]{%
+\begin{center}
+\begin{minipage}{\textwidth - #1}
+\parindent 6.35mm
+#2
+\end{minipage}
+\end{center}}
+%%
+
+%%
+%%%%% #1: Color de fondo, #2: Color del texto, #3: ancho de la caja, #4: el texto.
+\newcommand{\ccjc}[4]{%
+\begin{center}
+\colorbox{#1}{
+{\color{#2}
+\begin{minipage}[c]{#3}
+#4
+\end{minipage}
+}}
+\end{center}
+}
+%%
+
+%%
+%%%%% #1: Color de fondo, #2: Color del texto, #3: ancho de la caja, #4: el texto.
+\newcommand{\cjc}[4]{%
+\colorbox{#1}{
+{\color{#2}
+\begin{minipage}[c]{#3}
+#4
+\end{minipage}
+}}
+}
+%%
+
+%%%%% #1: Color del marco, #2: Color del texto, #3: ancho de la caja, #4: el texto.
+\newcommand{\fccjc}[4]{%
+\begin{center}
+\fcolorbox{#1}{white}{
+{\color{#2}
+\begin{minipage}[c]{#3}
+#4
+\end{minipage}
+}}
+\end{center}
+}
+
+%
+%
+%%%%% #1:ancho, #2: el texto.
+\newcommand{\respuesta}[2]{%
+%\begin{center}
+%\colorbox{fondoRespuesta}{
+%{\color{textoRespuesta}
+%\begin{minipage}[c]{#1}
+%\textsl{#2}
+%\end{minipage}
+%}}
+%\end{center}
+\ccjc{fondoRespuesta}{textoRespuesta}{#1}{#2}
+}
+%%%%
+
+%%%%% #1:ancho, #2: el texto.
+\newcommand{\solucion}[2]{%
+\begin{center}
+\colorbox{fondoSolucion}{
+{\color{textoSolucion}
+\begin{minipage}[c]{#1}
+#2
+\end{minipage}
+}}
+\end{center}
+}
+%%%%
+
+%%%% #1: ancho, #2: el texto.
+\newcommand{\resumen}[2]{%
+\fccjc{textoResumen}{textoResumen}{#1}{#2}}
+%%%%
+
+%%%% #1: ancho, #2: titulo, #3: el texto.
+\newcommand{\lista}[3]{%
+\ccjc{fondoLista}{textoLista}{#1}{%
+\begin{center}
+  \textbf{#2}
+  \addcontentsline{toc}{subsection}{\numberline{}\dsenbjc #2}
+\end{center}
+#3
+}
+}
+%%%%
+
+%%%% #1: ancho, #2: el titulo, #3: el texto.
+\newcommand{\enunciado}[3]{%
+\ccjc{fondoEnunciado}{textoEnunciado}{#1}{%
+\begin{center}
+  \textbf{#2}
+  \addcontentsline{toc}{subsection}{\numberline{}\dsenbjc #2}
+\end{center}
+{\parindent 1em
+\textit{#3}
+}
+}
+}
+%%%%
+
+%%%% #1: ancho, #2: titulo, #3: el texto.
+\newcommand{\modelo}[3]{%
+\ccjc{fondoModelo}{textoModelo}{#1}{%
+  \begin{center}
+    \textbf{#2}
+    \addcontentsline{toc}{subsection}{\numberline{}\dsenbjc El modelo}
+  \end{center}
+#3
+}
+}
+%%%%
+
+%%%% #1: ancho exterior, #2: ancho interior, #3: el texto.
+\newcommand{\glosario}[3]{%
+\begin{wrapfigure}{r}{#1}
+\colorbox{fondoGlosario}{%
+\hspace{2ex}\begin{minipage}[c]{#2}
+\parindent 0pt
+\parskip 1ex
+\footnotesize{%
+\vspace{1.5ex}
+          #3
+\vspace{1.5ex}
+}
+\end{minipage}
+\hspace{1ex}}
+\end{wrapfigure}
+}
+%%%%
+
+%%%% #1: ancho, #2: el texto.
+\newcommand{\concepto}[2]{%
+\ccjc{fondoConcepto}{textoConcepto}{#1}{%
+#2}
+}
+%%%%
+
+%%%% #1: ancho, #2: el texto.
+\newcommand{\procedimiento}[2]{%
+\ccjc{fondoProcedimiento}{textoProcedimiento}{#1}{%
+#2}
+}
+%%%%
+
+%%%% #1: ancho, #2: el texto.
+\newcommand{\prerrequisito}[2]{%
+\begin{center}
+\psshadowbox[fillstyle=solid,fillcolor=fondoPrerrequisito,shadowcolor=sombraPrerrequisito,linecolor=fondoPrerrequisito]
+{%\color{red}
+\begin{minipage}[c]{#1}
+\color{textoPrerrequisito}
+#2
+\end{minipage}
+}
+\end{center}
+}
+%%%%
+
+%%%% #1: ancho, #6: el texto, #3: color de fondo, #4: color de la sombra, #5: color del borde, #2: color texto.
+\newcommand{\metaTexto}[6]{%
+\begin{center}
+\psshadowbox[fillstyle=solid,fillcolor=#3,shadowcolor=#4,linecolor=#5]
+{\begin{minipage}[c]{#1}
+\color{#2}
+#6
+\end{minipage}
+}
+\end{center}
+}
+%%%%
+
+
+%%%% #1: ancho, #2: el texto.
+\newcommand{\formulas}[2]{%
+\ccjc{fondoFormula}{textoFormula}{#1}{#2}
+}
+%%%%
+
+%%%%Definicion de fuente para justificacion
+\newcommand{\jdj}[1]{%
+\footnotesize{\textit{#1}}}
+%
+
+%%%Definici\'on de caja para resumir resultados y justificativos
+%%% #1: longitud que indica espacio extra vertical del tabulador en pt,
+%%% #2: espacio en em entre las columnas,
+%%% #3: fracci\'on de \textwidth para las justificaciones,
+%%% #4: el texto
+\newcommand{\cjjc}[4]{
+\begin{center}
+\setlength{\extrarowheight}{#1pt}
+\footnotesize{
+\begin{tabular}{cl@{\hspace{#2em}} p{#3\textwidth}}
+#4
+\end{tabular}
+}
+\end{center}
+}
+%%%
+%%%
+
+%%% \eccjc{Color de fondo}{Color del texto}{Formula (sin $$)}
+\newcommand{\eccjc}[3]{%
+\colorbox{#1}{\textcolor{#2}{$\displaystyle{#3}$}}
+}
+%
+
+%%% \feccjc{Color del borde}{Color del texto}{Formula (sin $$)}
+\newcommand{\feccjc}[3]{%
+\fcolorbox{#1}{white}{\textcolor{#2}{$\displaystyle{#3}$}}
+}
+%
+
+%%%% \presentacion{#1}: el texto.
+\newcommand{\presentacion}[1]{
+\begin{center}
+\parbox{12.85cm}{
+{\parindent 1.5em
+\color{white}
+#1
+}
+}
+\end{center}
+}
+%%%%
+
+%%% \story{#1}: el texto.
+\newcommand{\story}[1]{%
+\ccjc{ligero}{black}{0.95\textwidth}{%
+\parindent 1.25em
+%\begin{helvetica}
+%\footnotesize{
+\small{#1}
+%}
+%\end{helvetica}
+}
+}
+
+%%Regla de tres
+%%#1: Nombre de la magnitud Izquierda
+%%#2: Unidad de medida de la magnitud Izquierda
+%%#3: Primer valor de la magnitud Izquierda
+%%#4: Nombre de la magnitud Derecha
+%%#5: Unidad de medida de la magnitud Derecha
+%%#6: Primer valor de la magnitud Derecha
+%%#7: Segundo valor de la magnitud Izquierda
+\newcommand{\regladetres}[7]{%
+\[
+\begin{tabular}{ccc}
+\text{#1} & & \text{#4} \\
+#3\text{ #2} & $\longrightarrow$ & #6\text{ #5} \\
+#7\text{ #2} & $\longrightarrow$ & \text{? #5}
+\end{tabular}
+\]
+}
+%
+
+%%Longitudes
+\newlength{\ancho}
+
+%%Fuentes nuevas
+\newenvironment{bookman}
+{\fontencoding{OT1}\fontfamily{ppl}\selectfont}{}
+
+\newenvironment{helvetica}
+{\fontencoding{OT1}\fontfamily{phv}\selectfont}{}
+
+
+\newcommand{\eil}{\vspace{\baselineskip}}
+%%%%
+%%\eijc: #1 indica la proporción de salto de línea que se añade con \vspace. Puede ser negativo.
+\newcommand{\eijc}[1]{\vspace{#1\baselineskip}}
+%%
+
+%494
+%x- 3/7x = 1/3(494-x)
+
+\newcommand{\linea}{\rule{\textwidth-55.22438pt}{0.075ex}}
+\newcommand{\linearespuesta}[1]{\rule{\textwidth-#1pt}{0.075ex}}
+
+\newcommand{\yj}{\quad\text{y}\quad}
+\newcommand{\cj}{\quad\text{,}\quad}
+
+\newcommand{\fRR}{f\colon \mathbb{R} \rightarrow \mathbb{R}}
+
+
+\DeclareMathOperator{\mcm}{mcm}
+%\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\sinus}{sinus}%
+\DeclareMathOperator{\UL}{u_L}%
+\DeclareMathOperator{\UA}{u_A}%
+\DeclareMathOperator{\ar}{\acute{a}rea}%
+\DeclareMathOperator{\lon}{longitud}%
+\DeclareMathOperator{\dm}{dm}%
+\DeclareMathOperator{\UT}{u_T}%
+\DeclareMathOperator{\fRR}{\emph{f}: \mathbb{R} \rightarrow \mathbb{R}}%
+\DeclareMathOperator{\R}{ \mathbb{R}}%
+
+
+
+%\makeatletter
+%\def\cleardoublepage{\clearpage\ifodd\c@page\else{
+% \hbox{}
+% \vspace*{\fill}
+% \begin{center}
+% Esta p\'agina contiene intencionalmente esta \'unica sentencia.
+% \end{center}
+% \vspace{\fill}
+% \thispagestyle{empty}
+% \newpage}\fi}
+%\makeatother
+%
+%
+%%%%%Macro para dibujar la recta numerica y un intervalo semiinfinito
+%%%#1 posicion del extremo del intervalo
+%%%#2 el extremo del intervalo
+%%%#3 el color del intervalo
+%%%#4 longitud en cm del intervalo
+%%%#5 posicion del texto
+%%%#6 el texto
+%%%#7 el valor del extremo
+%%%#8 p para positivo, n para negativo
+
+\newcommand{\semiintervalo}[8]{%
+\begin{center}
+\begin{texdraw}
+\linewd 0.005
+\drawdim cm
+\arrowheadtype t:V
+\move(5 1)
+\avec(10 1)
+\move(5 1)
+\avec(0 1)
+%%Etiqueta de R en el extremo derecho
+\htext(9.5 1.5){$\mathbb{R}$}
+%%linea vertical para indicar la posicion del numero 10 y el numero 10
+\move(#1 1.125)\lvec(#1 0.875)
+\textref h:C v:C \htext(#1 0.5){#7}
+%%Segmento de color que indica los mayores que #7
+\ifthenelse{\equal{#8}{p}}{\textref h:L v:C }{\textref h:R v:C }
+\htext(#2 1){\textcolor{#3}{\rule{#4cm}{2mm}}}
+%%Nombre del conjunto
+\textref h:C v:C \htext(#5 1.5){\textcolor{#3}{$#6$}}
+\end{texdraw}
+\end{center}
+}
+
+%%%%#1 el n\'umero
+%%%%#2 texto para el lado menor
+%%%%#3 color para el texto del lado menor
+%%%%#4 texto para el lado mayor
+%%%%#5 color para el texto del lado mayor
+\newcommand{\rectanumerica}[5]{%
+\begin{center}
+\begin{texdraw}
+\linewd 0.005
+\drawdim cm
+\arrowheadtype t:V
+\move(5 1)
+\avec(10 1)
+\move(5 1)
+\avec(0 1)
+%%Etiqueta de R en el extremo derecho
+\htext(9.5 1.5){$\mathbb{R}$}
+%%linea vertical para indicar la posicion del numero #1 y el numero #1
+\move(5.5 1.125)\lvec(5.5 0.875)
+\textref h:C v:C \htext(5.5 0.5){#1}
+%%Texto que indica el semiintervalo negativo
+\textref h:C v:C \htext(2.75 1.5){\textcolor{#3}{#2}}
+%%Texto que indica el semiintervalo positivo
+\textref h:C v:C \htext(7.25 1.5){\textcolor{#5}{#4}}
+\end{texdraw}
+\end{center}
+}
+
+%%%%#1 Primer n\'umero
+%%%%#2 Posici\'on del primer n\'umero
+%%%%#3 Segundo n\'umero
+%%%%#4 Posici\'on del segundo n\'umero
+\newcommand{\semiintervalos}[4]{%
+\begin{center}
+\begin{texdraw}
+\linewd 0.005
+\drawdim cm
+\arrowheadtype t:V
+\move(5 1)
+\avec(10 1)
+\move(5 1)
+\avec(0 1)
+%%Etiqueta de R en el extremo derecho
+\htext(9.5 1.5){$\mathbb{R}$}
+%%linea vertical para indicar la posicion #2 del numero #1 y el numero #1
+\move(#2 1.125)\lvec(#2 0.875)
+\textref h:C v:C \htext(#2 0.5){#1}
+%%linea vertical para indicar la posicion #4 del numero #3 y el numero #3
+\move(#4 1.125)\lvec(#4 0.875)
+\textref h:C v:C \htext(#4 0.5){#3}
+\end{texdraw}
+\end{center}
+}
+
+\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
+\newcommand{\sjc}[1]{
+\overline{#1}
+}
+
+\def\dtjc#1#2#3{
+%%La medida del 'angulo de 90 grados
+\psline[linecolor=textoModelo](.5,.8)(.8,.8)(.8,.5)
+%%%El tri'angulo
+\psline[linecolor=textoModelo](.5,.5)(6.5,.5)(.5,3.95)(.5,.5)
+\rput(.3,.2){$#3$}
+\rput(.3,3.95){$#2$}
+\rput(6.7,.2){$#1$}
+}
+
+\def\triangulorectxyz{
+\begin{center}
+\begin{pspicture}(0,0)(7,4)
+%%La medida del 'angulo de 90 grados
+\psline(.5,.8)(.8,.8)(.8,.5)
+%%La medida del 'angulo de 30 grados
+\psarc{-}(6.5,.5){1}{151}{180}
+\rput(5.2,.75){$30^\circ$}
+%%La medida del 'angulo recto en $U$
+\psline(3,.8)(3.3,.8)(3.3,.5)
+%%%El tri'angulo
+\psline(.5,.5)(6.5,.5)(.5,3.95)(.5,.5)
+%%%La perpendicular desde U
+\psline(3,.5)(3,2.5)
+%%%Los puntos
+\rput(.3,.2){$Z$}
+\rput(.3,3.95){$Y$}
+\rput(6.7,.2){$X$}
+\rput(3,.2){$U$}
+\rput(3,2.8){$V$}
+\pscircle[fillstyle=solid,fillcolor=black](3,.5){.05}
+\pscircle[fillstyle=solid,fillcolor=black](3,2.5){.05}
+\end{pspicture}
+\end{center}}
+%\newenviroment{Dibujo}{\begin{center}\begin{pspicture}}{\end{pspicture}\end{center}}
+
+%Definici\'on de \sobrej
+\def\sobrej#1#2{%
+\overset{\ #1}{#2}}
+
+%%Definici\'on de \linejc
+\def\linejc#1{%
+\overset{\ \longleftrightarrow}{#1}}
+\def\arcojc#1{%
+\overset{\ \frown}{#1}}
+
+%%%
+%Definicion de comando \remarcar{texto}
+\def\remarcar#1{%
+\textcolor{textoRelevante}{#1}%
+}
+
+%%%
+%secciones: bf y color azul
+\newcommand{\secciones}[2]{%
+\textbf{\textcolor{#1}{#2}}}
+
+%%%Cortes de palabras en s\'ilabas
+\hyphenation{pro-ble-ma pro-ble-mas abs-trac-tos mo-de-los es-tu-dian-te ope-ra-cio-nes%
+Re-fle-xio-nes pro-ce-di-men-tal es-tu-dian-tes si-mi-lar re-le-van-te u-ni-dad u-ni-da-des%
+me-nor me-no-res cual-quier e-la-bo-rar na-tu-ral si-guien-te si-guien-tes%
+tan-gen-te tan-gen-tes co-tan-gen-te co-tan-gen-tes de-fi-ni-cio-nes mo-de-lo si-guien-tes%
+re-pre-sen-ta re-pre-sen-tan sa-tis-fa-ce}
+
+\newcommand{\oenbjc}{\!\!\!\!\!\!\!\!}
+\newcommand{\dsenbjc}{\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!}
+
+%%%Comandos en base a tikz
+%%
+%% Lo mismo que \ccjc, pero utilizando el tikz
+%%%%% #1: Color de fondo, #2: Color del texto, #3: ancho de la caja, #4: el texto.
+\newcommand{\tccjc}[4]{%
+\begin{center}
+\begin{tikzpicture}[rounded corners]
+\draw (0,0) node[text justified, text width=#3, fill = #1, inner sep = 1.5ex]
+{\color{#2}
+#4};
+\end{tikzpicture}
+\end{center}
+}
+%%
+
+%%% \teccjc{Radio de esquinas}{Color de fondo}{Color del texto}{Formula (sin $$)}
+\newcommand{\teccjc}[4]{%
+%\begin{tikzpicture}[rounded corners]
+%\draw (0,0) node[fill = #2, inner sep = 1ex]
+%{\textcolor{#3}{$\displaystyle{#4}$}};
+%\end{tikzpicture}
+\psframebox[framesep=6pt,linestyle=none,linearc=#1,cornersize=absolute,fillstyle=solid,fillcolor=#2]%
+{\textcolor{#3}{#4}}
+}
+%
+
+%%%%% #1:ancho, #2: el texto.
+\newcommand{\trespuesta}[2]{%
+\tccjc{fondoRespuesta}{textoRespuesta}{#1}{{\textsl{#2}}}
+}
+%%
+
+%%%%% #1:ancho, #2: el texto.
+\newcommand{\tsolucion}[2]{%
+\tccjc{fondoSolucion}{textoSolucion}{#1}{#2}
+}
+%%
+
+%%%% \fjc{Radio de las esquinas}{Texto de formula sin $$}
+\newcommand{\fjc}[2]{%
+\teccjc{#1}{fondoFormula}{textoFormula}{#2}
+}
+
+\newenvironment{enumeratejc}%
+                 {\renewcommand\pltopsep{.5\baselineskip}%
+                 \renewcommand\plitemsep{.3\baselineskip}%
+                 \begin{compactenum}[1.]}{\end{compactenum}}
+
+\newenvironment{listajc}[1]%
+               {\renewcommand\pltopsep{.5\baselineskip}%
+               \renewcommand\plitemsep{.3\baselineskip}%
+               \begin{compactenum}[#1]}{\end{compactenum}}
+
+\newcommand{\tq}{\text{\ tal que \ }}
+
+
+%%%% Función conjunta
+%% \funcionjc{Nombre}{salida}{llegada}{independiente}{dependiente}
+\newcommand{\funcionjc}[5]{%
+{\setlength{\arraycolsep}{2pt}
+\begin{array}{lccl}
+#1\colon & #2 & \longrightarrow & #3\\
+& #4 & \longmapsto & #5
+\end{array}}
+}
+

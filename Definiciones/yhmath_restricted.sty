@@ -1,0 +1,30 @@
+%%
+%% This is file `yhmath_restricted.sty',
+%% modified from yhmath.sty
+%%
+%% The braces created by \left\{ were discontinuous.
+%% I replaced the name of the new font `largesymbols'
+%% with `largesymbolsBIS'.
+%%
+%% I do not know if this changes the behaviour of this package.
+%% (Bit I suspect it does.)
+%%
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{yhmath_restricted}
+\RequirePackage{amsmath}
+\DeclareSymbolFont{largesymbolsBIS}{OMX}{yhex}{m}{n}
+\DeclareMathAccent{\widetilde}{\mathord}{largesymbolsBIS}{"65}
+\DeclareMathAccent{\widehat}{\mathord}{largesymbolsBIS}{"62}
+\DeclareMathAccent{\widetriangle}{\mathord}{largesymbolsBIS}{"E6}
+\DeclareMathAccent{\wideparen}{\mathord}{largesymbolsBIS}{"F3}
+\newenvironment{amatrix}{\left\langle\matrix}{\endmatrix\right\rangle}
+\def\adots{\mathinner{\mkern2mu\raise\p@\hbox{.}
+\mkern2mu\raise4\p@\hbox{.}\mkern1mu
+\raise7\p@\vbox{\kern7\p@\hbox{.}}\mkern1mu}}
+\edef\@tempa#1#2{\def#1{\mathaccent\string"\noexpand\accentclass@#2 }}
+\@tempa\ring{017}
+\newcommand{\widering}[1]{\overset{\smash{\lower1.333ex\hbox{$%
+\displaystyle\ring{}$}}}{\wideparen{#1}}}
+\endinput
+%%
+%% End of file `yhmath.sty'.
